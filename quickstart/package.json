@@ -10,6 +10,9 @@
     "type": "git",
     "url": "."
   },
+  "dependencies": {
+    "nconf": "^0.9.0"
+  },
   "author": "Larry O'Brien",
   "license": "MIT"
 }
