@@ -1,4 +1,4 @@
 {
-    "serviceName" : "laobri",
-    "api-key" : "abcd"
+    "serviceName" : "[SEARCH_SERVICE_NAME]",
+    "apiKey" : "[SEARCH_SERVICE_API_KEY]"
 }
