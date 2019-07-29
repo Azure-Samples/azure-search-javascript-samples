@@ -1,0 +1,15 @@
+{
+  "name": "hotels",
+  "version": "0.0.1",
+  "description": "Hotels quickstart",
+  "main": "index.js",
+  "scripts": {
+    "test": "ping"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "Larry O'Brien",
+  "license": "MIT"
+}
