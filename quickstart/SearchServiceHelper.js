@@ -6,7 +6,6 @@ class SearchServiceHelper {
         this.apiKey = apiKey;
         this.indexName = indexName;
         this.apiVersion = '2019-05-06';
-        console.log(`${searchServiceName} | ${this.searchServiceName}`);
     }
 
     _indexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
@@ -17,13 +16,12 @@ class SearchServiceHelper {
     getSearchURL(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
     
     
-    request(url, method, bodyContent = null) {
+    request(url, method, bodyJson = null) {
         const headers = {
             'content-type' : 'application/json',
-            'api-key' : this.apiKey,
-            'proxy' : 'http://127.0.0.1:8888'
+            'api-key' : this.apiKey
         };
-        const init = bodyContent === null ?
+        const init = bodyJson === null ?
             { 
                 method : method, 
                 headers : headers
@@ -32,10 +30,9 @@ class SearchServiceHelper {
             {
                 method : method, 
                 headers : headers,
-                body : JSON.stringify(bodyContent)
+                body : JSON.stringify(bodyJson)
             };
-        console.log(url);
-        console.log(`init = ${init.body}`)
+        console.log(`\n${method} ${url}`);
         return fetch(url, init);
     }
 

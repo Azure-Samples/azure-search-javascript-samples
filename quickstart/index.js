@@ -12,17 +12,20 @@ function getAzureConfiguration() {
     return config;
 }
 
-const run = () => {
+const run = async () => {
     try {
         const cfg = getAzureConfiguration();
         const helper = new SearchServiceHelper(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
         const client = new AzureSearchClient(helper);
-        if (client.indexExists()) {
-            client.deleteIndex();
-         }
-      
+        
+        const exists = await client.indexExistsAsync();
+        await exists ? client.deleteIndexAsync() : Promise.resolve();
         const indexDefinition = require('./hotels_quickstart_index.json');
-        client.createIndex(indexDefinition);
+        await client.createIndexAsync(indexDefinition);
+        queries.forEach(async (query) => { 
+            const result = await client.queryAsync(q);
+            console.log(`Query: ${q} \n ${result}`);
+        })
     } catch (x) {
         console.log(x);
     }
