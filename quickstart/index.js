@@ -1,6 +1,8 @@
 #!/usr/bin/env/node
 
-const nconf = require('nconf')
+const nconf = require('nconf');
+const SearchServiceHelper = require('./SearchServiceHelper.js');
+const AzureSearchClient = require('./AzureSearchClient.js');
 
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
@@ -10,10 +12,17 @@ function getAzureConfiguration() {
     return config;
 }
 
-const run = async() => {
+const run = () => {
     try {
-    const cfg = getAzureConfiguration();
-    console.log("Hello, Node from CLI");
+        const cfg = getAzureConfiguration();
+        const helper = new SearchServiceHelper(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
+        const client = new AzureSearchClient(helper);
+        if (client.indexExists()) {
+            client.deleteIndex();
+         }
+      
+        const indexDefinition = require('./hotels_quickstart_index.json');
+        client.createIndex(indexDefinition);
     } catch (x) {
         console.log(x);
     }

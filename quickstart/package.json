@@ -11,7 +11,8 @@
     "url": "."
   },
   "dependencies": {
-    "nconf": "^0.9.0"
+    "nconf": "^0.9.0",
+    "node-fetch": "^2.6.0"
   },
   "author": "Larry O'Brien",
   "license": "MIT",
