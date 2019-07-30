@@ -11,9 +11,11 @@ class SearchServiceHelper {
     _indexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
     
     getIndexExistsUrl() { return this._indexUrl(); }
-	getCreateIndexUrl() { return this._indexUrl(); }
+    getCreateIndexUrl() { return this._indexUrl(); }
 
-    getSearchURL(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
+    getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
+
+    getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
     
     
     request(url, method, bodyJson = null) {
@@ -36,9 +38,11 @@ class SearchServiceHelper {
         return fetch(url, init);
     }
 
-    throwOnHttpError(statusCode) {
-        if (statusCode >= 500){
-            console.log(`Request returned error code ${statusCode}`);
+    throwOnHttpError(response) {
+        const statusCode = response.status;
+        console.log(`Response Status: ${statusCode}`);
+        if (statusCode >= 300){
+            console.log(`Request returned error code ${JSON.stringify(response)}`);
             throw new UserException(`Failure in request. HTTP Status was ${statusCode}`);
         }
     }
