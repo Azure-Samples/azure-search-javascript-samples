@@ -14,7 +14,7 @@ class AzureSearchClient {
 
     getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
     
-    request(url, method, bodyJson = null) {
+    static request(url, method, apiKey, bodyJson = null) {
         // Uncomment the following for request details:
         /*
         console.log(`\n${method} ${url}`);
@@ -25,35 +25,35 @@ class AzureSearchClient {
 
         const headers = {
             'content-type' : 'application/json',
-            'api-key' : this.apiKey
+            'api-key' : apiKey
         };
         const init = bodyJson === null ?
             { 
-                method : method, 
-                headers : headers
+                method, 
+                headers
             }
             : 
             {
-                method : method, 
-                headers : headers,
+                method, 
+                headers,
                 body : JSON.stringify(bodyJson)
             };
         return fetch(url, init);
     }
 
-    throwOnHttpError(response) {
+    static throwOnHttpError(response) {
         const statusCode = response.status;
         console.log(`Response Status: ${statusCode}`);
         if (statusCode >= 300){
             console.log(`Request failed: ${JSON.stringify(response, null, 4)}`);
-            throw new Exception(`Failure in request. HTTP Status was ${statusCode}`);
+            throw new Error(`Failure in request. HTTP Status was ${statusCode}`);
         }
     }
 
     async indexExistsAsync() { 
         console.log("\n Checking if index exists...");
         const endpoint = this.getIndexUrl();
-        const response = await this.request(endpoint, "GET", null);
+        const response = await this.request(endpoint, "GET", this.apiKey);
         // Success has a few likely status codes: 200 or 204 (No Content), but accept all in 200 range...
         const exists = response.status >= 200 && response.status < 300;
         return exists;
@@ -62,7 +62,7 @@ class AzureSearchClient {
     async deleteIndexAsync() {
         console.log("\n Deleting existing index...");
         const endpoint = this.getIndexUrl();
-        const response = await this.request(endpoint, "DELETE");
+        const response = await this.request(endpoint, "DELETE", this.apiKey);
         this.throwOnHttpError(response);
         return this;
     }
@@ -70,7 +70,7 @@ class AzureSearchClient {
     async createIndexAsync(definition) {
         console.log("\n Creating index...");
         const endpoint = this.getIndexUrl();
-        const response = await this.request(endpoint, "PUT", definition);
+        const response = await this.request(endpoint, "PUT", this.apiKey, definition);
         this.throwOnHttpError(response);
         return this;
     }
@@ -78,7 +78,7 @@ class AzureSearchClient {
     async postDataAsync(hotelsData) {
         console.log("\n Adding hotel data...");
         const endpoint = this.getPostDataUrl();
-        const response = await this.request(endpoint,"POST", hotelsData);
+        const response = await this.request(endpoint,"POST", this.apiKey, hotelsData);
         this.throwOnHttpError(response);
         return this;
     }
@@ -86,7 +86,7 @@ class AzureSearchClient {
     async queryAsync(searchTerm) {
         console.log("\n Querying...")
         const endpoint = this.getSearchUrl(searchTerm);
-        const response = await this.request(endpoint, "GET");
+        const response = await this.request(endpoint, "GET", this.apiKey);
         this.throwOnHttpError(response);
         return response;
     }
