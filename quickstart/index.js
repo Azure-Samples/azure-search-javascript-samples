@@ -1,7 +1,6 @@
 #!/usr/bin/env/node
 
 const nconf = require('nconf');
-const SearchServiceHelper = require('./SearchServiceHelper.js');
 const AzureSearchClient = require('./AzureSearchClient.js');
 
 function getAzureConfiguration() {
@@ -48,16 +47,18 @@ async function doQueries(client) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const helper = new SearchServiceHelper(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
-        const client = new AzureSearchClient(helper);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
+        // Deleting index can take a few seconds
         await sleep(2000);
         const indexDefinition = require('./hotels_quickstart_index.json');
         await client.createIndexAsync(indexDefinition);
+        // Index availability can take a few seconds
         await sleep(2000);
         await client.postDataAsync(hotelData);
+        // Data availability can take a few seconds
         await sleep(5000);
         await doQueries(client);
     } catch (x) {
