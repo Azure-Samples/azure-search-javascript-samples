@@ -5,7 +5,7 @@ const AzureSearchClient = require('./AzureSearchClient.js');
 
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') == '[SEARCH_SERVICE_NAME' || config.get('apiKey') == '[SEARCH_SERVICE_API_KEY]') {
+    if (config.get('serviceName') == '[SEARCH_SERVICE_NAME' || config.get('adminKey') == '[SEARCH_SERVICE_API_KEY]') {
         throw new Error("You have not set the values in your azure_search_config.json file. Please change them to match your search service's values.");
     }
     return config;
@@ -47,7 +47,7 @@ async function doQueries(client) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), "hotels");
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

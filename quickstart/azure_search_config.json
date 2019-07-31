@@ -1,4 +1,5 @@
 {
     "serviceName" : "[SEARCH_SERVICE_NAME]",
-    "apiKey" : "[SEARCH_SERVICE_API_KEY]"
+    "adminKey" : "[SEARCH_SERVICE_ADMIN_KEY]",
+    "queryKey" : "[SEARCH_SERVICE_QUERY_KEY"]""
 }
