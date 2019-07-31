@@ -24,28 +24,42 @@ const hotelData = { value : [
     require('./data/hotel4.json')
 ]}
 
+
+function sleep(ms)
+{
+    return(
+        new Promise(function(resolve, reject)
+        {
+            setTimeout(function() { resolve(); }, ms);
+        })
+    );
+}
+async function doQueries(client) {
+    return Promise.all(
+        queries.map(async query => {
+            const result = await client.queryAsync(query);
+            const body = await result.json();
+            const str = JSON.stringify(body, null, 4);
+            console.log(`Query: ${query} \n ${str}`);
+        })
+    );
+}
+
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
         const helper = new SearchServiceHelper(cfg.get("serviceName"), cfg.get("apiKey"), "hotels");
         const client = new AzureSearchClient(helper);
         
-        //const exists = await client.indexExistsAsync();
-        //await exists ? client.deleteIndexAsync() : Promise.resolve();
-        //const indexDefinition = require('./hotels_quickstart_index.json');
-        //await client.createIndexAsync(indexDefinition);
-        //await client.loadDataAsync(hotelData);
-        // var indexComplete = false
-        // do {
-        //     indexComplete = await client.indexCompletedAsync();
-        // }while(! indexComplete)
-        queries.forEach(async (query) => { 
-            const result = await client.queryAsync(query);
-            const body = await result.json();
-            const str = JSON.stringify(body, null, 4);
-            console.log(`Query: ${query} \n ${str}`);
-        });
-        console.log("Finished.");
+        const exists = await client.indexExistsAsync();
+        await exists ? client.deleteIndexAsync() : Promise.resolve();
+        await sleep(2000);
+        const indexDefinition = require('./hotels_quickstart_index.json');
+        await client.createIndexAsync(indexDefinition);
+        await sleep(2000);
+        await client.loadDataAsync(hotelData);
+        await sleep(5000);
+        await doQueries(client);
     } catch (x) {
         console.log(x);
     }

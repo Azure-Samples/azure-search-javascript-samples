@@ -19,6 +19,8 @@ class SearchServiceHelper {
     
     
     request(url, method, bodyJson = null) {
+        console.log(`\n${method} ${url}`);
+       
         const headers = {
             'content-type' : 'application/json',
             'api-key' : this.apiKey
@@ -34,7 +36,6 @@ class SearchServiceHelper {
                 headers : headers,
                 body : JSON.stringify(bodyJson)
             };
-        console.log(`\n${method} ${url}`);
         return fetch(url, init);
     }
 
@@ -42,8 +43,8 @@ class SearchServiceHelper {
         const statusCode = response.status;
         console.log(`Response Status: ${statusCode}`);
         if (statusCode >= 300){
-            console.log(`Request returned error code ${JSON.stringify(response)}`);
-            throw new UserException(`Failure in request. HTTP Status was ${statusCode}`);
+            console.log(`Request failed: ${JSON.stringify(response, null, 4)}`);
+            throw new Exception(`Failure in request. HTTP Status was ${statusCode}`);
         }
     }
 }
