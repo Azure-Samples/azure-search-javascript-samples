@@ -57,7 +57,7 @@ const run = async () => {
         const indexDefinition = require('./hotels_quickstart_index.json');
         await client.createIndexAsync(indexDefinition);
         await sleep(2000);
-        await client.loadDataAsync(hotelData);
+        await client.postDataAsync(hotelData);
         await sleep(5000);
         await doQueries(client);
     } catch (x) {

@@ -8,19 +8,22 @@ class SearchServiceHelper {
         this.apiVersion = '2019-05-06';
     }
 
-    _indexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
+    getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
     
-    getIndexExistsUrl() { return this._indexUrl(); }
-    getCreateIndexUrl() { return this._indexUrl(); }
-
     getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 
     getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
     
     
     request(url, method, bodyJson = null) {
+        // Uncomment the following for request details:
+        /*
         console.log(`\n${method} ${url}`);
-       
+        if (bodyJson !== null) {
+            console.log(`\ncontent: ${JSON.stringify(bodyJson, null, 4)}`);
+        }
+        */
+
         const headers = {
             'content-type' : 'application/json',
             'api-key' : this.apiKey
