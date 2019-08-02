@@ -1,5 +1,8 @@
 #!/usr/bin/env/node
 
+const hotelData = require("hotels.json");
+const indexDefinition = require("hotels_quickstart_index.json");
+
 const nconf = require('nconf');
 const AzureSearchClient = require('./AzureSearchClient.js');
 
@@ -16,12 +19,6 @@ const queries = [
     "historic&$filter=Rating gt 4&"
 ];
 
-const hotelData = { value : [
-    require('./data/hotel1.json'),
-    require('./data/hotel2.json'),
-    require('./data/hotel3.json'),
-    require('./data/hotel4.json')
-]}
 
 
 function sleep(ms)
@@ -33,7 +30,7 @@ function sleep(ms)
         })
     );
 }
-async function doQueries(client) {
+async function doQueriesAsync(client) {
     return Promise.all(
         queries.map(async query => {
             const result = await client.queryAsync(query);
@@ -60,7 +57,7 @@ const run = async () => {
         await client.postDataAsync(hotelData);
         // Data availability can take a few seconds
         await sleep(5000);
-        await doQueries(client);
+        await doQueriesAsync(client);
     } catch (x) {
         console.log(x);
     }

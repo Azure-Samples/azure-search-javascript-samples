@@ -16,7 +16,7 @@ class AzureSearchClient {
 
     getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
     
-    static request(url, method, apiKey, bodyJson = null) {
+    static async request(url, method, apiKey, bodyJson = null) {
         // Uncomment the following for request details:
         /*
         console.log(`\n${method} ${url}`);
