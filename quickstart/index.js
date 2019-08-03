@@ -1,25 +1,22 @@
 #!/usr/bin/env/node
-
-const hotelData = require("hotels.json");
-const indexDefinition = require("hotels_quickstart_index.json");
-
 const nconf = require('nconf');
-const AzureSearchClient = require('./AzureSearchClient.js');
 
-function getAzureConfiguration() {
-    const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') == '[SEARCH_SERVICE_NAME' || config.get('adminKey') == '[SEARCH_SERVICE_API_KEY]') {
-        throw new Error("You have not set the values in your azure_search_config.json file. Please change them to match your search service's values.");
-    }
-    return config;
-}
+const hotelData = require('./hotels.json');
+const indexDefinition = require('./hotels_quickstart_index.json');
+const AzureSearchClient = require('./AzureSearchClient.js');
 
 const queries = [
     "*&$count=true",
     "historic&$filter=Rating gt 4&"
 ];
 
-
+function getAzureConfiguration() {
+    const config = nconf.file({ file: 'azure_search_config.json' });
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME') {
+        throw new Error("You have not set the values in your azure_search_config.json file.Change them to match your search service's values.");
+    }
+    return config;
+}
 
 function sleep(ms)
 {
@@ -50,7 +47,6 @@ const run = async () => {
         await exists ? client.deleteIndexAsync() : Promise.resolve();
         // Deleting index can take a few seconds
         await sleep(2000);
-        const indexDefinition = require('./hotels_quickstart_index.json');
         await client.createIndexAsync(indexDefinition);
         // Index availability can take a few seconds
         await sleep(2000);
