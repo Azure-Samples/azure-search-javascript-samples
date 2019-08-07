@@ -41,7 +41,7 @@ async function doQueriesAsync(client) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), "hotels");
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName"));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

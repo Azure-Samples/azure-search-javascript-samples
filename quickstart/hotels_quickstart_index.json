@@ -1,5 +1,5 @@
 {
-	"name": "hotels",
+	"name": "hotels-quickstart",
 	"fields": [
 		{
 			"name": "HotelId",
@@ -112,71 +112,6 @@
 					"searchable": true,
 					"filterable": true,
 					"sortable": true,
-					"facetable": true
-				}
-			]
-		},
-		{
-			"name": "Location",
-			"type": "Edm.GeographyPoint",
-			"filterable": true,
-			"sortable": true
-		},
-		{
-			"name": "Rooms",
-			"type": "Collection(Edm.ComplexType)",
-			"fields": [
-				{
-					"name": "Description",
-					"type": "Edm.String",
-					"searchable": true,
-					"filterable": false,
-					"sortable": false,
-					"facetable": false,
-					"analyzer": "en.lucene"
-				},
-				{
-					"name": "Description_fr",
-					"type": "Edm.String",
-					"searchable": true,
-					"filterable": false,
-					"sortable": false,
-					"facetable": false,
-					"analyzer": "fr.lucene"
-				},
-				{
-					"name": "Type",
-					"type": "Edm.String",
-					"searchable": true
-				},
-				{
-					"name": "BaseRate",
-					"type": "Edm.Double",
-					"filterable": true,
-					"facetable": true
-				},
-				{
-					"name": "BedOptions",
-					"type": "Edm.String",
-					"searchable": true
-				},
-				{
-					"name": "SleepsCount",
-					"type": "Edm.Int32",
-					"filterable": true,
-					"facetable": true
-				},
-				{
-					"name": "SmokingAllowed",
-					"type": "Edm.Boolean",
-					"filterable": true,
-					"facetable": true
-				},
-				{
-					"name": "Tags",
-					"type": "Collection(Edm.String)",
-					"searchable": true,
-					"filterable": true,
 					"facetable": true
 				}
 			]
