@@ -1,10 +1,10 @@
 ---
-topic: sample
+page-type: sample
 languages:
   - nodejs
 name: Quickstart in Node.js
 description: |
-  Node.js console sample for Azure Search, demonstrating index definition, data ingestion, and query execution.
+  Learn basic steps for creating, loading, and querying an Azure Search index using REST APIs and Node.js.
 products:
   - azure
   - azure-search
