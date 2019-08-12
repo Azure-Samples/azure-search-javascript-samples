@@ -3,14 +3,19 @@ topic: sample
 services: azure-search
 languages:
   - javascript
-name: Azure Search Sample Data
+  - nodejs
+name: Azure Search JavaScript samples
 description: |
-  Find JavaScript samples for Azure Search in this repo.
+  Node.js and JavaScript samples for Azure Search
 products:
+  - azure
   - azure-search
+urlFragment: javascript-samples
 ---
 # Azure Search JavaScript Samples repository
 
 This repository contains JavaScript sample code used in Azure Search quickstarts, tutorials, and examples.
 
-We are currently in the process of migrating content to this repository. Target completion date for this work is end of April.
+## Quickstart
+
+This Node.js console app uses the Azure Search REST API to create an index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
