@@ -1,6 +1,7 @@
 ---
 page-type: sample
 languages:
+  - javascript
   - nodejs
 name: Quickstart in Node.js
 description: |
