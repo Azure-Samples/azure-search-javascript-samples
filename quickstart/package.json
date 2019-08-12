@@ -1,0 +1,26 @@
+{
+  "name": "hotels",
+  "version": "0.0.1",
+  "description": "Hotels quickstart",
+  "main": "index.js",
+  "scripts": {
+    "test": "ping"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "nconf": "^0.9.0",
+    "node-fetch": "^2.6.0"
+  },
+  "author": "Larry O'Brien",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "prettier": "1.18.2"
+  }
+}
