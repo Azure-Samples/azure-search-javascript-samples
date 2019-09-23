@@ -1,9 +1,8 @@
 ---
-topic: sample
-services: azure-search
+page_type: sample
 languages:
-  - javascript
-  - nodejs
+- javascript
+- nodejs
 name: Azure Search JavaScript samples
 description: |
   Node.js and JavaScript samples for Azure Search
