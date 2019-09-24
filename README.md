@@ -11,6 +11,7 @@ products:
   - azure-search
 urlFragment: javascript-samples
 ---
+
 # Azure Search JavaScript Samples repository
 
 This repository contains JavaScript sample code used in Azure Search quickstarts, tutorials, and examples.
