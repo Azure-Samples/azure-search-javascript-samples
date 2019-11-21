@@ -1,17 +1,3 @@
----
-page_type: sample
-languages:
-- javascript
-- nodejs
-name: Azure Search JavaScript samples
-description: |
-  Node.js and JavaScript samples for Azure Search
-products:
-  - azure
-  - azure-search
-urlFragment: javascript-samples
----
-
 # Azure Search JavaScript Samples repository
 
 This repository contains JavaScript sample code used in Azure Search quickstarts, tutorials, and examples.
