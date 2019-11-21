@@ -3,7 +3,7 @@ page_type: sample
 languages:
   - javascript
   - nodejs
-name: Quickstart in Node.js
+name: Azure Search Quickstart in Node.js
 description: "Learn basic steps for creating, loading, and querying an Azure Search index using REST APIs and Node.js."
 products:
   - azure
