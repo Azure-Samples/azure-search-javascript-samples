@@ -3,31 +3,31 @@ page_type: sample
 languages:
   - javascript
   - nodejs
-name: Azure Search Quickstart in Node.js
-description: "Learn basic steps for creating, loading, and querying an Azure Search index using REST APIs and Node.js."
+name: Azure Cognitive Search Quickstart in Node.js
+description: "Learn basic steps for creating, loading, and querying an Azure Cognitive Search index using REST APIs and Node.js."
 products:
   - azure
-  - azure-search
+  - cognitive-search
 urlFragment: nodejs-quickstart
 ---
 
-# Quickstart sample for Azure Search with Node.js
+# Quickstart sample for Azure Cognitive Search with Node.js
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-Demonstrates using Node.js and the Azure Search REST API to create an index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
+Demonstrates using Node.js and the Azure Cognitive Search REST APIs to create an index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
 
-This Node.js console application is featured in [Node.js Quickstart: Create, load, and query indexes using Azure Search REST APIs](https://docs.microsoft.com/azure/search/search-get-started-nodejs). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) and runs on an Azure Search service using connection information that you provide.
+This Node.js console application is featured in [Node.js Quickstart: Create, load, and query indexes using Azure Cognitive Search REST APIs](https://docs.microsoft.com/azure/search/search-get-started-nodejs). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) and runs on a search service using connection information that you provide.
 
 ## Contents
 
 | File/folder | Description |
 |-------------|-------------|
 | `index.js` | The main program |
-| `AzureSearchClient.js` | Defines a class that can makes Azure Search REST API requests. |
+| `AzureSearchClient.js` | Defines a class that can makes REST API requests. |
 | `azure_search_config.json` | Key-value configuration data. | 
-| `hotels_quickstart_index.json` | Specifies the structure of the Azure Search index. | 
-| `hotels.json` | A small amount of sample data to populate Azure Search. | 
+| `hotels_quickstart_index.json` | Specifies the structure of a search index. | 
+| `hotels.json` | A small amount of sample data to populate the index. | 
 | `package.json` | The Node project definition file. | 
 | `package-lock.json` | The version dependencies of the project. | 
 | `.eslintrc` | Coding standards used by [ESLint](https://eslint.org/). |
@@ -41,7 +41,7 @@ This Node.js console application is featured in [Node.js Quickstart: Create, loa
 
 + [Node.js](https://nodejs.org).
 + [NPM](https://www.npmjs.com) should be installed by Node.js.
-+ [Create an Azure Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart.
++ [Create a search service in the portal](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart.
 
 Recommended:
 
@@ -87,5 +87,5 @@ The `run` function :
 
 ## Next steps 
 
-You can learn more about Azure Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
+You can learn more about Azure Cognitive Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
 
