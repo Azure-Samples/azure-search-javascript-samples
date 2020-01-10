@@ -7,7 +7,7 @@ name: Azure Cognitive Search Quickstart in Node.js
 description: "Learn basic steps for creating, loading, and querying an Azure Cognitive Search index using REST APIs and Node.js."
 products:
   - azure
-  - cognitive-search
+  - azure-cognitive-search
 urlFragment: nodejs-quickstart
 ---
 
