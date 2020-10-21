@@ -1,0 +1,30 @@
+{
+  "name": "hotels",
+  "version": "0.1.0",
+  "description": "Hotels quickstart",
+  "main": "index.js",
+  "engine": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azure-Samples/azure-search-javascript-samples.git"
+  },
+  "keywords": [
+    "Azure",
+    "Cognitive",
+    "Search",
+    "Sample",
+    "Node.js",
+    "JavaScript"
+  ],
+  "author": "Microsoft Corporation",
+  "bugs": {
+    "url": "https://github.com/Azure-Samples/azure-search-javascript-samples/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@azure/search-documents": "latest",
+    "dotenv": "^8.2.0"
+  }
+}

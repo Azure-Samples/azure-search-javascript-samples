@@ -1,16 +1,3 @@
----
-page_type: sample
-languages:
-  - javascript
-  - nodejs
-name: Azure Cognitive Search Quickstart in Node.js
-description: "Learn basic steps for creating, loading, and querying an Azure Cognitive Search index using REST APIs and Node.js."
-products:
-  - azure
-  - azure-cognitive-search
-urlFragment: nodejs-quickstart
----
-
 # Quickstart sample for Azure Cognitive Search with Node.js
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
