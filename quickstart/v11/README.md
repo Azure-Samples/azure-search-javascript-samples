@@ -43,6 +43,12 @@ This Node.js console application is featured in [Node.js Quickstart: Create, loa
 ## Setup
 
 1. Clone or download this sample repository.
+1. Open the folder in VS Code and navigate to the quickstart/v11 folder:
+
+   ```cmd
+   cd quickstart/v11
+   ```
+
 1. Install the dependencies using `npm`:
 
     ```bash
