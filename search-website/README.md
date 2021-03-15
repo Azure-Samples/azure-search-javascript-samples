@@ -2,6 +2,8 @@
 
 This sample is a React template for [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search). It leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/) and [Azure Static Web Apps](https://aka.ms/swadocs) to make it easy to get up and running with a simple web application.
 
+This README is an shortened version of the [full tutorial](https://aka.ms/search-website-tutorial). 
+
 Related resources: 
 * [Demo](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 * [Tutorial](https://aka.ms/search-website-tutorial)
@@ -50,11 +52,11 @@ To run the sample locally, follow the steps below.
 
 This project can be run anywhere, but VS Code is required for local debugging.
 
-1. Open the application with VS Code.
+1. Open the `./search-website` application with VS Code.
 
 ### Running the front-end
 
-1. Install front-end dependencies...
+1. From a terminal in the `./search-website` root, install front-end dependencies...
 
    ```bash
    npm install
@@ -68,8 +70,17 @@ This project can be run anywhere, but VS Code is required for local debugging.
 
 ### Running the API
 
-1. From VS Code, press <kbd>F5</kbd>
+1. From a different terminal in the `./search-website/api` root, install front-end dependencies...
 
+   ```bash
+   npm install
+   ```
+
+1. Run the api project.
+
+   ```bash
+   npm start
+   ```
 
 ## Deploying this sample
 
@@ -80,28 +91,33 @@ This project can be run anywhere, but VS Code is required for local debugging.
 
 ### Forking the repo
 
-To start off, select **Use this template** above. This will create your own copy of the code that you can deploy and edit as you please.
-
-![Use this template screenshot](./images/use-template.png)
+For the current repo. 
 
 ### Creating the web app
 
-Next, you need to create a Static Web App in the Azure portal. Click the button below to create one:
+1. Next, you need to create a Static Web App in the Azure portal. Click the button below to create one:
 
-[![Deploy to Azure button](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/?feature.customportal=false#create/Microsoft.StaticApp)
+    [![Deploy to Azure button](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/?feature.customportal=false#create/Microsoft.StaticApp)
 
-This will walk you through the process of creating the web app and connecting it to your GitHub repo.
+    This will walk you through the process of creating the web app and connecting it to your GitHub repo.
 
-After connecting to the repo, you'll be asked to include some build details. Set the Build Presets to `React` and then leave the other default values:
+1. After connecting to the repo, you'll be asked to include some build details. Set the Build Presets to `React` and then leave the other default values:
 
-![Azure Static Web Apps Configuration Screenshot](./images/setup.png)
+    ![Azure Static Web Apps Configuration Screenshot](./images/setup.png)
 
-Once you create the static web app, it will automatically deploy the web app to a URL you can find within the portal.
+1. Once you create the static web app, it will automatically deploy the web app to a URL you can find within the portal.
 
-![Azure Static Web Apps Configuration Screenshot](./images/static-web.png)
+    ![Azure Static Web Apps Configuration Screenshot](./images/static-web.png)
 
-The last thing you need to do is select configuration and then edit the application settings to add the credentials from `local.settings.json`. It may take a few minutes for this blade to become available in the portal.
+1. The last thing you need to do is select configuration and then edit the application settings to add the credentials from `local.settings.json`. It may take a few minutes for this blade to become available in the portal.
 
-![Azure Static Web Apps Configuration Screenshot](./images/config.png)
+    ```json
+    "SearchApiKey": "REPLACE-WITH-YOUR-SEARCH-QUERY-KEY",
+    "SearchServiceName": "REPLACE-WITH-YOUR-SEARCH-RESOURCE-NAME",
+    "SearchIndexName": "good-books",
+    "SearchFacets": "authors*,language_code"
+    ```
 
-Additional documentation can be found in the [docs folder](./docs).
+    ![Azure Static Web Apps Configuration Screenshot](./images/config.png)
+
+    Additional documentation can be found in the [docs folder](./docs).
