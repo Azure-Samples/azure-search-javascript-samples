@@ -54,7 +54,7 @@ module.exports = async function (context, req) {
         const top = (req.query.top || (req.body && req.body.top));
         const skip = (req.query.skip || (req.body && req.body.skip));
         const filters = (req.query.filters || (req.body && req.body.filters));
-        const facets = readFacets(process.env["SearchFacets"]);
+        const facets = readFacets(CONFIG.SearchFacets);
 
 
         // If search term is empty, search everything
