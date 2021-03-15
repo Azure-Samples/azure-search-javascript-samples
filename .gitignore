@@ -22,6 +22,7 @@ bower_components
 # node-waf configuration
 .lock-wscript
 # Compiled binary addons (https://nodejs.org/api/addons.html)
+build
 build/Release
 # Dependency directories
 node_modules/
@@ -30,6 +31,7 @@ jspm_packages/
 typings/
 # Optional npm cache directory
 .npm
+npm-debug.log*
 # Optional eslint cache
 .eslintcache
 # Optional REPL history
@@ -38,9 +40,15 @@ typings/
 *.tgz
 # Yarn Integrity file
 .yarn-integrity
+yarn-debug.log*
+yarn-error.log*
 # dotenv environment variables file
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 # next.js build output
 .next
 **/.vscode/*
-package-lock.json
+.DS_Store

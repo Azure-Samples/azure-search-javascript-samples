@@ -1,20 +1,14 @@
 const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
-
-const indexName = process.env["SearchIndexName"];
-const apiKey = process.env["SearchApiKey"];
-const searchServiceName = process.env["SearchServiceName"];
+const { CONFIG } = require("../config");
 
 // Create a SearchClient to send queries
 const client = new SearchClient(
-    `https://` + searchServiceName + `.search.windows.net/`,
-    indexName,
-    new AzureKeyCredential(apiKey)
+    `https://` + CONFIG.SearchServiceName + `.search.windows.net/`,
+    CONFIG.SearchIndexName,
+    new AzureKeyCredential(CONFIG.SearchApiKey)
 );
 
 module.exports = async function (context, req) {
-    
-    //context.log(req);
-    if (!indexName || !apiKey || !searchServiceName) throw Error("Search index configuration missing");
 
     // Reading inputs from HTTP Request
     const id = (req.query.id || (req.body && req.body.id));
