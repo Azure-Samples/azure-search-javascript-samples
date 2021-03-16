@@ -1,0 +1,16 @@
+{
+  "name": "bulk-insert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bulk_insert_books.js",
+  "scripts": {
+    "start": "node bulk_insert_books.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/search-documents": "^11.1.0",
+    "csv-parser": "^3.0.0"
+  }
+}

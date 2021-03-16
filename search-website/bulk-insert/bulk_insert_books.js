@@ -1,7 +1,9 @@
 /**
  * Add documents into Search Index
  * 
- * 
+ * 1. Download the `books.csv` from https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv to this same directory before running this script.
+ * 2. Edit the values for SEARCH_ENDPOINT and SEARCH_KEY for your own Search resource.
+ * 3. Script creates a new index called `good-books` in your Search resource. 
  */
 
 const fs = require('fs');
@@ -9,8 +11,8 @@ const parse = require('csv-parser')
 const { finished } = require('stream/promises');
 const { SearchClient, SearchIndexClient, AzureKeyCredential } = require("@azure/search-documents");
 
-const SEARCH_ENDPOINT = "https://YOUR-RESOURCE-NAME.search.windows.net";
-const SEARCH_KEY = "YOUR-RESOURCE-KEY";
+const SEARCH_ENDPOINT = "https://YOUR-SEARCH-RESOURCE-NAME.search.windows.net";
+const SEARCH_KEY = "YOUR-SEARCH-ADMIN-KEY";
 
 const SEARCH_INDEX_NAME = "good-books";
 const csvFile = './books.csv'
