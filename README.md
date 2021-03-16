@@ -18,7 +18,7 @@ You can view additional samples for Javascript/Typescript in the [azure-sdk-for-
 Add search to a book catalog website. 
 
 This sample includes:
-* A React website for [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search): the client application provides the search user interface.
-* A Function app which calls Azure Function API: It leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/).
+* A client React website for [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search): the client application provides the search user interface.
+* A server A Function app that calls the Azure.Search.Documents query a search index.: It leverages the [Azure SDK for Javascript/Typescript for Cognitive Search](https://www.npmjs.com/package/@azure/search-documents).
 
-This sample is designed to be deployed as an [Azure Static Web app](https://docs.microsoft.com/en-us/azure/static-web-apps/).
+This sample is designed to be deployed as an [Azure Static Web app](https://docs.microsoft.com/azure/static-web-apps/).
