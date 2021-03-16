@@ -21,8 +21,8 @@ To run the sample locally, follow the steps below.
 - A GitHub account
 - A Cognitive Search resource using the `Free` pricing tier. This can be created in VS Code with the [Cognitive Search extention](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch).  Copy following resources values before continuing:
     - YOUR-SEARCH-RESOURCE-NAME
-    - YOUR-SEARCH-ADMIN-KEY - used only in bulk import for inserting
-    - YOUR-SEARCH-QUERY-KEY - used only in Function api for querying
+    - YOUR-SEARCH-ADMIN-KEY - used in bulk import script
+    - YOUR-SEARCH-QUERY-KEY - used in Function api 
 - [Node.js and Git](https://nodejs.org/)
 - [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=shopathome-github-jopapa) installed
     - [Static Web app extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) installed

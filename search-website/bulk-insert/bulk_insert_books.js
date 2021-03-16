@@ -1,7 +1,9 @@
 /**
  * Add documents into Search Index
  * 
- * 
+ * 1. Download the `books.csv` from https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv to this same directory before running this script.
+ * 2. Edit the values for SEARCH_ENDPOINT and SEARCH_KEY for your own Search resource.
+ * 3. Script creates a new index called `good-books` in your Search resource. 
  */
 
 const fs = require('fs');
