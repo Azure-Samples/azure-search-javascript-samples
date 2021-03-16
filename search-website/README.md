@@ -49,10 +49,16 @@ To run the sample locally, follow the steps below.
 
 1. Open a terminal in VS Code from this directory by selecting the directory, then selecting **Open Integrated Terminal**.
  
+1. Install the project dependencies:
+
+   ```bash
+   npm install
+   ```
+
 1. Run the bulk import script:
 
     ```bash
-    node bulk_insert_books.js
+    npm start
     ```
 
 ### Running the React client
