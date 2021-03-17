@@ -10,8 +10,8 @@ const fs = require('fs').promises;
 const Papa = require('papaparse')
 const { SearchClient, SearchIndexClient, AzureKeyCredential } = require("@azure/search-documents");
 
-const SEARCH_ENDPOINT = "https://my-search-resource-diberry.search.windows.net";
-const SEARCH_KEY = "E0E3F39AB9E211C452205D3922773A1C";
+const SEARCH_ENDPOINT = "https://YOUR-SEARCH-RESOURCE-NAME.search.windows.net";
+const SEARCH_KEY = "YOUR-SEARCH-ADMIN-KEY";
 
 const SEARCH_INDEX_NAME = "good-books";
 const csvFile = './books.csv'
