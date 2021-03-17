@@ -110,6 +110,10 @@ To run the sample locally, follow the steps below.
     }
     ```
 
+### Install Function dependencies
+
+Install the [Azure Function Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#v2).
+
 ### Running the Function API
 
 1. Open a second integrated terminal for the `/search-website/api` directory inside your downloaded directory of this repository on your local computer.

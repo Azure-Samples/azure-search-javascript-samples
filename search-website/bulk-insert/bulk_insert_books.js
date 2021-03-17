@@ -6,9 +6,8 @@
  * 3. Script creates a new index called `good-books` in your Search resource. 
  */
 
-const fs = require('fs');
-const parse = require('csv-parser')
-const { finished } = require('stream/promises');
+const fs = require('fs').promises;
+const Papa = require('papaparse')
 const { SearchClient, SearchIndexClient, AzureKeyCredential } = require("@azure/search-documents");
 
 const SEARCH_ENDPOINT = "https://YOUR-SEARCH-RESOURCE-NAME.search.windows.net";
@@ -30,18 +29,21 @@ const clientIndex = new SearchIndexClient(
 
 
 // insert each row into ...
-const insertData = async (readable) => {
+const insertData = async (data) => {
 
-    let i = 0;
-
-    for await (const row of readable) {
-        console.log(`${i++} = ${JSON.stringify(row)}`);
-
+    console.log(`length = ${data.length}`);
+    
+    for (let i = 0; i < data.length; i++) {
+        
+        const row = data[i];
+        
+        console.log(`${i} = ${JSON.stringify(row)}`);
+       
         const indexItem = {
             "id": row.book_id,
-            "goodreads_book_id": row.goodreads_book_id,
-            "best_book_id": row.best_book_id,
-            "work_id": row.work_id,
+            "goodreads_book_id": parseInt(row.goodreads_book_id),
+            "best_book_id": parseInt(row.best_book_id),
+            "work_id": parseInt(row.work_id),
             "books_count": !row.books_count ? 0 : parseInt(row.books_count),
             "isbn": row.isbn,
             "isbn13": row.isbn13,
@@ -50,7 +52,7 @@ const insertData = async (readable) => {
             "original_title": row.original_title,
             "title": row.title,
             "language_code": row.language_code,
-            "average_rating": !row.average_rating ? 0 : parseInt(row.average_rating),
+            "average_rating": !row.average_rating ? 0 : parseFloat(row.average_rating),
             "ratings_count": !row.ratings_count ? 0 : parseInt(row.ratings_count),
             "work_ratings_count": !row.work_ratings_count ? 0 : parseInt(row.work_ratings_count),
             "work_text_reviews_count": !row.work_text_reviews_count ? 0 : parseInt(row.work_text_reviews_count),
@@ -72,12 +74,18 @@ const bulkInsert = async () => {
 
 
     // read file, parse CSV, each row is a chunk
-    const readable = fs
-        .createReadStream(csvFile)
-        .pipe(parse());
+    const fileData = await fs
+        .readFile(csvFile, {encoding:'utf8' });
 
+    // convert text to array
+    const dataObj = Papa.parse(fileData, {
+        header: true,
+        encoding: 'utf8',
+        skipEmptyLines: true,
+    })
+    
     // Pipe rows to insert function
-    await insertData(readable)
+    await insertData(dataObj.data)
 }
 async function createIndex() {
 
