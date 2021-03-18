@@ -1,12 +1,15 @@
 /**
  * Add documents into Search Index
+ * Script creates a new index called `good-books` in your Search resource.
  * 
- * 1. Download the `books.csv` from https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv to this same directory before running this script.
- * 2. Edit the values for SEARCH_ENDPOINT and SEARCH_KEY for your own Search resource.
- * 3. Script creates a new index called `good-books` in your Search resource. 
+ * 1. Edit the values for your own Search resource.
+ *     * YOUR-SEARCH-RESOURCE-NAME
+ *     * YOUR-SEARCH-ADMIN-KEY
+ * 2. Run script with `npm install && npm start`
+ *  
  */
 
-const fs = require('fs').promises;
+const axios = require('axios');
 const Papa = require('papaparse')
 const { SearchClient, SearchIndexClient, AzureKeyCredential } = require("@azure/search-documents");
 
@@ -14,32 +17,40 @@ const SEARCH_ENDPOINT = "https://YOUR-SEARCH-RESOURCE-NAME.search.windows.net";
 const SEARCH_KEY = "YOUR-SEARCH-ADMIN-KEY";
 
 const SEARCH_INDEX_NAME = "good-books";
-const csvFile = './books.csv'
-const schema = require("./good-books-index.json");
+const SEARCH_INDEX_SCHEMA = require("./good-books-index.json");
 
+const BOOKS_URL = "https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv";
+const BATCH_SIZE = 1000;
+
+// Create Search service client
+// used to upload docs into Index
 const client = new SearchClient(
     SEARCH_ENDPOINT,
     SEARCH_INDEX_NAME,
     new AzureKeyCredential(SEARCH_KEY)
 );
+
+// Create Search service Index client
+// used to create new Index
 const clientIndex = new SearchIndexClient(
     SEARCH_ENDPOINT,
     new AzureKeyCredential(SEARCH_KEY)
 );
 
-
-// insert each row into ...
+// Insert docs into Search Index
+// in batch
 const insertData = async (data) => {
 
-    console.log(`length = ${data.length}`);
+    let batch = 0;
+    let batchArray = [];
     
     for (let i = 0; i < data.length; i++) {
         
         const row = data[i];
-        
-        console.log(`${i} = ${JSON.stringify(row)}`);
        
-        const indexItem = {
+        // Convert string data to typed data
+        // Types are defined in schema
+        batchArray.push({
             "id": row.book_id,
             "goodreads_book_id": parseInt(row.goodreads_book_id),
             "best_book_id": parseInt(row.best_book_id),
@@ -63,38 +74,52 @@ const insertData = async (data) => {
             "ratings_5": !row.ratings_5 ? 0 : parseInt(row.ratings_5),
             "image_url": row.image_url,
             "small_image_url": row.small_image_url
+        })
+        
+        console.log(`${i}`);
+        
+        // Insert batch into Index
+        if ((batchArray.length % BATCH_SIZE) === 0){
+            await client.uploadDocuments(batchArray);
+            
+            console.log(`BATCH SENT`);
+            batchArray = [];
         }
-
-
-        const uploadResult = await client.uploadDocuments([indexItem]);
+        
     }
-
+    // Insert any final batch into Index
+    if (batchArray.length > 0 ){
+        await client.uploadDocuments(batchArray);
+        
+        console.log(`FINAL BATCH SENT`);
+        batchArray = [];
+    }
 }
 const bulkInsert = async () => {
 
+    // Download CSV Data file
+    const response = await axios.get(BOOKS_URL);
+    const fileData = response.data;
 
-    // read file, parse CSV, each row is a chunk
-    const fileData = await fs
-        .readFile(csvFile, {encoding:'utf8' });
-
-    // convert text to array
+    // convert CSV to JSON
     const dataObj = Papa.parse(fileData, {
         header: true,
         encoding: 'utf8',
         skipEmptyLines: true,
     })
     
-    // Pipe rows to insert function
+    // Insert JSON into Search Index
     await insertData(dataObj.data)
 }
+
+// Create Search Index
 async function createIndex() {
 
-    schema.name = SEARCH_INDEX_NAME;
-    const result = await clientIndex.createIndex(schema);
+    SEARCH_INDEX_SCHEMA.name = SEARCH_INDEX_NAME;
+    const result = await clientIndex.createIndex(SEARCH_INDEX_SCHEMA);
 
     console.log(result);
 }
-
 
 const main = async () => {
 
@@ -102,12 +127,10 @@ const main = async () => {
     console.log("index created");
 
     await bulkInsert();
-
 }
 
-
 main()
-    .then(() => console.log('done'))
-    .catch((err) => {
-        console.log(`done +  failed ${err}`)
-    });
+.then(() => console.log('done'))
+.catch((err) => {
+    console.log(`done +  failed ${err}`)
+});
