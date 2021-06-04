@@ -4,7 +4,8 @@ This sample is a React template for [Azure Cognitive Search](https://docs.micros
 
 This README is an shortened version of the [full tutorial](https://aka.ms/search-website-tutorial). 
 
-Related resources: 
+Related resources:
+
 * [Demo](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 * [Tutorial](https://aka.ms/search-website-tutorial)
 
@@ -18,15 +19,11 @@ To run the sample locally, follow the steps below.
 
 ### Prerequisites
 
-- A GitHub account
-- A Cognitive Search resource using the `Free` pricing tier. This can be created in VS Code with the [Cognitive Search extention](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch).  Copy following resources values before continuing:
-    - YOUR-SEARCH-RESOURCE-NAME
-    - YOUR-SEARCH-ADMIN-KEY - used in bulk import script
-    - YOUR-SEARCH-QUERY-KEY - used in Function api 
-- [Node.js and Git](https://nodejs.org/)
-- [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=shopathome-github-jopapa) installed
-    - [Static Web app extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) installed
-    - [Cognitive Search extention](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
+* [Node.js and Git](https://nodejs.org/)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-create-service-portal)
+* [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=shopathome-github-jopapa)
+* [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=shopathome-github-jopapa)
 
 ### Download sample repository
 
