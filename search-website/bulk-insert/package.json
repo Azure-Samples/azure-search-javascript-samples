@@ -1,0 +1,17 @@
+{
+  "name": "bulk-insert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bulk_insert_books.js",
+  "scripts": {
+    "start": "node bulk_insert_books.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/search-documents": "^11.1.0",
+    "axios": "^0.21.1",
+    "papaparse": "^5.3.0"
+  }
+}

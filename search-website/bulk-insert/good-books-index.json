@@ -2,6 +2,21 @@
   "name": "good-books",
   "fields": [
     {
+      "name": "id",
+      "type": "Edm.String",
+      "facetable": false,
+      "filterable": false,
+      "key": true,
+      "retrievable": true,
+      "searchable": true,
+      "sortable": false,
+      "analyzer": "standard.lucene",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "synonymMaps": [],
+      "fields": []
+    },
+    {
       "name": "goodreads_book_id",
       "type": "Edm.Int64",
       "facetable": false,
@@ -70,7 +85,7 @@
     },
     {
       "name": "isbn13",
-      "type": "Edm.Int64",
+      "type": "Edm.String",
       "facetable": false,
       "filterable": false,
       "retrievable": true,
@@ -83,13 +98,13 @@
     },
     {
       "name": "authors",
-      "type": "Edm.String",
+      "type": "Collection(Edm.String)",
       "facetable": true,
       "filterable": true,
       "key": false,
       "retrievable": true,
       "searchable": true,
-      "sortable": true,
+      "sortable": false,
       "analyzer": "standard.lucene",
       "indexAnalyzer": null,
       "searchAnalyzer": null,
@@ -300,36 +315,6 @@
       "searchAnalyzer": null,
       "synonymMaps": [],
       "fields": []
-    },
-    {
-      "name": "id",
-      "type": "Edm.String",
-      "facetable": false,
-      "filterable": false,
-      "key": true,
-      "retrievable": true,
-      "searchable": true,
-      "sortable": false,
-      "analyzer": "standard.lucene",
-      "indexAnalyzer": null,
-      "searchAnalyzer": null,
-      "synonymMaps": [],
-      "fields": []
-    },
-    {
-      "name": "rid",
-      "type": "Edm.String",
-      "facetable": false,
-      "filterable": false,
-      "key": false,
-      "retrievable": true,
-      "searchable": true,
-      "sortable": false,
-      "analyzer": "standard.lucene",
-      "indexAnalyzer": null,
-      "searchAnalyzer": null,
-      "synonymMaps": [],
-      "fields": []
     }
   ],
   "suggesters": [
@@ -354,8 +339,5 @@
   "charFilters": [],
   "tokenFilters": [],
   "tokenizers": [],
-  "similarity": {
-    "@odata.type": "#Microsoft.Azure.Search.ClassicSimilarity"
-  },
   "encryptionKey": null
 }

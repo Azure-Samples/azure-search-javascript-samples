@@ -13,12 +13,14 @@ This sample is available in two versions:
 
 You can view additional samples for Javascript/Typescript in the [azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples).
 
-## Searchable website
+## Searchable web app
 
-Add search to a book catalog website. 
+Add search to a book catalog web app. 
 
 This sample includes:
-* A React website for [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search): the client application provides the search user interface.
-* A Function app which calls Azure Function API: It leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/).
 
-This sample is designed to be deployed as an [Azure Static Web app](https://docs.microsoft.com/en-us/azure/static-web-apps/).
++ Bulk import script: Create a new index in your search service called `good-books`.
++ Client: React website for [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search): the client application provides the search user interface.
++ Server:  Function app that calls the Azure.Search.Documents query a search index.: It leverages the [Azure SDK for Javascript/Typescript for Cognitive Search](https://www.npmjs.com/package/@azure/search-documents).
+
+This sample is designed to be deployed as an [Azure Static Web app](https://docs.microsoft.com/azure/static-web-apps/).
