@@ -4,7 +4,8 @@ This sample is a React template for [Azure Cognitive Search](https://docs.micros
 
 This README is an shortened version of the [full tutorial](https://aka.ms/search-website-tutorial). 
 
-Related resources: 
+Related resources:
+
 * [Demo](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 * [Tutorial](https://aka.ms/search-website-tutorial)
 
@@ -18,11 +19,11 @@ To run the sample locally, follow the steps below.
 
 ### Prerequisites
 
-- A GitHub account
-- [Node.js and Git](https://nodejs.org/)
-- [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=shopathome-github-jopapa) installed
-- The [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=shopathome-github-jopapa) installed
-- The [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=shopathome-github-jopapa) installed
+* [Node.js and Git](https://nodejs.org/)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-create-service-portal)
+* [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=shopathome-github-jopapa)
+* [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=shopathome-github-jopapa)
 
 ### Setup
 
