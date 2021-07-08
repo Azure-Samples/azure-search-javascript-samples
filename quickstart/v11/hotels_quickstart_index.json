@@ -22,7 +22,7 @@
 			"filterable": false,
 			"sortable": false,
 			"facetable": false,
-			"analyzer": "en.lucene"
+			"analyzerName": "en.lucene"
 		},
 		{
 			"name": "Description_fr",
@@ -31,7 +31,7 @@
 			"filterable": false,
 			"sortable": false,
 			"facetable": false,
-			"analyzer": "fr.lucene"
+			"analyzerName": "fr.lucene"
 		},
 		{
 			"name": "Category",
