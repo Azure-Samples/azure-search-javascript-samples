@@ -72,7 +72,7 @@ You should see a series of messages relating to the creation of the search index
 
 The file **hotels_quickstart_index.json** holds the definition of an index for the data in the file **hotels.json**. Review those files to see the fields, which ones are searchable, etc.
 
-The file **index.js** automatically reads the **.env** file which contains the  `SEARCH_API_KEY` and `SEARCH_API_ENDPOINT` needed to create the `SearchIndexCliient`. The `sleep` function is used to pause execution in between major steps such as creating the index, submitting data for indexing, etc. Such pauses are generally only needed in test, demo, and sample code.
+The file **index.js** automatically reads the **.env** file which contains the  `SEARCH_API_KEY` and `SEARCH_API_ENDPOINT` needed to create the `SearchIndexClient`. The `sleep` function is used to pause execution in between major steps such as creating the index, submitting data for indexing, etc. Such pauses are generally only needed in test, demo, and sample code.
 
 The `run` function :
 
