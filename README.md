@@ -11,7 +11,7 @@ This sample is available in two versions:
 + **REST** calls Azure Cognitive Search's REST APIs directly
 + **v11** uses the [@azure/search-documents](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) client libraries and is the recommmended approach
 
-You can view additional samples for Javascript/Typescript in the [azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples).
+You can view additional samples for JavaScript/TypeScript in the [azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples).
 
 ## Searchable web app
 
@@ -21,6 +21,6 @@ This sample includes:
 
 + Bulk import script: Create a new index in your search service called `good-books`.
 + Client: React website for [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search): the client application provides the search user interface.
-+ Server:  Function app that calls the Azure.Search.Documents query a search index.: It leverages the [Azure SDK for Javascript/Typescript for Cognitive Search](https://www.npmjs.com/package/@azure/search-documents).
++ Server:  Function app that calls the Azure.Search.Documents query a search index.: It leverages the [Azure SDK for JavaScript/TypeScript for Cognitive Search](https://www.npmjs.com/package/@azure/search-documents).
 
 This sample is designed to be deployed as an [Azure Static Web app](https://docs.microsoft.com/azure/static-web-apps/).
