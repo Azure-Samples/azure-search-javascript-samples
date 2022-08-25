@@ -1,3 +1,18 @@
+---
+page_type: sample
+languages:
+- javascript
+- typescript
+- nodejs
+name: "Azure Cognitive Search JavaScript Samples repository"
+description: "This repository contains JavaScript sample code used in Azure Cognitive Search quickstarts, tutorials, and examples."
+products:
+- azure
+- azure-cognitive-search
+- azure-portal
+- vs-code
+---
+
 # Azure Cognitive Search JavaScript Samples repository
 
 This repository contains JavaScript sample code used in Azure Cognitive Search quickstarts, tutorials, and examples.
