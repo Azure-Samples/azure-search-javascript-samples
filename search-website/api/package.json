@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "website-search-js",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -7,6 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/search-documents": "^11.0.3"
-  }
+    "@azure/search-documents": "^11.3.0"
+  },
+  "devDependencies": {}
 }
