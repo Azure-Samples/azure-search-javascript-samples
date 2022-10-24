@@ -9,7 +9,7 @@ Related resources:
 * [Demo](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 * [Tutorial](https://aka.ms/search-website-tutorial)
 
-![Screenshot of sample web app](./docs/images/web-app.png)
+![Screenshot of sample web app](./images/web-app.png)
 
 You can easily deploy the sample onto Azure or run it locally by following the steps below.
 
@@ -63,7 +63,7 @@ To run the sample locally, follow the steps below.
 1. In your terminal, change into the `search-website` base directory:
 
     ```bash
-    cd client
+    cd ..
     ```
 
 1. Install the project dependencies:
@@ -127,10 +127,6 @@ Install the [Azure Function Core Tools](https://docs.microsoft.com/azure/azure-f
    npm start
    ```
 
-### Package.json proxy
-
-The `proxy`setting in the package.json file is to allow React to find your running Azure Function APIs without you having to install and run your own proxy. It should only be used for local development. 
-
 ## Deploying this sample
 
 ### Creating the web app
@@ -146,11 +142,11 @@ The `proxy`setting in the package.json file is to allow React to find your runni
 
 1. After connecting to the repo, you'll be asked to include some build details. Set the Build Presets to `React` and then leave the other default values:
 
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/setup.png)
+    ![Azure Static Web Apps Configuration Screenshot](./images/setup.png)
 
 1. Once you create the static web app, it will automatically deploy the web app to a URL you can find within the portal.
 
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/static-web.png)
+    ![Azure Static Web Apps Configuration Screenshot](./images/static-web.png)
 
 1. The last thing you need to do is select **Configuration** and then edit the application settings to add the following name/value pairs of credentials from `local.settings.json`. 
 
@@ -163,6 +159,6 @@ The `proxy`setting in the package.json file is to allow React to find your runni
 
     It may take a few minutes for this blade to become available in the portal.
 
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/config.png)
+    ![Azure Static Web Apps Configuration Screenshot](./images/config.png)
 
     Additional documentation can be found in the [docs folder](./docs).

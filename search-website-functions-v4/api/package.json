@@ -1,0 +1,13 @@
+{
+  "name": "website-search-js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/search-documents": "^11.3.0"
+  },
+  "devDependencies": {}
+}
