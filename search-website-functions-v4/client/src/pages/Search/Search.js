@@ -38,7 +38,7 @@ export default function Search() {
       filters: filters
     };
 
-    axios.post( `${apiBaseUrl}/api/search`, body)
+    axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
             console.log(JSON.stringify(response.data))
             setResults(response.data.results);

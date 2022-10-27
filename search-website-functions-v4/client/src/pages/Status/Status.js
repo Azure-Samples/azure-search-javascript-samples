@@ -10,7 +10,7 @@ export default function Status() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get( `${apiBaseUrl}/api/status`)
+    axios.get( `${apiBaseUrl || ""}/api/status`)
       .then(response => {
             console.log(JSON.stringify(response.data))
             setResults(response.data.results);

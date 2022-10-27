@@ -17,7 +17,7 @@ export default function Details() {
   useEffect(() => {
     setIsLoading(true);
     // console.log(id);
-    axios.get(`${apiBaseUrl}/api/lookup?id=${id}`)
+    axios.get(`${apiBaseUrl || ""}/api/lookup?id=${id}`)
       .then(response => {
         console.log(JSON.stringify(response.data))
         const doc = response.data.document;
