@@ -12,6 +12,7 @@ import AppHeader from '../components/AppHeader/AppHeader';
 import Home from '../pages/Home/Home';
 import Search from '../pages/Search/Search';
 import Details from '../pages/Details/Details';
+import Status from '../pages/Status/Status';
 
 // Bootstrap styles, optionally with jQuery and Popper
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search />} />
             <Route path="/details/:id" element={<Details />} />
+            <Route path="/status" element={<Status />} />
           </Routes>
         </Router>
         {/* <AppFooter /> */}

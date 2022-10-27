@@ -7,7 +7,7 @@ module.exports = async function (context, req) {
         headers: {
             "Content-type": "application/json"
         },
-        body: { CONFIG }
+        body: { results: CONFIG }
     };
     
 };
