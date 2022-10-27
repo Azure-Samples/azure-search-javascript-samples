@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import apiBaseUrl from "../../config";
 
 export default function Status() {
   
@@ -9,7 +10,7 @@ export default function Status() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get( '/api/status')
+    axios.get( `${apiBaseUrl}/api/status`)
       .then(response => {
             console.log(JSON.stringify(response.data))
             setResults(response.data.results);
