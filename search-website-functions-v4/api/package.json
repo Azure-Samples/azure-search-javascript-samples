@@ -7,8 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/search-documents": "^11.3.0",
-    "azure-functions-core-tools": "^4.0.4829"
+    "@azure/search-documents": "^11.3.0"
   },
   "devDependencies": {}
 }
