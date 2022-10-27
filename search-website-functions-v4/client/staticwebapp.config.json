@@ -1,9 +1,6 @@
 {
   "trailingSlash": "auto",
-  "routes": [
-    {
-      "route": "/*",
-      "methods": ["GET", "POST"]
-    }
-  ]
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
 }
