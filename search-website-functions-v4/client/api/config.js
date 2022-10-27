@@ -6,4 +6,6 @@ const CONFIG = {
 }
 if (!CONFIG.SearchIndexName || !CONFIG.SearchApiKey || !CONFIG.SearchServiceName) throw Error("./config.js::Cognitive Services key is missing");
 
+console.log(CONFIG);
+
 module.exports = { CONFIG };
