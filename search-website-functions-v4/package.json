@@ -6,13 +6,20 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  },
   "devDependencies": {
     "@azure/static-web-apps-cli": "^1.0.3",
+    "@playwright/test": "^1.27.1",
     "azure-functions-core-tools": "^4.0.4829"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm run start",
+    "start:client": "cd client && npm start",
+    "start:api": "cd api && npm start",
+    "start": "concurrently \"npm run start:client\" \"npm run start:api\"",
+    "playwright_test": "playwright test"
   },
   "keywords": [],
   "author": "",
