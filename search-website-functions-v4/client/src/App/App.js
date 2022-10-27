@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
 // Context for user authentication
 import { AuthContext } from '../contexts/AuthContext';
@@ -43,19 +43,23 @@ export default function App() {
     fetchAuth()
   }, []);
 
+  const router = createHashRouter(
+    createRoutesFromElements(
+      <>
+      <Route path="/" element={<Home />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/details/:id" element={<Details />} />
+      <Route path="/status" element={<Status />} />
+      </>
+    )
+  );
+
+
   return (
     <AuthContext.Provider value={user}>
       <div className="container-fluid app">
         <AppHeader />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/details/:id" element={<Details />} />
-            <Route path="/status" element={<Status />} />
-          </Routes>
-        </Router>
-        {/* <AppFooter /> */}
+        <RouterProvider router={router} />
       </div>
       0838
     </AuthContext.Provider>
