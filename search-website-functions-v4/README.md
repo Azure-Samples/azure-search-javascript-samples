@@ -1,6 +1,8 @@
-# Azure Cognitive Search UI
+# Add search to a web app in JavaScript
 
-This sample is a React template for [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search). It leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/) and [Azure Static Web Apps](https://aka.ms/swadocs) to make it easy to get up and running with a simple web application. It includes a search page with faceted navigation, a search bar for free form search and suggested queries, and tabbed page results.
+This JavaScript code sample builds a website to search through a catalog of books. It includes two programs. First, the bulk import program creates and loads a search index containing books and authors. The second program creates a web site that's hosted as an Azure Static Web App resource. The second program uses an Azure Function to make calls to the search index.
+
+This code leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/) and [Azure Static Web Apps](https://aka.ms/swadocs) to make it easy to get up and running with a simple web application. The web front-end includes a search page with faceted navigation, a search bar for free form search and suggested queries, and tabbed page results.
 
 This README is an shortened version of the [full tutorial](https://aka.ms/search-website-tutorial). 
 
@@ -11,23 +13,19 @@ Related resources:
 
 ![Screenshot of sample web app](./docs/images/web-app.png)
 
-You can easily deploy the sample onto Azure or run it locally by following the steps below.
+## Prerequisites
 
-## Running the application locally
-
-To run the sample locally, follow the steps below.
-
-### Prerequisites
-
-* [Node.js and Git](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
+* [Git](https://git-scm.com/downloads)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-create-service-portal)
+* [Query API key for Azure Cognitive Search](https://learn.microsoft.com/azure/search/search-security-api-keys#find-existing-keys)
 * [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=shopathome-github-jopapa)
 * [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=shopathome-github-jopapa)
 
-### Download sample repository
+## Download sample repository
 
-1. In a terminal, use git to clone (or Fork and Clone) this repository to your local computer:
+1. In a terminal, use git to fork and clone this repository to your local computer:
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-search-javascript-samples
@@ -35,7 +33,7 @@ To run the sample locally, follow the steps below.
 
 1. Open that local directory in Visual Studio Code.
 
-### Run bulk import to the Search Index
+## Run bulk import to create and load the search index
 
 1. Open the `./search-website/bulk-insert/bulk_insert_books.js`.
 1. Download the [books.csv](https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv) to the same directory as the `bulk_insert_books.js` file.
@@ -45,7 +43,7 @@ To run the sample locally, follow the steps below.
     * YOUR-SEARCH-ADMIN-KEY
 
 1. Open a terminal in VS Code from this directory by selecting the directory, then selecting **Open Integrated Terminal**.
- 
+
 1. Install the project dependencies:
 
    ```bash
@@ -58,111 +56,69 @@ To run the sample locally, follow the steps below.
     npm start
     ```
 
-### Running the React client
+## Create a Static Web App in Visual Studio Code
 
-1. In your terminal, change into the `search-website` base directory:
+1. Select **Azure** from the Activity Bar, then open **Resources** from the Side bar. 
 
-    ```bash
-    cd client
-    ```
+1. Right-click **Static Web Apps** and then select **Create Static Web App (Advanced)**.
 
-1. Install the project dependencies:
+1. If you see a pop-up window in VS Code asking which branch you want to deploy from, select the default branch, usually **master** or **main**. 
 
-   ```bash
-   npm install
-   ```
+    This setting means only changes you commit to that branch are deployed to your static web app. 
 
-1. Run the front-end project in the browser (automatically opens a browser window).
+1. If you see a pop-up window asking you to commit your changes, do not do this. The secrets from the bulk import step should not be committed to the repository. 
 
-   ```bash
-   npm start
-   ```
+    To rollback the changes, in VS Code select the Source Control icon in the Activity bar, then select each changed file in the Changes list and select the **Discard changes** icon.
 
-    This app won't work until the Azure Function API in the next section is also configured and running. 
+1. Follow the prompts to provide the following information:
 
-### Setup to Function API application
+    |Prompt|Enter|
+    |--|--|
+    |Enter the name for the new Static Web App.|Create a unique name for your resource. For example, you can prepend your name to the repository name such as, `joansmith-azure-search-javascript-samples`. |
+    |Select a resource group for new resources.|Use the resource group you created for this tutorial.|
+    |Select a SKU| Select the free SKU for this tutorial.|
+    |Choose build preset to configure default project structure.|Select **Custom**|
+    |Select the location of your application code|`search-website`<br><br>This is the path, from the root of the repository, to your Azure Static web app. |
+    |Select the location of your Azure Function code|`search-website/api`<br><br>This is the path, from the root of the repository, to your Azure Function app. |
+    |Enter the path of your build output...|`build`<br><br>This is the path, from your Azure Static web app, to your generated files.|
+    |Select a location for new resources.|Select a region close to you.|
 
-1. Find the `local.settings.json.rename` in your downloaded directory for this repo. It is in `./search-website/api/`.
-1. Rename the `local.settings.json.rename` file to `local.settings.json`, removing the `rename` portion of the file name.
+1. The resource is created, select **Open Actions in GitHub** from the Notifications. This opens a browser window pointed to your forked repo. 
 
-    The `local.settings.json` file holds all of the keys that the application needs.
-    
-1. Replace the following values with your own values:
+    The list of actions indicates your web app, both client and functions, were successfully pushed to your Azure Static Web App. 
 
-    * YOUR-SEARCH-RESOURCE-NAME
-    * YOUR-SEARCH-QUERY-KEY
+    Wait until the build and deployment complete before continuing. This may take a minute or two to finish.
 
-  
-    ```json
-    {
-      "IsEncrypted": false,
-      "Values": {
-        "AzureWebJobsStorage": "",
-        "FUNCTIONS_WORKER_RUNTIME": "node",
-        "SearchApiKey": "YOUR-SEARCH-QUERY-KEY",
-        "SearchServiceName": "YOUR-SEARCH-RESOURCE-NAME",
-        "SearchIndexName": "good-books",
-        "SearchFacets": "authors*,language_code"
-      }
-    }
-    ```
+1. Get the query key for Azure Cognitive Search. Keep this query key, you will need to use it in the next section. The query key gives you read access to query your index. 
 
-### Install Function dependencies
+## Add configuration settings in Azure portal
 
-Install the [Azure Function Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#v2).
+The Azure Function app won't return Search data until the Search secrets are in settings. 
 
-### Running the Function API
+1. Select **Azure** from the Activity Bar. 
+1. Right-click on your Static web app resource then select **Open in Portal**.
+1. Select **Configuration** then select **+ Add**.
 
-1. Open a second integrated terminal for the `/search-website/api` directory inside your downloaded directory of this repository on your local computer.
+1. Add each of the following settings:
 
-1. Install the project dependencies:
+    |Setting|Your Search resource value|
+    |--|--|
+    |SearchApiKey|Your Search query key|
+    |SearchServiceName|Your Search resource name|
+    |SearchIndexName|`good-books`|
+    |SearchFacets|`authors*,language_code`|
 
-   ```bash
-   npm install
-   ```
+    Azure Cognitive Search requires different syntax for filtering collections than it does for strings. Add a `*` after a field name to denote that the field is of type `Collection(Edm.String)`. This allows the Azure Function to add filters correctly to queries.
 
-1. Run the api project.
+1. Select **Save** to save the settings. 
+1. Return to VS Code. 
+1. Refresh your Static web app to see the Static web app's application settings. 
 
-   ```bash
-   npm start
-   ```
+## Use search in your Static web app
 
-### Package.json proxy
-
-The `proxy`setting in the package.json file is to allow React to find your running Azure Function APIs without you having to install and run your own proxy. It should only be used for local development. 
-
-## Deploying this sample
-
-### Creating the web app
-
-1. Next, you need to create a Static Web App in the Azure portal. Click the button below to create one:
-
-    [![Deploy to Azure button](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/?feature.customportal=false#create/Microsoft.StaticApp)
-
-    This will walk you through the process of creating the web app and connecting it to your GitHub repo.
-
-    > [!NOTE]
-    > Remember the search web app is in a subfolder of the repository. 
-
-1. After connecting to the repo, you'll be asked to include some build details. Set the Build Presets to `React` and then leave the other default values:
-
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/setup.png)
-
-1. Once you create the static web app, it will automatically deploy the web app to a URL you can find within the portal.
-
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/static-web.png)
-
-1. The last thing you need to do is select **Configuration** and then edit the application settings to add the following name/value pairs of credentials from `local.settings.json`. 
-
-    ```json
-    "SearchApiKey": "YOUR-SEARCH-QUERY-KEY",
-    "SearchServiceName": "YOUR-SEARCH-RESOURCE-NAME",
-    "SearchIndexName": "good-books",
-    "SearchFacets": "authors*,language_code"
-    ```
-
-    It may take a few minutes for this blade to become available in the portal.
-
-    ![Azure Static Web Apps Configuration Screenshot](./docs/images/config.png)
-
-    Additional documentation can be found in the [docs folder](./docs).
+1. In Visual Studio Code, open the [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface), and select the Azure icon.
+1. In the Side bar, **right-click on your Azure subscription** under the `Static web apps` area and find the Static web app you created for this tutorial.
+1. Right-click the Static Web App name and select **Browse site**.
+1. Select **Open** in the pop-up dialog.
+1. In the website search bar, enter a search query such as `code`, _slowly_ so the suggest feature suggests book titles. Select a suggestion or continue entering your own query. Press enter when you've completed your search query. 
+1. Review the results then select one of the books to see more details. 
