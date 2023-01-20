@@ -17,7 +17,7 @@ urlFragment: javascript-quickstart
 
 Demonstrates using JavaScript and the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) to create an Azure Cognitive Search index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
 
-This Node.js console application is featured in [Node.js Quickstart: Create, load, and query indexes using Azure Cognitive Search REST APIs](https://docs.microsoft.com/azure/search/search-get-started-nodejs). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) and runs on a search service using connection information that you provide.
+This Node.js console application is featured in [Quickstart: Create an Azure Cognitive Search index using the JavaScript SDK](https://docs.microsoft.com/azure/search/search-get-started-javascript). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) and runs on a search service using connection information that you provide.
 
 ## Contents
 
@@ -43,7 +43,8 @@ This Node.js console application is featured in [Node.js Quickstart: Create, loa
 ## Setup
 
 1. Clone or download this sample repository.
-1. Open the folder in VS Code and navigate to the quickstart/v11 folder:
+
+1. Open the folder in Visual Studio Code and navigate to the quickstart/v11 folder:
 
    ```cmd
    cd quickstart/v11
@@ -55,7 +56,8 @@ This Node.js console application is featured in [Node.js Quickstart: Create, loa
     npm install
     ```
 
-1. Edit the file `sample.env`, adding the correct credentials to access your Azure Cognitive Search service.
+1. Edit the file `sample.env`, adding the connection information that's valid for your Azure Cognitive Search service.
+
 1. Rename the file from `sample.env` to just `.env`. The quickstart will read the `.env` file automatically.
 
 ### Running the quickstart
@@ -67,6 +69,8 @@ This Node.js console application is featured in [Node.js Quickstart: Create, loa
     ```
 
 You should see a series of messages relating to the creation of the search index, adding documents to it, and, finally, results of a series of queries.
+
+If you get a 401 error, make sure the API key is correct (you need an admin API key to create objects), and make sure the search service is configured for [key-based authentication](https://learn.microsoft.com/azure/search/search-security-api-keys).
 
 ## Key concepts
 
