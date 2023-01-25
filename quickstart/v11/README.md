@@ -27,7 +27,6 @@ This Node.js console application is featured in [Quickstart: Create an Azure Cog
 | `hotels_quickstart_index.json` | Specifies the structure of a search index. | 
 | `hotels.json` | A small amount of sample data to populate the index. | 
 | `package.json` | The Node project definition file. | 
-| `package-lock.json` | The version dependencies of the project. |
 | `.gitignore` | Define what to ignore at commit time. |
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
 | `README.md` | This README file. |
@@ -40,7 +39,7 @@ This Node.js console application is featured in [Quickstart: Create an Azure Cog
 + [Create a search service in the portal](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart.
 + [Visual Studio Code](https://code.visualstudio.com) or another IDE.
 
-## Setup
+## Set up the sample
 
 1. Clone or download this sample repository.
 
@@ -56,11 +55,16 @@ This Node.js console application is featured in [Quickstart: Create an Azure Cog
     npm install
     ```
 
-1. Edit the file `sample.env`, adding the connection information that's valid for your Azure Cognitive Search service.
+1. Edit the file `sample.env`, adding the connection information that's valid for your Azure Cognitive Search service. See 
 
-1. Rename the file from `sample.env` to just `.env`. The quickstart will read the `.env` file automatically.
+   ```nodejs
+   SEARCH_API_KEY=<search-admin-key>
+   SEARCH_API_ENDPOINT=https://<search-service-name>.search.windows.net
+   ```
 
-### Running the quickstart
+1. Rename `sample.env` to just `.env`. The quickstart will read the `.env` file automatically.
+
+## Run the sample
 
 1. Run the following command to start the program.
 
