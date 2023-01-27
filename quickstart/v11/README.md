@@ -2,35 +2,24 @@
 page_type: sample
 languages:
   - javascript
+  - typescript
   - nodejs
-name: Azure Cognitive Search Quickstart in JavaScript
-description: "Learn basic steps for creating, loading, and querying an Azure Cognitive Search index using the Azure SDK for Javascipt/Typescript"
+name: Quickstart in JavaScript
+description: |
+  Learn how to create, load, and query an Azure Cognitive Search index using the Azure SDK for Javascript/Typescript.
 products:
   - azure
   - azure-cognitive-search
 urlFragment: javascript-quickstart
 ---
 
-# Quickstart sample for Azure Cognitive Search with Node.js
+# JavaScript quickstart for Azure Cognitive Search
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
 Demonstrates using JavaScript and the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) to create an Azure Cognitive Search index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
 
 This Node.js console application is featured in [Quickstart: Create an Azure Cognitive Search index using the JavaScript SDK](https://docs.microsoft.com/azure/search/search-get-started-javascript). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) and runs on a search service using connection information that you provide.
-
-## Contents
-
-| File/folder | Description |
-|-------------|-------------|
-| `index.js` | The main program. |
-| `hotels_quickstart_index.json` | Specifies the structure of a search index. | 
-| `hotels.json` | A small amount of sample data to populate the index. | 
-| `package.json` | The Node project definition file. | 
-| `.gitignore` | Define what to ignore at commit time. |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md` | This README file. |
-| `LICENSE.md`   | The license for the sample. |
 
 ## Prerequisites
 

@@ -1,3 +1,19 @@
+---
+page_type: sample
+languages:
+- javascript
+- typescript
+- nodejs
+name: Add search to a JavaScript app
+description: | 
+  Add document search to a web app. This JavaScript sample uses the Azure SDK to create, load, and query the index.
+products:
+- azure
+- azure-cognitive-search
+- azure-static-web-app
+urlFragment: javascript-sample-search-web-app
+---
+
 # Add search to a web app in JavaScript
 
 This JavaScript code sample builds a website to search through a catalog of books. It includes two programs. First, the bulk import program creates and loads a search index containing books and authors. The second program creates a web site that's hosted as an Azure Static Web App resource. The second program uses an Azure Function to make calls to the search index.
