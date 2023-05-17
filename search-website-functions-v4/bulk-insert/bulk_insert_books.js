@@ -19,7 +19,7 @@ const SEARCH_KEY = "YOUR-SEARCH-ADMIN-KEY";
 const SEARCH_INDEX_NAME = "good-books";
 const SEARCH_INDEX_SCHEMA = require("./good-books-index.json");
 
-const BOOKS_URL = "https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/books.csv";
+const BOOKS_URL = "https://raw.githubusercontent.com/heidisdteen/goodbooks-10k/master/books.csv";
 const BATCH_SIZE = 1000;
 
 // Create Search service client
