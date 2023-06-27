@@ -16,7 +16,7 @@ import SEARCH_INDEX_SCHEMA from './good-books-index.json' assert { type: 'json' 
 
 // Data settings
 const BOOKS_URL =
-  'https://raw.githubusercontent.com/HeidiSteen/goodbooks-10k/main/books.csv';
+  'https://raw.githubusercontent.com/Azure-Samples/azure-search-sample-data/main/good-books/books.csv';
 const BATCH_SIZE = 1000;
 
 // Create Search service client
