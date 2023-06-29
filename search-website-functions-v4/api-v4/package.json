@@ -1,0 +1,19 @@
+{
+  "name": "api3",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start --verbose",
+    "test": "echo \"No tests yet...\"",
+    "format": "prettier --write *.js",
+    "install:tools": "npm install -g azure-functions-core-tools"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0-alpha.7",
+    "@azure/search-documents": "^11.3.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  },
+  "main": "src/functions/*.js"
+}
