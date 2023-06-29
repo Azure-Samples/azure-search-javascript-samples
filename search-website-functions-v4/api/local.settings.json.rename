@@ -3,13 +3,12 @@
   "Values": {
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "node",
-    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
-    "SearchApiQueryKey": "",
-    "SearchServiceName": "",
+    "SearchApiKey": "YOUR-SEARCH-QUERY-KEY",
+    "SearchServiceName": "YOUR-SEARCH-RESOURCE-NAME",
     "SearchIndexName": "good-books",
-    "SearchFacets": "authors*,language_code"    
+    "SearchFacets": "authors*,language_code"
   },
   "Host": {
     "CORS": "*"
-  }
+  } 
 }
