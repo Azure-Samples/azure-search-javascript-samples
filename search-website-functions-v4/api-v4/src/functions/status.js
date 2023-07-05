@@ -6,6 +6,6 @@ app.http('status', {
     authLevel: 'anonymous',
     handler: async (request, context) => {
         context.log(`Status processed request for url "${request.url}"`);
-        return { jsonBody: { results: CONFIG, env } };
+        return { jsonBody: { results: CONFIG, env: process.env } };
     }
 });
