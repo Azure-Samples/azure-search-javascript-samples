@@ -8,6 +8,7 @@ import "../../pages/Search/Search.css";
 import logo from '../../images/cognitive_search.jpg';
 
 export default function Home() {
+  const [status, setStatus] = useState({});
   const navigate = useNavigate();
   const navigateToSearchPage = (q) => {
     if (!q || q === '') {
@@ -16,6 +17,22 @@ export default function Home() {
     navigate('/search?q=' + q);
   }
 
+    useEffect(() => {
+    axios.get('/api/status')
+      .then(response => {
+        console.log(JSON.stringify(response.data))
+        setStatus(response.data);
+
+      },
+      error => {
+        console.log(error);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+  }, []);
+
   return (
     <main className="main main--home">
       <div className="row home-search">
@@ -23,6 +40,7 @@ export default function Home() {
         <p className="poweredby lead">Powered by Azure Cognitive Search</p>
         <SearchBar postSearchHandler={navigateToSearchPage}></SearchBar>
       </div>
+      { status }
     </main>
   );
 };
