@@ -1,6 +1,6 @@
 const CONFIG = {
     SearchIndexName: process.env["SearchIndexName"] || "good-books",
-    SearchApiQueryKey: process.env["SearchApiQueryKey"] || "",
+    SearchApiQueryKey: process.env["SearchApiKey"] || "",
     SearchServiceName: process.env["SearchServiceName"] || "",
     SearchFacets: process.env["SearchFacets"] || "authors*,language_code", 
 }
