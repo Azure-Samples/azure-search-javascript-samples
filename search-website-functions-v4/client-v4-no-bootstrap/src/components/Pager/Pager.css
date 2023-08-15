@@ -1,0 +1,13 @@
+
+.pager {
+    margin: auto;
+    max-width: fit-content;
+}
+/* Remove underline */
+.pager [class*="MuiTableCell-root-MuiTablePagination-root"]{
+    border-bottom: 0;
+}
+/* Remove space under `Page: n of X` */
+.pager p  {
+    margin: 0;
+}

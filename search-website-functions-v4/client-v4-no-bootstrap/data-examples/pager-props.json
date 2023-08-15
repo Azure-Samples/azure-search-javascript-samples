@@ -1,0 +1,27 @@
+{
+  "document": {
+    "id": "6410",
+    "goodreads_book_id": 48758,
+    "best_book_id": 48758,
+    "work_id": 266710,
+    "books_count": 18,
+    "isbn": "1590521676",
+    "isbn13": "9.78E+12",
+    "authors": ["Joshua Harris"],
+    "original_publication_year": 2000,
+    "original_title": "Boy Meets Girl: Say Hello to Courtship",
+    "title": "Boy Meets Girl: Say Hello to Courtship",
+    "language_code": "en-GB",
+    "average_rating": 3.78,
+    "ratings_count": 13868,
+    "work_ratings_count": 14257,
+    "work_text_reviews_count": 453,
+    "ratings_1": 724,
+    "ratings_2": 1266,
+    "ratings_3": 3244,
+    "ratings_4": 4167,
+    "ratings_5": 4856,
+    "image_url": "https://images.gr-assets.com/books/1170356477m/48758.jpg",
+    "small_image_url": "https://images.gr-assets.com/books/1170356477s/48758.jpg"
+  }
+}
