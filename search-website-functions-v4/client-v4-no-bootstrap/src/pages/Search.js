@@ -3,16 +3,14 @@ import request from "../api";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
 
 import Results from "../components/Results/Results";
-import Pager from "../components/Pager/Pager";
+import Pager from "../components/Pager";
 import Facets from "../components/Facets/Facets";
-import SearchBar2 from "../components/SearchBar/SearchBar2";
+import SearchBar from "../components/SearchBar";
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -26,7 +24,7 @@ const StyledPager = styled(Pager)({
   maxWidth: "fit-content",
 });
 
-const StyledSearchBar = styled(SearchBar2)({
+const StyledSearchBar = styled(SearchBar)({
 
 });
 const LeftColumn = styled(Stack)`

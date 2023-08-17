@@ -9,14 +9,11 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import styled from "styled-components";
 
-import "./CheckboxFacet.css";
-
 export default function CheckboxFacet(props) {
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div>
+    <>
       <FacetListItem
         disableRipple={true}
         button
@@ -28,10 +25,9 @@ export default function CheckboxFacet(props) {
       <Collapse in={isExpanded} component="div">
         <FacetValuesList>
           {props.values.map((facetValue) => {
-            
             // why are there empty facet values?
             if (facetValue.value.length === 0) {
-                facetValue.value = `no value set`;
+              facetValue.value = `no value set`;
             }
 
             const isSelected = props.selectedFacets.some(
@@ -55,10 +51,11 @@ export default function CheckboxFacet(props) {
                           props.removeFilter({
                             field: props.name,
                             value: facetValue.value,
-                          });}
+                          });
+                        }
                       : () => {
-                        props.addFilter(props.name, facetValue.value)
-                      }
+                          props.addFilter(props.name, facetValue.value);
+                        }
                   }
                 />
                 <ListItemText
@@ -69,7 +66,7 @@ export default function CheckboxFacet(props) {
           })}
         </FacetValuesList>
       </Collapse>
-    </div>
+    </>
   );
 }
 

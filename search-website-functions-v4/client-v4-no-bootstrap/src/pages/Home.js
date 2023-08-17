@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../components/SearchBar/SearchBar";
-import SearchBar2 from "../components/SearchBar/SearchBar2";
+import SearchBar from "../components/SearchBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -60,10 +59,10 @@ export default function Home() {
             Powered by Azure Cognitive Search
           </Typography>
           <StyledHomeSearchBox>
-            <SearchBar2
+            <SearchBar
               className="home-search-bar"
               navigateToSearchPage={navigateToSearchPage}
-            ></SearchBar2>
+            ></SearchBar>
           </StyledHomeSearchBox>
         </Stack>
       </StyledHomeBox>

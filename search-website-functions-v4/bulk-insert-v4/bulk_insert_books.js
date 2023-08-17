@@ -7,8 +7,8 @@ import {
 } from '@azure/search-documents';
 
 // Azure Cognitive Search resource settings
-const SEARCH_ENDPOINT = 'https://YOUR-RESOURCE-NAME.search.windows.net';
-const SEARCH_ADMIN_KEY = 'YOUR-RESOURCE-ADMIN-KEY';
+const SEARCH_ENDPOINT = 'https://coredev-books.search.windows.net';
+const SEARCH_ADMIN_KEY = 'lGDh1eTcRD6y73UmEnDkxeZtILrk4dgYBXetHQWogaAzSeAadLDw';
 
 // Azure Cognitive Search index settings
 const SEARCH_INDEX_NAME = 'good-books';

@@ -1,8 +1,5 @@
 import React, { useState, useRef } from "react";
-import request from "../../api";
-import Suggestions from "./Suggestions/Suggestions";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import request from "../api";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -19,8 +16,6 @@ justify-content: space-evenly;
 align-items: center;
 gap: 1em;
 margin-top: 1em;
-
-
 `;
 
 const StyledAutoComplete = styled(Autocomplete)`

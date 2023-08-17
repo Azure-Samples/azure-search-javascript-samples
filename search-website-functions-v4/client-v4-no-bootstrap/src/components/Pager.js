@@ -1,10 +1,14 @@
 import React from "react";
 import TablePagination from "@mui/material/TablePagination";
-import Container from "@mui/material/Container";
+import styled from "@emotion/styled";
 
-import "./Pager.css";
+const StyledTablePagination = styled(TablePagination)`
+margin: auto;
+max-width: fit-content;
+border-bottom: 0;
+`;
 
-export default function Pager2(props) {
+export default function Pager(props) {
   const pagesInResultSet = Math.round(props.resultCount / props.resultsPerPage);
   const moreThanOnePage = pagesInResultSet > 1;
 
@@ -14,8 +18,7 @@ export default function Pager2(props) {
     props.setCurrentPage(newPage + 1);
   };
   return (
-    <Container className="pager" align="center">
-    <TablePagination
+    <StyledTablePagination
       className="pager"
       align="center"
       component="div"
@@ -32,6 +35,5 @@ export default function Pager2(props) {
         )} pages`
       }
     />
-    </Container>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { List, Chip } from "@mui/material";
-import CheckboxFacet from "./CheckboxFacet/CheckboxFacet";
+import CheckboxFacet from "./CheckboxFacet";
 import styled from "styled-components";
-import "./Facets.css";
 
 export default function Facets(props) {
   const [filters, setFilters] = useState([]);
@@ -69,12 +68,12 @@ export default function Facets(props) {
   }
 
   return (
-    <div id="facetPanel" className="box">
-      <div className="facetbox">
+    <div sx={{height: "100%"}}>
+      <div sx={{borderRight: "1px solid #f0f0f0"}}>
         <div id="clearFilters">
-          <ul className="filterlist">{renderFilters}</ul>
+          <ul sx={{listStyle: "none"}} className="filterlist">{renderFilters}</ul>
         </div>
-        <FacetList component="nav" className="listitem">
+        <FacetList sx={{margin: "0.25em", paddingLeft: "36px !important"}} component="nav" className="listitem">
           {renderFacets}
         </FacetList>
       </div>
