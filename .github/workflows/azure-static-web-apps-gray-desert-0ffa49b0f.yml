@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: v4-client-material-ui-only
 
 on:
   workflow_dispatch:
