@@ -14,10 +14,6 @@ import SearchBar from "../components/SearchBar";
 
 import { useQuery } from "@tanstack/react-query";
 
-const StyledStack = styled(Stack)({
-
-});
-
 const StyledPager = styled(Pager)({
   marginLeft: "auto",
   marginRight: "auto",
@@ -72,6 +68,7 @@ export default function Search() {
 
   const fiveMinutes = 1000 * 60 * 5;
 
+    /* eslint-disable no-unused-vars */
   const { data, isLoading, dataUpdatedAt, error } = useQuery({
     queryKey: ["search", searchTerm, top, skip, currentPage, filters, facets],
     //refetchOnMount: false,

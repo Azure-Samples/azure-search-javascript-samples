@@ -28,6 +28,7 @@ export default function Details() {
 
   const fiveMinutes = 1000 * 60 * 5;
 
+    /* eslint-disable no-unused-vars */
   const { data, isLoading, error } = useQuery({
     queryKey: ["lookup", id], 
     queryFn: async() =>  lookupRequest(),

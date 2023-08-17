@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import request from "../api";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -35,6 +35,7 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
   const top = 5;
   const suggester = "sg";
 
+  /* eslint-disable no-unused-vars */
   const { data, isLoading, error } = useQuery({
     queryKey: ["suggest", q, top, suggester],
     refetchOnMount: true,
