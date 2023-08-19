@@ -14,7 +14,7 @@ min-height: 30em;
 outline: 1px solid blue;
 padding-left: 0px;
 padding-right: 0px;
-max-width: 75%;
+max-width: 50%;
 outline: 0px;
 `;
 

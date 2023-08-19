@@ -4,6 +4,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 
+const StyledResultsHeader = styled.div`
+width: 100%;
+align-items: left;
+`;
+
 const StyledTypography = styled(Typography)`
   margin: 1em;
 `;
@@ -13,9 +18,7 @@ const StyledContainer = styled(Container)`
   flex-flow: row wrap;
   justify-content: center;
   width: 100%;
-  margin: auto;
-  margin-left: 0em;
-  margin-right: 0em;
+  margin: 1em;
 `;
 
 const StyledResults = styled.div`
@@ -38,10 +41,12 @@ export default function Results({ q, skip, top, count, documents }) {
 
   return (
     <StyledContainer>
-      <StyledTypography>{q}</StyledTypography>
+      <StyledResultsHeader>
       <StyledTypography>
-        Showing {beginDocNumber}-{endDocNumber} of {count} results
+        { count === 0 ? "No results" : 
+          count > 1 ? `Showing ${beginDocNumber}-${endDocNumber} of ${count} results` : "1 result"}      
       </StyledTypography>
+      </StyledResultsHeader>
       <StyledResults>{results}</StyledResults>
     </StyledContainer>
   );

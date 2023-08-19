@@ -78,7 +78,7 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
           filterOptions={(x) => x}
           options={suggestions}
           value={q}
-          noOptionsText="Enter a book title"
+          noOptionsText="What are you looking for?"
           //renderInput={(params) => <TextField {...params} label="Books" />}
           onChange={(e, value, reason) =>
             setQ(value?.label ||"")
@@ -117,8 +117,7 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
             <TextField
               {...params}
               variant="outlined"
-              label="Books"
-              placeholder="Enter a book"
+              label="What are you looking for?"
               onKeyDown={e => {
                 console.log(`onKeyDown ${e.code} ${JSON.stringify(e?.target?.value)}`)
                 if (e.code.toLowerCase() === 'enter' && e.target.value) {
