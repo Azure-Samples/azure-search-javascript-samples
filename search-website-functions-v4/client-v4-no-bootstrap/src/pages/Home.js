@@ -20,6 +20,7 @@ outline: 0px;
 
 const StyledImageContainer = styled(Container)`
 width: 500px;
+margin: auto;
 `;
 
 const StyledImage = styled.img`
