@@ -49,20 +49,18 @@ export default function Home() {
   return (
     <>
       <StyledHomeBox align="center">
-        <Stack spacing={2} direction="column">
-          <StyledImageContainer>
+        <Stack spacing={2} direction="column" align="center">
+          <StyledImageContainer align="center">
             <StyledImage
-              className="home-responsive-logo"
               src={logo}
               alt="Cognitive Search"
             />
           </StyledImageContainer>
-          <Typography className="home-typography">
+          <Typography >
             Powered by Azure Cognitive Search
           </Typography>
           <StyledHomeSearchBox>
             <SearchBar
-              className="home-search-bar"
               navigateToSearchPage={navigateToSearchPage}
             ></SearchBar>
           </StyledHomeSearchBox>
