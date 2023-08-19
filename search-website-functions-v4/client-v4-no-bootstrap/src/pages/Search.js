@@ -24,7 +24,7 @@ const StyledSearchBar = styled(SearchBar)({
 
 });
 const LeftColumn = styled(Stack)`
-width: 40%;
+width: 30%;
 border-right: 1px solid #f0f0f0;
 `;
 
