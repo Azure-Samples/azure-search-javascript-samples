@@ -34,6 +34,12 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
+      - name: Upload artiface
+        uses: actions/upload-artifact@v3
+        with:
+          name: repos.zip
+          path: search-website-functions-v4/client-v4-no-bootstrap/build
+
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
