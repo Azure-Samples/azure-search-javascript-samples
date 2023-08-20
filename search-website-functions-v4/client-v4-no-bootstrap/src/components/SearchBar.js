@@ -113,6 +113,14 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
               return q;
             }
           }}
+          // set key to force re-render when q changes
+          renderOption={(props, option) => {
+            return (
+              <li {...props} key={option.id}>
+                {option.name}
+              </li>
+            );
+          }}
           renderInput={params => (
             <TextField
               {...params}

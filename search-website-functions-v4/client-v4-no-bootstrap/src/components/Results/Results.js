@@ -4,9 +4,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 
-const StyledResultsHeader = styled.div`
-width: 100%;
-align-items: left;
+const StyledResultsHeader = styled(Container)`
+  width: 100%;
+  align-items: left;
 `;
 
 const StyledTypography = styled(Typography)`
@@ -42,10 +42,13 @@ export default function Results({ q, skip, top, count, documents }) {
   return (
     <StyledContainer>
       <StyledResultsHeader>
-      <StyledTypography>
-        { count === 0 ? "No results" : 
-          count > 1 ? `Showing ${beginDocNumber}-${endDocNumber} of ${count} results` : "1 result"}      
-      </StyledTypography>
+        <StyledTypography>
+          {count === 0
+            ? ("No results")
+            : count > 1
+            ? (`Showing ${beginDocNumber}-${endDocNumber} of ${count} results`)
+            : ("1 result")}
+        </StyledTypography>
       </StyledResultsHeader>
       <StyledResults>{results}</StyledResults>
     </StyledContainer>

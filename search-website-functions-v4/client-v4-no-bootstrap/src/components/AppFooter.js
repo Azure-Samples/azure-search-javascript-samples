@@ -8,7 +8,7 @@ const StyledBox = styled(Box)`
   margin-top: 1rem;
   padding: 1rem;
   color: #666;
-  text-align: center;
+  text-align: "center";
 `;
 
 const StyledDivider = styled(Divider)`
