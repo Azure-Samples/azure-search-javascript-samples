@@ -37,7 +37,7 @@ jobs:
       - name: Upload artiface
         uses: actions/upload-artifact@v3
         with:
-          name: client-v4-no-bootstrap.zip
+          name: client-v4-no-bootstrap-${{ github.run_id }}-${{ github.run_number }}.zip
           path: search-website-functions-v4/client-v4-no-bootstrap/build
 
 
