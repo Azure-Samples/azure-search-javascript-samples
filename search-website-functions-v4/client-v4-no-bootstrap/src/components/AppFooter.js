@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import Divider from '@mui/material/Divider';
 import styled from "@emotion/styled";
-import packageInfo from '../../package.json';
+
 const StyledBox = styled(Box)`
   margin-top: 1rem;
   padding: 1rem;
@@ -27,7 +27,6 @@ export default function AppFooter() {
     <StyledBox>
       <StyledDivider />
       <StyledTypography >&copy; {new Date().getFullYear()} Microsoft</StyledTypography>
-      <StyledTypography > {packageInfo.version} </StyledTypography>
     </StyledBox>
   );
 }
