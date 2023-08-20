@@ -35,6 +35,15 @@ width: 100%;
 margin: 10px auto;
 `;
 
+const StyledStack = styled(Stack)`
+`;
+
+const StyledTypography = styled(Typography)`
+`;
+
+const StyledSearchBar = styled(SearchBar)`
+`;
+
 export default function Home() {
   const navigate = useNavigate();
   const navigateToSearchPage = (q) => {
@@ -49,22 +58,22 @@ export default function Home() {
   return (
     <>
       <StyledHomeBox align="center">
-        <Stack spacing={2} direction="column" align="center">
+        <StyledStack spacing={2} direction="column" align="center">
           <StyledImageContainer align="center">
             <StyledImage
               src={logo}
               alt="Cognitive Search"
             />
           </StyledImageContainer>
-          <Typography >
+          <StyledTypography >
             Powered by Azure Cognitive Search
-          </Typography>
+          </StyledTypography>
           <StyledHomeSearchBox>
-            <SearchBar
+            <StyledSearchBar
               navigateToSearchPage={navigateToSearchPage}
-            ></SearchBar>
+            ></StyledSearchBar>
           </StyledHomeSearchBox>
-        </Stack>
+        </StyledStack>
       </StyledHomeBox>
     </>
   );
