@@ -97,14 +97,14 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
             }
           }}
           getOptionLabel={(option) => {
-            //console.log(`getOptionLabel 1 ${JSON.stringify(option)}`);
+            //console.log(`getOptionLabel ${JSON.stringify(option)}`);
             if (
               option !== undefined &&
               option !== null &&
               option.label !== undefined &&
               option.label !== null
             ) {
-               console.log(`getOptionLabel 2 ${JSON.stringify(option.label)}`);
+               //console.log(`getOptionLabel 2 ${JSON.stringify(option.label)}`);
               // item from list selected
               return option?.label;
             } else {
@@ -115,11 +115,29 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
           }}
           // set key to force re-render when q changes
           renderOption={(props, option) => {
-            return (
-              <li {...props} key={option.id}>
-                {option.name}
-              </li>
-            );
+            //console.log(`renderOption ${option.id}, ${JSON.stringify(option.label)}`);
+            if (
+              option !== undefined &&
+              option !== null &&
+              option.label !== undefined &&
+              option.label !== null
+            ) {
+               
+              // item from list selected
+              return (
+                <li {...props} key={option.id}>
+                  {option.label}
+                </li>
+              );
+            } else {
+            //   console.log(`getOptionLabel 3 ${JSON.stringify(option)}`);
+              // text entered
+              return (
+                <li {...props} key={q}>
+                  {q}
+                </li>
+              );
+            }
           }}
           renderInput={params => (
             <TextField
