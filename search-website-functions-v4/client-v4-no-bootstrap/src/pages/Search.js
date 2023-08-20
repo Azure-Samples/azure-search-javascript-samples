@@ -26,6 +26,7 @@ const StyledSearchBar = styled(SearchBar)({
 const LeftColumn = styled(Stack)`
   width: 30%;
   border-right: 1px solid #f0f0f0;
+  padding: 0 16px 0 16px;
 `;
 
 const RightColumn = styled(Container)``;

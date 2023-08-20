@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { List, Chip } from "@mui/material";
 import CheckboxFacet from "./CheckboxFacet";
-import styled from "styled-components";
+import styled from "@emotion/styled";
+
+const FacetList = styled(List)({
+  marginTop: "32px !important",
+});
 
 export default function Facets(props) {
   const [filters, setFilters] = useState([]);
@@ -44,13 +48,11 @@ export default function Facets(props) {
 
   const renderFilters = filters.map((filter, index) => {
     return (
-      <li key={index}>
-        <Chip
+        <Chip key={index}
           label={`${mapFacetName(filter.field)}: ${filter.value}`}
           onDelete={() => removeFilter(filter)}
           className="chip"
         />
-      </li>
     );
   });
 
@@ -68,19 +70,15 @@ export default function Facets(props) {
   }
 
   return (
-    <div sx={{height: "100%"}}>
-      <div sx={{borderRight: "1px solid #f0f0f0"}}>
+      <div sx={{borderRight: "1px solid #f0f0f0", height: "100%" }}>
         <div id="clearFilters">
-          <ul sx={{listStyle: "none"}} className="filterlist">{renderFilters}</ul>
+          <List className="filterlist" >{renderFilters}</List>
         </div>
         <FacetList sx={{margin: "0.25em", paddingLeft: "36px !important"}} component="nav" className="listitem">
           {renderFacets}
         </FacetList>
       </div>
-    </div>
   );
 }
 
-const FacetList = styled(List)({
-  marginTop: "32px !important",
-});
+

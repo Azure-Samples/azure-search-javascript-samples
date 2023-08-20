@@ -9,7 +9,6 @@ import styled from "@emotion/styled";
 import { useQuery } from "@tanstack/react-query";
 
 const StyledContainer = styled.div`
-padding: 0 16px 0 16px;
 display: flex;
 flex-flow: row wrap;
 justify-content: space-evenly;

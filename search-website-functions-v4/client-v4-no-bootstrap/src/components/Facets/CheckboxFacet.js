@@ -7,7 +7,21 @@ import {
   ListItemText,
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import styled from "styled-components";
+import styled from "@emotion/styled";
+
+const FacetListItem = styled(ListItem)({
+  paddingLeft: "36px !important",
+});
+
+const FacetValueListItem = styled(ListItem)({
+  paddingLeft: "46px !important",
+});
+
+const FacetValuesList = styled(List)({
+  maxHeight: 340,
+  overflowY: "auto !important",
+  marginRight: "18px !important",
+});
 
 export default function CheckboxFacet(props) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,8 +29,7 @@ export default function CheckboxFacet(props) {
   return (
     <>
       <FacetListItem
-        disableRipple={true}
-        button
+        disableripple="true"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <ListItemText primary={props.mapFacetName(props.name)} />
@@ -43,7 +56,7 @@ export default function CheckboxFacet(props) {
               >
                 <Checkbox
                   edge="start"
-                  disableRipple
+                  disableripple="true"
                   checked={isSelected}
                   onClick={
                     isSelected
@@ -70,16 +83,4 @@ export default function CheckboxFacet(props) {
   );
 }
 
-const FacetListItem = styled(ListItem)({
-  paddingLeft: "36px !important",
-});
 
-const FacetValueListItem = styled(ListItem)({
-  paddingLeft: "46px !important",
-});
-
-const FacetValuesList = styled(List)({
-  maxHeight: 340,
-  overflowY: "auto !important",
-  marginRight: "18px !important",
-});

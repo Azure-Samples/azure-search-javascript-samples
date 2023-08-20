@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Box } from "@mui/material";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 // Context for user authentication
 import { AuthContext } from "./contexts/AuthContext";
