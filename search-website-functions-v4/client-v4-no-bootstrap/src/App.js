@@ -18,9 +18,6 @@ import Details from "./pages/Details";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// Custom app styles
-import "./App.css";
-
 // Create a client
 const queryClient = new QueryClient();
 
@@ -69,8 +66,13 @@ export default function App() {
 }
 
 const AppStyledBox = styled(Box)({
-  margin: 0,
+  margin:0,
+  border:0,
+  padding:0,
+  fontFamily: "sans-serif",
   backgroundColor: "#fff",
-  padding: 0,
   minWidth: "375px",
+  fontSize: "1rem",
+  fontWeight: "400",
+  marginBottom: "5em"
 });
