@@ -11,11 +11,11 @@ import styled from "@emotion/styled";
 const StyledHomeBox = styled(Box)`
 margin: 5em auto;
 min-height: 30em;
-outline: 1px solid blue;
 padding-left: 0px;
 padding-right: 0px;
 max-width: 50%;
 outline: 0px;
+align-items: center;
 `;
 
 const StyledImageContainer = styled(Container)`
@@ -35,15 +35,6 @@ width: 100%;
 margin: 10px auto;
 `;
 
-const StyledStack = styled(Stack)`
-`;
-
-const StyledTypography = styled(Typography)`
-`;
-
-const StyledSearchBar = styled(SearchBar)`
-`;
-
 export default function Home() {
   const navigate = useNavigate();
   const navigateToSearchPage = (q) => {
@@ -57,23 +48,23 @@ export default function Home() {
 
   return (
     <>
-      <StyledHomeBox align="center">
-        <StyledStack spacing={2} direction="column" align="center">
-          <StyledImageContainer align="center">
+      <StyledHomeBox className="Home">
+        <Stack spacing={2} direction="column" >
+          <StyledImageContainer >
             <StyledImage
               src={logo}
               alt="Cognitive Search"
             />
           </StyledImageContainer>
-          <StyledTypography >
+          <Typography >
             Powered by Azure Cognitive Search
-          </StyledTypography>
+          </Typography>
           <StyledHomeSearchBox>
-            <StyledSearchBar
+            <SearchBar
               navigateToSearchPage={navigateToSearchPage}
-            ></StyledSearchBar>
+            ></SearchBar>
           </StyledHomeSearchBox>
-        </StyledStack>
+        </Stack>
       </StyledHomeBox>
     </>
   );
