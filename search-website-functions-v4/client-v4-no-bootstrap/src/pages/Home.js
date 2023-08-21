@@ -15,27 +15,27 @@ const StyledHomeBox = styled(Box)`
   padding-right: 0px;
   max-width: 50%;
   outline: 0px;
-  align-items: center;
 `;
-
+const StyledStack = styled(Stack)`
+  * {
+    outline: 1px solid red;
+  }
+`;
 const StyledImageContainer = styled(Container)`
   width: 500px;
   margin: auto;
-`;
-
-const StyledImage = styled.img`
-  height: auto;
-  width: 100%;
 `;
 
 const StyledTypographyContainer = styled(Container)`
   display: flex;
   justify-content: center;
 `;
-const StyledTypography = styled(Typography)`
-  width: 275px;
+const StyledImage = styled.img`
+  height: auto;
+  width: 100%;
 `;
 
+const StyledTypography = styled(Typography)``;
 
 /* * { outline: 1px solid red; } */
 
@@ -43,7 +43,6 @@ const StyledHomeSearchBox = styled(Box)`
   width: 100%;
   margin: 10px auto;
 `;
-
 
 export default function Home() {
   const navigate = useNavigate();
@@ -59,17 +58,26 @@ export default function Home() {
   return (
     <>
       <StyledHomeBox className="Home">
-        <Stack spacing={2} direction="column">
-          <StyledImageContainer>
-            <StyledImage src={logo} alt="Cognitive Search" />
+        <StyledStack
+          className="HomeContainerStack"
+          spacing={2}
+          direction="column"
+        >
+          <StyledImageContainer className="ImageContainer">
+            <StyledImage className="Image" src={logo} alt="Cognitive Search" />
           </StyledImageContainer>
-          <StyledTypographyContainer>
-            <StyledTypography>Powered by Azure Cognitive Search</StyledTypography>
+          <StyledTypographyContainer className="TypographyTextContainer">
+            <StyledTypography className="Typography">
+              Powered by Azure Cognitive Search
+            </StyledTypography>
           </StyledTypographyContainer>
-          <StyledHomeSearchBox>
-            <SearchBar navigateToSearchPage={navigateToSearchPage}></SearchBar>
+          <StyledHomeSearchBox className="StyledHomeSearchBox">
+            <SearchBar
+              className="HomeSearchBar"
+              navigateToSearchPage={navigateToSearchPage}
+            ></SearchBar>
           </StyledHomeSearchBox>
-        </Stack>
+        </StyledStack>
       </StyledHomeBox>
     </>
   );
