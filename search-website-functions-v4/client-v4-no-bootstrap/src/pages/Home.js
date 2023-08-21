@@ -9,31 +9,41 @@ import Stack from "@mui/system/Stack";
 import styled from "@emotion/styled";
 
 const StyledHomeBox = styled(Box)`
-margin: 5em auto;
-min-height: 30em;
-padding-left: 0px;
-padding-right: 0px;
-max-width: 50%;
-outline: 0px;
-align-items: center;
+  margin: 5em auto;
+  min-height: 30em;
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 50%;
+  outline: 0px;
+  align-items: center;
 `;
 
 const StyledImageContainer = styled(Container)`
-width: 500px;
-margin: auto;
+  width: 500px;
+  margin: auto;
 `;
 
 const StyledImage = styled.img`
-height: auto;
-width: 100%;
+  height: auto;
+  width: 100%;
 `;
+
+const StyledTypographyContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+`;
+const StyledTypography = styled(Typography)`
+  width: 275px;
+`;
+
 
 /* * { outline: 1px solid red; } */
 
 const StyledHomeSearchBox = styled(Box)`
-width: 100%;
-margin: 10px auto;
+  width: 100%;
+  margin: 10px auto;
 `;
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -49,20 +59,15 @@ export default function Home() {
   return (
     <>
       <StyledHomeBox className="Home">
-        <Stack spacing={2} direction="column" >
-          <StyledImageContainer >
-            <StyledImage
-              src={logo}
-              alt="Cognitive Search"
-            />
+        <Stack spacing={2} direction="column">
+          <StyledImageContainer>
+            <StyledImage src={logo} alt="Cognitive Search" />
           </StyledImageContainer>
-          <Typography >
-            Powered by Azure Cognitive Search
-          </Typography>
+          <StyledTypographyContainer>
+            <StyledTypography>Powered by Azure Cognitive Search</StyledTypography>
+          </StyledTypographyContainer>
           <StyledHomeSearchBox>
-            <SearchBar
-              navigateToSearchPage={navigateToSearchPage}
-            ></SearchBar>
+            <SearchBar navigateToSearchPage={navigateToSearchPage}></SearchBar>
           </StyledHomeSearchBox>
         </Stack>
       </StyledHomeBox>

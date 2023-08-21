@@ -1,32 +1,30 @@
-import React from 'react';
+import React from "react";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import Divider from '@mui/material/Divider';
 import styled from "@emotion/styled";
 
 const StyledBox = styled(Box)`
-  margin-top: 1rem;
+  margin: auto;
   padding: 1rem;
   color: #666;
-  text-align: "center";
-`;
-
-const StyledDivider = styled(Divider)`
-color: #666;
-margin: 1rem 0;
-border-top: 1px solid #666;
-opacity: 0.25;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #666;
+  opacity: 0.25;
 `;
 
 const StyledTypography = styled(Typography)`
-font-size: 0.85em;
+  margin-left: "auto";
+  margin-right: "auto";
+  color: #000000;
 `;
 
 export default function AppFooter() {
   return (
     <StyledBox>
-      <StyledDivider />
-      <StyledTypography >&copy; {new Date().getFullYear()} Microsoft</StyledTypography>
+      <StyledTypography>
+        &copy; {new Date().getFullYear()} Microsoft
+      </StyledTypography>
     </StyledBox>
   );
 }
