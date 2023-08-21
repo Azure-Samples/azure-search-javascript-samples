@@ -19,7 +19,9 @@ const StyledHomeBox = styled(Box)`
 const StyledStack = styled(Stack)`
   * {
     outline: 1px solid red;
-  }
+  };
+  display: flex;
+  justify-content: center;
 `;
 const StyledImageContainer = styled(Container)`
   width: 500px;
