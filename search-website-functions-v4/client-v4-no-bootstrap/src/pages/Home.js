@@ -1,16 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import Box from "@mui/material/Box";
+//import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import logo from "../images/cognitive_search.jpg";
 import Stack from "@mui/system/Stack";
 import styled from "@emotion/styled";
 
-const StyledHomeBox = styled(Box)`
+/* const StyledHomeBox = styled(Box)`
 
-`;
+`; */
 const StyledStack = styled(Stack)`
 margin: 5em auto;
 min-height: 30em;
@@ -38,7 +38,7 @@ const StyledTypography = styled(Typography)``;
 
 /* * { outline: 1px solid red; } */
 
-const StyledHomeSearchBox = styled(Box)`
+const StyledHomeSearchBox = styled(Container)`
   width: 100%;
   margin: 10px auto;
 `;
