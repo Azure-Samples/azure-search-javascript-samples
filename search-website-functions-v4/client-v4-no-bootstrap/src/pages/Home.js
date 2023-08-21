@@ -9,19 +9,16 @@ import Stack from "@mui/system/Stack";
 import styled from "@emotion/styled";
 
 const StyledHomeBox = styled(Box)`
-  margin: 5em auto;
-  min-height: 30em;
-  padding-left: 0px;
-  padding-right: 0px;
-  max-width: 50%;
-  outline: 0px;
+
 `;
 const StyledStack = styled(Stack)`
-  * {
-    outline: 1px solid red;
-  };
-  display: flex;
-  justify-content: center;
+margin: 5em auto;
+min-height: 30em;
+padding-left: 0px;
+padding-right: 0px;
+max-width: 75%;
+outline: 0px;
+  * { outline: 1px solid red;};
 `;
 const StyledImageContainer = styled(Container)`
   width: 500px;
@@ -59,7 +56,7 @@ export default function Home() {
 
   return (
     <>
-      <StyledHomeBox className="Home">
+
         <StyledStack
           className="HomeContainerStack"
           spacing={2}
@@ -80,7 +77,7 @@ export default function Home() {
             ></SearchBar>
           </StyledHomeSearchBox>
         </StyledStack>
-      </StyledHomeBox>
+
     </>
   );
 }
