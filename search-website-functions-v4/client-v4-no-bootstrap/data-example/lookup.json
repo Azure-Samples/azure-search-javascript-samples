@@ -1,0 +1,27 @@
+{
+  "document": {
+    "id": "85",
+    "goodreads_book_id": 370493,
+    "best_book_id": 370493,
+    "work_id": 30530,
+    "books_count": 81,
+    "isbn": "60256656",
+    "isbn13": "9.78E+12",
+    "authors": ["Shel Silverstein"],
+    "original_publication_year": 1964,
+    "original_title": "The Giving Tree",
+    "title": "The Giving Tree",
+    "language_code": "eng",
+    "average_rating": 4.38,
+    "ratings_count": 702332,
+    "work_ratings_count": 708287,
+    "work_text_reviews_count": 14368,
+    "ratings_1": 15345,
+    "ratings_2": 20408,
+    "ratings_3": 76071,
+    "ratings_4": 167542,
+    "ratings_5": 428921,
+    "image_url": "https://images.gr-assets.com/books/1174210942m/370493.jpg",
+    "small_image_url": "https://images.gr-assets.com/books/1174210942s/370493.jpg"
+  }
+}
