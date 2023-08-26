@@ -1,5 +1,5 @@
 import React from "react";
-import Result from "./Result";
+import SimpleBook from "./BookDetail/SearchPage/simple";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
@@ -33,7 +33,7 @@ const StyledResults = styled.div`
 
 export default function Results({ q, skip, top, count, documents }) {
   let results = documents.map((result, index) => {
-    return <Result key={index} document={result.document} />;
+    return <SimpleBook key={index} document={result.document} />;
   });
 
   let beginDocNumber = Math.min(skip + 1, count);

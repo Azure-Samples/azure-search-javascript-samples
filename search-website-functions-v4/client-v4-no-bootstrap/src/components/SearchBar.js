@@ -5,28 +5,26 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import styled from "@emotion/styled";
 
-
 import { useQuery } from "@tanstack/react-query";
 
 const StyledContainer = styled.div`
-display: flex;
-flex-flow: row wrap;
-justify-content: space-evenly;
-align-items: center;
-gap: 1em;
-margin-top: 1em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
 `;
 
 const StyledAutoComplete = styled(Autocomplete)`
-width: 80%;
+  width: 80%;
 `;
 
 const StyledButton = styled(Button)`
-max-height: 40px;
+  max-height: 40px;
 `;
 
-export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
-  //console.log(`SearchBar2 called with defaultTerm=${defaultTerm}`);
+export default function SearchBar({ navigateToSearchPage, defaultTerm = "" }) {
 
   const [q, setQ] = useState(defaultTerm);
   const [suggestions, setSuggestions] = useState([]);
@@ -58,104 +56,72 @@ export default function SearchBar2({ navigateToSearchPage, defaultTerm = "" }) {
   });
 
   const onFormSubmit = () => {
-    console.log(`onFormSubmit called with '${q}'`);
     if (navigateToSearchPage) {
       navigateToSearchPage(q);
     }
   };
 
-
+  function hasLabelValue (option){
+    return (
+      option !== undefined &&
+      option !== null &&
+      option.label !== undefined &&
+      option.label !== null
+    );
+  }
 
   return (
     <StyledContainer onSubmit={onFormSubmit}>
-        <StyledAutoComplete
-          key='autocomplete'
-          freeSolo // accepts both entered text or selected suggestion
-          //disableClearable // no x button
-          autoSelect // text in box selected
-          autoFocus="autoFocus"
-          filterOptions={(x) => x}
-          options={suggestions}
-          value={q}
-          noOptionsText="What are you looking for?"
-          //renderInput={(params) => <TextField {...params} label="Books" />}
-          onChange={(e, value, reason) =>
-            setQ(value?.label ||"")
-            // console.log(
-            //   `onChange ${JSON.stringify(value)} with ${JSON.stringify(reason)} - q=${q}`
-            // )
+      <StyledAutoComplete
+        key="autocomplete"
+        freeSolo // accepts both entered text or selected suggestion
+        autoSelect // text in box selected
+        autoFocus="autoFocus"
+        filterOptions={(x) => x}
+        options={suggestions}
+        value={q}
+        noOptionsText="What are you looking for?"
+        onChange={
+          (e, value, reason) => setQ(value?.label || "")
+        }
+        onInputChange={(e, newValue, reason) => {
+          if (newValue) {
+            setQ(newValue);
           }
-          onInputChange={(e, newValue, reason) => {
-            // console.log(
-            //   `onInputChange ${JSON.stringify(newValue)} with ${JSON.stringify(
-            //     reason
-            //   )}`
-            // );
-            if (newValue) {
-              setQ(newValue);
-            }
-          }}
-          getOptionLabel={(option) => {
-            //console.log(`getOptionLabel ${JSON.stringify(option)}`);
-            if (
-              option !== undefined &&
-              option !== null &&
-              option.label !== undefined &&
-              option.label !== null
-            ) {
-               //console.log(`getOptionLabel 2 ${JSON.stringify(option.label)}`);
-              // item from list selected
-              return option?.label;
-            } else {
-            //   console.log(`getOptionLabel 3 ${JSON.stringify(option)}`);
-              // text entered
-              return q;
-            }
-          }}
-          // set key to force re-render when q changes
-          renderOption={(props, option) => {
-            //console.log(`renderOption ${option.id}, ${JSON.stringify(option.label)}`);
-            if (
-              option !== undefined &&
-              option !== null &&
-              option.label !== undefined &&
-              option.label !== null
-            ) {
-               
-              // item from list selected
-              return (
-                <li {...props} key={option.id}>
-                  {option.label}
-                </li>
-              );
-            } else {
-            //   console.log(`getOptionLabel 3 ${JSON.stringify(option)}`);
-              // text entered
-              return (
-                <li {...props} key={q}>
-                  {q}
-                </li>
-              );
-            }
-          }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              variant="outlined"
-              label="What are you looking for?"
-              onKeyDown={e => {
-                console.log(`onKeyDown ${e.code} ${JSON.stringify(e?.target?.value)}`)
-                if (e.code.toLowerCase() === 'enter' && e.target.value) {
-                    onFormSubmit((e.target.value));
-                }
-              }}
-            />
-          )}
-        />
-        <StyledButton key='styledbutton' variant="contained" onClick={onFormSubmit}>
-          Search
-        </StyledButton>
-      </StyledContainer>
-
+        }}
+        getOptionLabel={(option) => hasLabelValue(option) ? option.label : q}
+        // set key to force re-render when q changes
+        renderOption={(props, option) => {
+          return hasLabelValue(option) ? (
+            <li {...props} key={option.id}>
+              {option.label}
+            </li>
+          ) :  (
+            <li {...props} key={q}>
+              {q}
+            </li>
+          )
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            label="What are you looking for?"
+            onKeyDown={(e) => {
+              if (e.code.toLowerCase() === "enter" && e.target.value) {
+                onFormSubmit(e.target.value);
+              }
+            }}
+          />
+        )}
+      />
+      <StyledButton
+        key="styledbutton"
+        variant="contained"
+        onClick={onFormSubmit}
+      >
+        Search
+      </StyledButton>
+    </StyledContainer>
   );
 }

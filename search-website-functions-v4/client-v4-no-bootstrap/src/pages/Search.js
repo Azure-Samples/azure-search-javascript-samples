@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 
-import Results from "../components/Results/Results";
+import Results from "../components/Results";
 import Pager from "../components/Pager";
 import Facets from "../components/Facets/Facets";
 import SearchBar from "../components/SearchBar";
@@ -19,10 +19,23 @@ const StyledPager = styled(Pager)({
   marginRight: "auto",
   maxWidth: "fit-content",
 });
+const StyledContainer = styled.div`
+  // Uncomment to debug
+  // border: 1px solid red;
 
-const StyledSearchBar = styled(SearchBar)({
+  // Center body with space around
+  margin: 1rem auto;
+  margin-top: 5rem;
 
-});
+  min-height: 30em;
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 98%;
+  outline: 0px;
+
+  display: flex;
+`;
+const StyledSearchBar = styled(SearchBar)({});
 const LeftColumn = styled(Stack)`
   width: 30%;
   border-right: 1px solid #f0f0f0;
@@ -51,16 +64,10 @@ export default function Search() {
   let resultsPerPage = top;
 
   function setNavigation(q, p) {
-
-    console.log(`setNavigation: ${q}, ${p}`);
-
     navigate(`/search?q=${q}&p=${p}`);
   }
 
   function changeCurrentPage(newPage) {
-
-    console.log(`changeCurrentPage: ${newPage}`);
-
     const newSkip = (newPage - 1) * top;
     setNavigation(searchTerm, newPage);
     setCurrentPage(newPage);
@@ -69,7 +76,7 @@ export default function Search() {
 
   const fiveMinutes = 1000 * 60 * 5;
 
-    /* eslint-disable no-unused-vars */
+  /* eslint-disable no-unused-vars */
   const { data, isLoading, dataUpdatedAt, error } = useQuery({
     queryKey: ["search", searchTerm, top, skip, currentPage, filters, facets],
     //refetchOnMount: false,
@@ -94,9 +101,6 @@ export default function Search() {
   });
 
   const postSearchHandler = (searchTerm) => {
-
-    console.log(`postSearchHandler: ${searchTerm}`);
-
     setNavigation(searchTerm, 1);
     setSearchTerm(searchTerm);
     setCurrentPage(1);
@@ -108,7 +112,7 @@ export default function Search() {
   };
   return (
     <>
-      <Stack direction="row">
+      <StyledContainer>
         <LeftColumn>
           <StyledSearchBar
             navigateToSearchPage={postSearchHandler}
@@ -122,9 +126,7 @@ export default function Search() {
         </LeftColumn>
         <RightColumn>
           {isLoading ? (
-            <div className="col-md-9">
-              <CircularProgress />
-            </div>
+            <CircularProgress />
           ) : (
             <Grid container>
               <Results
@@ -144,7 +146,7 @@ export default function Search() {
             </Grid>
           )}
         </RightColumn>
-      </Stack>
+      </StyledContainer>
     </>
   );
 }

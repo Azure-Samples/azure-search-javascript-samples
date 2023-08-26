@@ -3,10 +3,16 @@ import { List, Chip } from "@mui/material";
 import CheckboxFacet from "./CheckboxFacet";
 import styled from "@emotion/styled";
 
-const FacetList = styled(List)({
-  marginTop: "32px !important",
-});
-
+const StyledFacetComponent = styled.div`
+  border-right: "1px solid #f0f0f0";
+  height: "100%";
+`;
+const StyledSelectedFacets = styled.div``;
+const StyledFacetList = styled(List)`
+  margin: "0.25em";
+  margin-top: "32px !important";
+  padding-left: "36px !important";
+`;
 export default function Facets(props) {
   const [filters, setFilters] = useState([]);
   const [facets, setFacets] = useState({});
@@ -16,69 +22,58 @@ export default function Facets(props) {
     setFacets(props.facets);
   }, [props.filters, props.facets]);
 
+  // Change facet name to be more readable
+  // e.g. "author" -> "Author"
+  // e.g. "publication_year" -> "Publication Year"
   function mapFacetName(facetName) {
-    const capitalizeFirstLetter = (string) =>
-      string[0] ? `${string[0].toUpperCase()}${string.substring(1)}` : "";
-    facetName = facetName.trim();
-    facetName = capitalizeFirstLetter(facetName);
-
-    facetName = facetName.replace("_", " ");
-
+    facetName =
+      `${facetName[0].toUpperCase()}${facetName.substring(1)}`.replace(
+        "_",
+        " "
+      ) || ``;
     return facetName;
   }
 
-  var renderFacets;
-  try {
-    renderFacets = Object.keys(facets).map((key) => {
-      return (
-        <CheckboxFacet
-          key={key}
-          name={key}
-          values={facets[key]}
-          addFilter={addFilter}
-          removeFilter={removeFilter}
-          mapFacetName={mapFacetName}
-          selectedFacets={filters.filter((f) => f.field === key)}
-        />
-      );
-    });
-  } catch (error) {
-    console.log(error);
-  }
-
-  const renderFilters = filters.map((filter, index) => {
-    return (
-        <Chip key={index}
-          label={`${mapFacetName(filter.field)}: ${filter.value}`}
-          onDelete={() => removeFilter(filter)}
-          className="chip"
-        />
-    );
-  });
-
-  // events
   function addFilter(name, value) {
     const newFilters = filters.concat({ field: name, value: value });
     props.setFilters(newFilters);
   }
 
   function removeFilter(filter) {
-    const newFilters = filters.filter(
-      (item) => item.value !== filter.value
-    );
+    const newFilters = filters.filter((item) => item.value !== filter.value);
     props.setFilters(newFilters);
   }
 
   return (
-      <div sx={{borderRight: "1px solid #f0f0f0", height: "100%" }}>
-        <div id="clearFilters">
-          <List className="filterlist" >{renderFilters}</List>
-        </div>
-        <FacetList sx={{margin: "0.25em", paddingLeft: "36px !important"}} component="nav" className="listitem">
-          {renderFacets}
-        </FacetList>
-      </div>
+    <StyledFacetComponent>
+      <StyledSelectedFacets>
+        <List>
+          {filters.map((filter, index) => {
+            return (
+              <Chip
+                key={index}
+                label={`${mapFacetName(filter.field)}: ${filter.value}`}
+                onDelete={() => removeFilter(filter)}
+              />
+            );
+          })}
+        </List>
+      </StyledSelectedFacets>
+      <StyledFacetList>
+        {Object.keys(facets).map((key) => {
+          return (
+            <CheckboxFacet
+              key={key}
+              name={key}
+              values={facets[key]}
+              addFilter={addFilter}
+              removeFilter={removeFilter}
+              mapFacetName={mapFacetName}
+              selectedFacets={filters.filter((f) => f.field === key)}
+            />
+          );
+        })}
+      </StyledFacetList>
+    </StyledFacetComponent>
   );
 }
-
-

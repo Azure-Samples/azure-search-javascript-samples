@@ -9,21 +9,28 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import styled from "@emotion/styled";
 
-const FacetListItem = styled(ListItem)({
-  paddingLeft: "36px !important",
-});
+const FacetListItem = styled(ListItem)`
+  padding-left: "36px !important";
+`;
 
-const FacetValueListItem = styled(ListItem)({
-  paddingLeft: "46px !important",
-});
+const FacetValueListItem = styled(ListItem)`
+  padding-left: "46px !important";
+`;
 
-const FacetValuesList = styled(List)({
-  maxHeight: 340,
-  overflowY: "auto !important",
-  marginRight: "18px !important",
-});
+const FacetValuesList = styled(List)`
+  max-height: 340;
+  overflow-y: "auto !important";
+  margin-right: "18px !important";
+`;
 
-export default function CheckboxFacet(props) {
+export default function CheckboxFacet({
+  name,
+  values,
+  mapFacetName,
+  selectedFacets,
+  removeFilter,
+  addFilter,
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -32,18 +39,18 @@ export default function CheckboxFacet(props) {
         disableripple="true"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <ListItemText primary={props.mapFacetName(props.name)} />
+        <ListItemText primary={mapFacetName(name)} />
         {isExpanded ? <ExpandLess /> : <ExpandMore />}
       </FacetListItem>
       <Collapse in={isExpanded} component="div">
         <FacetValuesList>
-          {props.values.map((facetValue) => {
+          {values.map((facetValue) => {
             // why are there empty facet values?
             if (facetValue.value.length === 0) {
               facetValue.value = `no value set`;
             }
 
-            const isSelected = props.selectedFacets.some(
+            const isSelected = selectedFacets.some(
               (facet) => facet.value === facetValue.value
             );
 
@@ -61,13 +68,13 @@ export default function CheckboxFacet(props) {
                   onClick={
                     isSelected
                       ? () => {
-                          props.removeFilter({
-                            field: props.name,
+                          removeFilter({
+                            field: name,
                             value: facetValue.value,
                           });
                         }
                       : () => {
-                          props.addFilter(props.name, facetValue.value);
+                          addFilter(name, facetValue.value);
                         }
                   }
                 />
@@ -82,5 +89,3 @@ export default function CheckboxFacet(props) {
     </>
   );
 }
-
-
