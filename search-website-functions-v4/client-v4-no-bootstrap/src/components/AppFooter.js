@@ -4,19 +4,28 @@ import { Typography } from "@mui/material";
 import styled from "@emotion/styled";
 
 const StyledBox = styled(Box)`
-  margin: auto;
-  padding: 1rem;
-  color: #666;
-  display: flex;
+
+  // Uncomment to debug
+  //border: 1px solid red;
+
+  // <HR> equivalent
+  border-top: 1px solid #666; 
+  opacity: 0.25; 
+
+  // Space between HR and text
+  padding-top: 1rem;
+
+  // center the text
+  display: flex; 
   justify-content: center;
-  border-top: 1px solid #666;
-  opacity: 0.25;
-`;
+
+  `;
 
 const StyledTypography = styled(Typography)`
-  margin-left: "auto";
-  margin-right: "auto";
+
+  // Font color
   color: #000000;
+  
 `;
 
 export default function AppFooter() {

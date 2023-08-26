@@ -1,10 +1,16 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
 
 // React Context for Auth
 import { useAuth } from "../contexts/AuthContext";
 
-export default function AppHeaderAuth() {
+const StyledAuthenticationButton = styled(Button)`
+  // Font color
+  color: white;
+`;
+
+export default function AuthenticationButton() {
   // React Context: User Authentication
   const user = useAuth();
 
@@ -16,14 +22,13 @@ export default function AppHeaderAuth() {
   const text = userDetails ? `Sign Out` : `Sign In`;
 
   return (
-    <Button
+    <StyledAuthenticationButton
       key="auth"
-      sx={{ my: 2, color: "white", display: "block" }}
       onClick={() => {
         window.location.href = route;
       }}
     >
       {text}
-    </Button>
+    </StyledAuthenticationButton>
   );
 }
