@@ -11,7 +11,13 @@ import styled from "@emotion/styled";
 
 `; */
 const StyledContainer = styled.div`
-  margin: 5em auto;
+
+  // Uncomment to debug
+  // border: 1px solid red;
+
+  // Center body with space around
+  margin: 10rem auto;
+  
   min-height: 30em;
   padding-left: 0px;
   padding-right: 0px;
@@ -44,7 +50,6 @@ const StyledHomeSearchBox = styled(Container)`
 export default function Home() {
   const navigate = useNavigate();
   const navigateToSearchPage = (q) => {
-    console.log(`q: ${q}`);
 
     if (!q || q === "") {
       q = "*";
