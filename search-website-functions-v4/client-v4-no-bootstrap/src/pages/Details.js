@@ -3,13 +3,7 @@ import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import request from '../api';
-import BookDetailsTab from "../components/BookDetail/booktab";
-
-/*
-.main--details {
-    min-height: 40em;
-}
-*/
+import BookDetailsTab from "../components/BookDetail/DetailPage/booktab";
 
 import {
   useQuery,
