@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: client-v4-no-bootstrap-${{ github.run_id }}-${{ github.run_number }}.zip
-          path: search-website-functions-v4/client-v4-no-bootstrap/build
+          path: search-website-functions-v4/client-v4-material-ui/build
 
 
   close_pull_request_job:
