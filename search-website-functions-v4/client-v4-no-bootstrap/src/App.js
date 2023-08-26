@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// Material UI design system
 import { Box } from "@mui/material";
 import styled from "@emotion/styled";
 
 // Context for user authentication
 import { AuthContext } from "./contexts/AuthContext";
 
-// App shell components
+// App Layout components
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
 
@@ -16,10 +18,20 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 // Create a client
 const queryClient = new QueryClient();
+
+const AppStyledBox = styled(Box)({
+  margin:0,
+  border:0,
+  padding:0,
+  fontFamily: "sans-serif",
+  backgroundColor: "#fff",
+  minWidth: "375px",
+  fontSize: "1rem",
+  fontWeight: "400",
+  marginBottom: "5em"
+});
 
 export default function App() {
   // React Hook: useState with a var name, set function, & default value
@@ -64,15 +76,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
-const AppStyledBox = styled(Box)({
-  margin:0,
-  border:0,
-  padding:0,
-  fontFamily: "sans-serif",
-  backgroundColor: "#fff",
-  minWidth: "375px",
-  fontSize: "1rem",
-  fontWeight: "400",
-  marginBottom: "5em"
-});
