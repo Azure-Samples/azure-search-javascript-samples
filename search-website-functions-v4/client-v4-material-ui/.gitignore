@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 package-lock.json
+/test-results/
+/playwright-report/
+/playwright/.cache/

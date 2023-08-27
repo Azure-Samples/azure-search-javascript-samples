@@ -24,7 +24,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:run": "npx playwright test",
+    "test:report": "npx playwright show-report",
+    "test:record": "npx playwright codegen http://localhost:3000",
+    "test:record:live": "npx playwright codegen https://gray-desert-0ffa49b0f.3.azurestaticapps.net/"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@playwright/test": "^1.37.1"
   }
 }
