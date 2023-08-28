@@ -1,10 +1,14 @@
-# Azure Search - books
+# Client readme for running GitHub actions
 
-This example front-end app is part of the []().
+This example front-end app is part of the [Add search to static web apps](https://learn.microsoft.com/azure/search/tutorial-javascript-overview) tutorial. This readme describes the YML files that run as GitHub actions when you deploy the client to Azure Static Web Apps.
 
-## Azure Static Web apps
+## Azure Static Web Apps
 
-Deploy this Static web app to Azure with a managed Azure Functions API, deployed from a GitHub action similar to the following:
+When you create your static web app, it is deployed from _your fork_ of the GitHub repository. To deploy app app, the GitHub workflow file is created for your when you create your Azure Static Web App resource. Because the code is part of a repo with other apps, you need to configure the workflow file to understand where _just_ the front-end and back-end source code is within this repository. To help with that configuration, the following example GitHub action workflow file is provided. The properties related to the static web app deployment include:
+
+* `app_location`: the location from the root of the repository to your front-end application code.
+* `api_location`: the location from the root of the repository to your back-end application code.
+* `build`: the location from the `app_location` to your generated front-end code.
 
 ```yaml
 name: v4-swa-api-material-ui
@@ -65,7 +69,7 @@ jobs:
 
 ## Front-end tests with Playwright
 
-Use this GitHub action to test your front-end application with Playwright. 
+A few Playwright tests are provided with the front-end React application. You can run these manually with the scripts provided in the **package.json** file. When you want to include pipeline testing of the front-end application, the following sample GitHub workflow file is provided for you. 
 
 ```yaml
 name: Playwright Tests
