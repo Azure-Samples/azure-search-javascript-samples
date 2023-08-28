@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { getTestTimeStamp } from "./setup";
 
 test("full search with paging", async ({ page }) => {
-  await page.goto("https://gray-desert-0ffa49b0f.3.azurestaticapps.net/");
+  await page.goto("https://http://localhost:3000/");
 
   await page.getByLabel("What are you looking for?").click();
   await page.getByLabel("What are you looking for?").fill("boy");
