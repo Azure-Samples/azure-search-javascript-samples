@@ -1,0 +1,37 @@
+{
+    "suggestions": [
+        {
+            "text": "The Faraway Tree Stories (The Enchanted Wood, The Faraway Tree, The Folk of the Faraway Tree)",
+            "document": {
+                "id": "7767"
+            }
+        },
+        {
+            "text": "The Giving Tree",
+            "document": {
+                "id": "85"
+            }
+        },
+        {
+            "text": "Cold Sassy Tree",
+            "document": {
+                "id": "1185"
+            }
+        },
+        {
+            "text": "The Magic Faraway Tree",
+            "document": {
+                "id": "3836"
+            }
+        },
+        {
+            "text": "Silver on the Tree",
+            "document": {
+                "id": "4534"
+            }
+        }
+    ],
+    "q": "tree",
+    "top": 5,
+    "suggester": "sg"
+}

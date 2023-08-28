@@ -15,7 +15,11 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"ms-azuretools.vscode-azureresourcegroups",
+		"ms-azuretools.vscode-azurestaticwebapps",
+		"ms-azuretools.vscode-azurefunctions"
+
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

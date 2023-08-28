@@ -1,0 +1,55 @@
+{
+  "name": "my-reacte-app",
+  "version": "0.1.1",
+  "private": true,
+  "proxy": "http://127.0.0.1:7071",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "11.10.6",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.125",
+    "@mui/material": "^5.11.16",
+    "@tanstack/react-query": "^4.29.19",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
+    "react-script": "^2.0.5",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^3.3.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:run": "npx playwright test",
+    "test:report": "npx playwright show-report",
+    "test:record": "npx playwright codegen http://localhost:3000",
+    "test:record:live": "npx playwright codegen https://gray-desert-0ffa49b0f.3.azurestaticapps.net/"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@playwright/test": "^1.37.1"
+  }
+}
