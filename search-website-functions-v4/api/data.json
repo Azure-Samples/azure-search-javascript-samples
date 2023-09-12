@@ -1,0 +1,245 @@
+{
+    "count": 10000,
+    "results": [
+        {
+            "score": 1,
+            "document": {
+                "id": "4001",
+                "goodreads_book_id": 25816688,
+                "best_book_id": 29875363,
+                "work_id": 40296144,
+                "books_count": 42,
+                "isbn": "62200631",
+                "isbn13": "9.78E+12",
+                "authors": [
+                    "Joe Hill"
+                ],
+                "original_publication_year": 2016,
+                "original_title": "The Fireman",
+                "title": "The Fireman",
+                "language_code": "eng",
+                "average_rating": 3.92,
+                "ratings_count": 17052,
+                "work_ratings_count": 27936,
+                "work_text_reviews_count": 4707,
+                "ratings_1": 608,
+                "ratings_2": 1756,
+                "ratings_3": 5728,
+                "ratings_4": 11042,
+                "ratings_5": 8802,
+                "image_url": "https://images.gr-assets.com/books/1469316385m/25816688.jpg",
+                "small_image_url": "https://images.gr-assets.com/books/1469316385s/25816688.jpg"
+            }
+        },
+        {
+            "score": 1,
+            "document": {
+                "id": "4002",
+                "goodreads_book_id": 19346451,
+                "best_book_id": 19346451,
+                "work_id": 26378005,
+                "books_count": 43,
+                "isbn": "62194720",
+                "isbn13": "9.78E+12",
+                "authors": [
+                    "Pittacus Lore"
+                ],
+                "original_publication_year": 2014,
+                "original_title": "The Revenge of Seven",
+                "title": "The Revenge of Seven (Lorien Legacies, #5)",
+                "language_code": "eng",
+                "average_rating": 4.28,
+                "ratings_count": 26075,
+                "work_ratings_count": 29754,
+                "work_text_reviews_count": 2460,
+                "ratings_1": 158,
+                "ratings_2": 581,
+                "ratings_3": 4234,
+                "ratings_4": 10602,
+                "ratings_5": 14179,
+                "image_url": "https://images.gr-assets.com/books/1398024854m/19346451.jpg",
+                "small_image_url": "https://images.gr-assets.com/books/1398024854s/19346451.jpg"
+            }
+        },
+        {
+            "score": 1,
+            "document": {
+                "id": "4003",
+                "goodreads_book_id": 387749,
+                "best_book_id": 387749,
+                "work_id": 1434214,
+                "books_count": 612,
+                "isbn": "1934648205",
+                "isbn13": "9.78E+12",
+                "authors": [
+                    "Lew Wallace"
+                ],
+                "original_publication_year": 1880,
+                "original_title": "Ben-Hur: A Tale of the Christ",
+                "title": "Ben-Hur: A Tale of the Christ",
+                "language_code": "eng",
+                "average_rating": 4.02,
+                "ratings_count": 25280,
+                "work_ratings_count": 27622,
+                "work_text_reviews_count": 751,
+                "ratings_1": 496,
+                "ratings_2": 1443,
+                "ratings_3": 5827,
+                "ratings_4": 9129,
+                "ratings_5": 10727,
+                "image_url": "https://images.gr-assets.com/books/1450180491m/387749.jpg",
+                "small_image_url": "https://images.gr-assets.com/books/1450180491s/387749.jpg"
+            }
+        },
+        {
+            "score": 1,
+            "document": {
+                "id": "4004",
+                "goodreads_book_id": 9646,
+                "best_book_id": 9646,
+                "work_id": 2566499,
+                "books_count": 151,
+                "isbn": "156421178",
+                "isbn13": "9.78E+12",
+                "authors": [
+                    "George Orwell",
+                    "Lionel Trilling"
+                ],
+                "original_publication_year": 1938,
+                "original_title": "Homage to Catalonia",
+                "title": "Homage to Catalonia",
+                "language_code": "eng",
+                "average_rating": 4.14,
+                "ratings_count": 22227,
+                "work_ratings_count": 25881,
+                "work_text_reviews_count": 1500,
+                "ratings_1": 176,
+                "ratings_2": 733,
+                "ratings_3": 4407,
+                "ratings_4": 10529,
+                "ratings_5": 10036,
+                "image_url": "https://images.gr-assets.com/books/1394868278m/9646.jpg",
+                "small_image_url": "https://images.gr-assets.com/books/1394868278s/9646.jpg"
+            }
+        },
+        {
+            "score": 1,
+            "document": {
+                "id": "4005",
+                "goodreads_book_id": 251519,
+                "best_book_id": 251519,
+                "work_id": 1154583,
+                "books_count": 52,
+                "isbn": "446694843",
+                "isbn13": "9.78E+12",
+                "authors": [
+                    "Lolly Winston"
+                ],
+                "original_publication_year": 2004,
+                "original_title": "Good Grief",
+                "title": "Good Grief",
+                "language_code": "en-US",
+                "average_rating": 3.72,
+                "ratings_count": 24273,
+                "work_ratings_count": 25350,
+                "work_text_reviews_count": 1330,
+                "ratings_1": 449,
+                "ratings_2": 1718,
+                "ratings_3": 7963,
+                "ratings_4": 9468,
+                "ratings_5": 5752,
+                "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+                "small_image_url": "https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png"
+            }
+        }
+    ],
+    "facets": {
+        "authors": [
+            {
+                "count": 98,
+                "value": "James Patterson"
+            },
+            {
+                "count": 97,
+                "value": "Stephen King"
+            },
+            {
+                "count": 65,
+                "value": "Nora Roberts"
+            },
+            {
+                "count": 64,
+                "value": "Dean Koontz"
+            },
+            {
+                "count": 50,
+                "value": "Terry Pratchett"
+            },
+            {
+                "count": 43,
+                "value": "Agatha Christie"
+            },
+            {
+                "count": 41,
+                "value": "J.D. Robb"
+            },
+            {
+                "count": 41,
+                "value": "Neil Gaiman"
+            },
+            {
+                "count": 38,
+                "value": "Meg Cabot"
+            },
+            {
+                "count": 37,
+                "value": "Janet Evanovich"
+            }
+        ],
+        "language_code": [
+            {
+                "count": 6341,
+                "value": "eng"
+            },
+            {
+                "count": 2070,
+                "value": "en-US"
+            },
+            {
+                "count": 1084,
+                "value": ""
+            },
+            {
+                "count": 257,
+                "value": "en-GB"
+            },
+            {
+                "count": 64,
+                "value": "ara"
+            },
+            {
+                "count": 58,
+                "value": "en-CA"
+            },
+            {
+                "count": 25,
+                "value": "fre"
+            },
+            {
+                "count": 21,
+                "value": "ind"
+            },
+            {
+                "count": 20,
+                "value": "spa"
+            },
+            {
+                "count": 13,
+                "value": "ger"
+            }
+        ]
+    },
+    "q": "*",
+    "top": 5,
+    "skip": 0
+}
