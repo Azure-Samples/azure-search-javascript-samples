@@ -6,20 +6,20 @@ languages:
   - nodejs
 name: Quickstart in JavaScript
 description: |
-  Learn how to create, load, and query an Azure Cognitive Search index using the Azure SDK for Javascript/Typescript.
+  Learn how to create, load, and query an Azure AI Search index using the Azure SDK for Javascript/Typescript.
 products:
   - azure
   - azure-cognitive-search
 urlFragment: javascript-quickstart
 ---
 
-# JavaScript quickstart for Azure Cognitive Search
+# JavaScript quickstart for Azure AI Search
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-Demonstrates using JavaScript and the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) to create an Azure Cognitive Search index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
+Demonstrates using JavaScript and the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) to create an Azure AI Search index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
 
-This Node.js console application is featured in [Quickstart: Create an Azure Cognitive Search index using the JavaScript SDK](https://docs.microsoft.com/azure/search/search-get-started-javascript). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) and runs on a search service using connection information that you provide.
+This Node.js console application is featured in [Quickstart: Create an Azure AI Search index using the JavaScript SDK](https://docs.microsoft.com/azure/search/search-get-started-javascript). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [Azure SDK for JavaScript/TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) and runs on a search service using connection information that you provide.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ This Node.js console application is featured in [Quickstart: Create an Azure Cog
     npm install
     ```
 
-1. Edit the file `sample.env`, adding the connection information that's valid for your Azure Cognitive Search service. See 
+1. Edit the file `sample.env`, adding the connection information that's valid for your Azure AI Search service. See 
 
    ```nodejs
    SEARCH_API_KEY=<search-admin-key>
@@ -81,6 +81,6 @@ The `run` function :
 
 ## Next steps
 
-You can learn more about Azure Cognitive Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
+You can learn more about Azure AI Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
 
 You can view additional samples for JavaScript/TypeScript in the [azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) or see the [documentation](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest).

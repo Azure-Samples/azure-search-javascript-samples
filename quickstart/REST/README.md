@@ -1,10 +1,10 @@
-# Quickstart sample for Azure Cognitive Search with Node.js
+# Quickstart sample for Azure AI Search with Node.js
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-Demonstrates using Node.js and the Azure Cognitive Search REST APIs to create an index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
+Demonstrates using Node.js and the Azure AI Search REST APIs to create an index, load it with documents, and execute a few queries. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. Index definition and documents are included in the code.
 
-This Node.js console application is featured in [Node.js Quickstart: Create, load, and query indexes using Azure Cognitive Search REST APIs](https://docs.microsoft.com/azure/search/search-get-started-nodejs). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) and runs on a search service using connection information that you provide.
+This Node.js console application is featured in [Node.js Quickstart: Create, load, and query indexes using Azure AI Search REST APIs](https://docs.microsoft.com/azure/search/search-get-started-nodejs). When you run the program, a console window emits output messages for each step: deleting and then re-creating a hotels-quickstart index, loading documents, running queries. This sample uses the [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) and runs on a search service using connection information that you provide.
 
 ## Contents
 
@@ -74,5 +74,5 @@ The `run` function :
 
 ## Next steps 
 
-You can learn more about Azure Cognitive Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
+You can learn more about Azure AI Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
 

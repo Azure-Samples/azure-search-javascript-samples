@@ -6,11 +6,11 @@ import {
   AzureKeyCredential
 } from '@azure/search-documents';
 
-// Azure Cognitive Search resource settings
+// Azure AI Search resource settings
 const SEARCH_ENDPOINT = 'https://YOUR-RESOURCE-NAME.search.windows.net';
 const SEARCH_ADMIN_KEY = 'YOUR-RESOURCE-ADMIN-KEY';
 
-// Azure Cognitive Search index settings
+// Azure AI Search index settings
 const SEARCH_INDEX_NAME = 'good-books';
 import SEARCH_INDEX_SCHEMA from './good-books-index.json' assert { type: 'json' };
 
