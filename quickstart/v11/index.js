@@ -16,7 +16,7 @@ const endpoint = process.env.SEARCH_API_ENDPOINT || "";
 const apiKey = process.env.SEARCH_API_KEY || "";
 
 async function main() {
-    console.log(`Running Azure Cognitive Search Javascript quickstart...`);
+    console.log(`Running Azure AI Search Javascript quickstart...`);
     if (!endpoint || !apiKey) {
         console.log("Make sure to set valid values for endpoint and apiKey with proper authorization.");
         return;

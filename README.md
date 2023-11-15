@@ -1,6 +1,6 @@
-# JavaScript samples for Azure Cognitive Search
+# JavaScript samples for Azure AI Search
 
-This repository contains JavaScript code samples used in Azure Cognitive Search documentation. Unless noted otherwise, all samples run on the shared (free) pricing tier of an [Azure Cognitive Search service](https://learn.microsoft.com/azure/search/search-create-service-portal).
+This repository contains JavaScript code samples used in Azure AI Search documentation. Unless noted otherwise, all samples run on the shared (free) pricing tier of an [Azure AI Search service](https://learn.microsoft.com/azure/search/search-create-service-portal).
 
 | Sample | Description |
 |--------|-------------|

@@ -34,8 +34,8 @@ Related resources:
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/downloads)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-create-service-portal)
-* [Query API key for Azure Cognitive Search](https://learn.microsoft.com/azure/search/search-security-api-keys#find-existing-keys)
+* [Azure AI Search](https://docs.microsoft.com/azure/search/search-create-service-portal)
+* [Query API key for Azure AI Search](https://learn.microsoft.com/azure/search/search-security-api-keys#find-existing-keys)
 * [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=shopathome-github-jopapa)
 * [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=shopathome-github-jopapa)
 
@@ -105,7 +105,7 @@ Related resources:
 
     Wait until the build and deployment complete before continuing. This may take a minute or two to finish.
 
-1. Get the query key for Azure Cognitive Search. Keep this query key, you will need to use it in the next section. The query key gives you read access to query your index. 
+1. Get the query key for Azure AI Search. Keep this query key, you will need to use it in the next section. The query key gives you read access to query your index. 
 
 ## Add configuration settings in Azure portal
 
@@ -124,7 +124,7 @@ The Azure Function app won't return Search data until the Search secrets are in 
     |SearchIndexName|`good-books`|
     |SearchFacets|`authors*,language_code`|
 
-    Azure Cognitive Search requires different syntax for filtering collections than it does for strings. Add a `*` after a field name to denote that the field is of type `Collection(Edm.String)`. This allows the Azure Function to add filters correctly to queries.
+    Azure AI Search requires different syntax for filtering collections than it does for strings. Add a `*` after a field name to denote that the field is of type `Collection(Edm.String)`. This allows the Azure Function to add filters correctly to queries.
 
 1. Select **Save** to save the settings. 
 1. Return to VS Code. 
