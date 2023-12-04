@@ -4,7 +4,7 @@ languages:
 - javascript
 - typescript
 - nodejs
-name: Add search to a JavaScript app
+name: Add Azure AI Search to a JavaScript fullstack app
 description: | 
   Add document search to a web app. This JavaScript sample uses the Azure SDK to create, load, and query the index.
 products:
