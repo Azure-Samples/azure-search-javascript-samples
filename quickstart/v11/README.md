@@ -4,7 +4,7 @@ languages:
   - javascript
   - typescript
   - nodejs
-name: Quickstart in JavaScript
+name: JavaScript quickstart for Azure AI Search
 description: |
   Learn how to create, load, and query an Azure AI Search index using the Azure SDK for Javascript/Typescript.
 products:
