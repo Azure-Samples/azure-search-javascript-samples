@@ -12,11 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/search-documents": "^11.1.0",
-    "node-fetch": "^3.3.1",
-    "papaparse": "^5.3.0"
+    "@azure/search-documents": "^12.1.0",
+    "node-fetch": "^3.3.2",
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "prettier": "^3.3.3"
   }
 }
