@@ -1,6 +1,0 @@
-{
-    "serviceName" : "[SEARCH_SERVICE_NAME]",
-    "adminKey" : "[SEARCH_SERVICE_ADMIN_KEY]",
-    "queryKey" : "[SEARCH_SERVICE_QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
