@@ -32,10 +32,10 @@ This Node.js console application is featured in [Quickstart: Create an Azure AI 
 
 1. Clone or download this sample repository.
 
-1. Open the folder in Visual Studio Code and navigate to the quickstart/v11 folder:
+1. Open the folder in Visual Studio Code and navigate to the quickstart folder:
 
    ```cmd
-   cd quickstart/v11
+   cd quickstart
    ```
 
 1. Install the dependencies using `npm`:
