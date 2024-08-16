@@ -4,5 +4,6 @@ This repository contains JavaScript code samples used in Azure AI Search documen
 
 | Sample | Description |
 |--------|-------------|
-| quickstart | "Day One" introduction to the fundamental tasks of working with a search index: create, load, and query. This sample is a  Node.js console app. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. |
-| search-website-functions-v4 | This sample adds search to a book catalog web app. Configuration and run time instructions can be found in the [sample readme](/search-website-functions-v4/README.md). |
+| [azure-function-search](azure-function-search/readme.md) | This sample is an Azure Function that sends query requests to an Azure AI Search service. You can substitute this code to replace the contents of the `api` folder in the C# sample [azure-search-static-web-app](https://github.com/Azure-Samples/azure-search-static-web-app). |
+| [bulk-insert](bulk-insert/readme.md) | This sample shows you how to create and load an index using the push APIs and sample data. You can substitute this code to replace the contents of the `bulk-insert` folder in the C# sample [azure-search-static-web-app](https://github.com/Azure-Samples/azure-search-static-web-app) |
+| [quickstart](quickstart/README.md) | "Day One" introduction to the fundamental tasks of working with a search index: create, load, and query. This sample is a  Node.js console app. The index is modeled on a subset of the Hotels dataset, reduced for readability and comprehension. |
