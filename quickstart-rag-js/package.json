@@ -1,0 +1,23 @@
+{
+  "name": "rag-quick-new",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@azure/identity": "^4.10.0",
+    "@azure/search-documents": "^12.1.0",
+    "@types/node": "^24.0.1",
+    "dotenv": "^16.5.0",
+    "openai": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
