@@ -81,6 +81,6 @@ The `run` function :
 
 ## Next steps
 
-You can learn more about Azure AI Search on the [official documentation site](https://docs.microsoft.com/azure/search/).
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search/).
 
 You can view additional samples for JavaScript/TypeScript in the [azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) or see the [documentation](https://learn.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest).

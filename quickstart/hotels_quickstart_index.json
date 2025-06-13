@@ -1,5 +1,5 @@
 {
-	"name": "hotels-quickstart",
+	"name": "hotels-quickstart-js",
 	"fields": [
 		{
 			"name": "HotelId",
@@ -23,15 +23,6 @@
 			"sortable": false,
 			"facetable": false,
 			"analyzerName": "en.lucene"
-		},
-		{
-			"name": "Description_fr",
-			"type": "Edm.String",
-			"searchable": true,
-			"filterable": false,
-			"sortable": false,
-			"facetable": false,
-			"analyzerName": "fr.lucene"
 		},
 		{
 			"name": "Category",
