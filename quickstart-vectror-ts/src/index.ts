@@ -19,6 +19,10 @@ async function createIndex(): Promise<SearchIndexClient> {
 
     const indexClient = new SearchIndexClient(searchEndpoint, credential);
 
+    if (process.env.INDEX_EXISTS === "true") {
+        return indexClient;
+    }
+
     console.log('Creating index...');
 
     const indexName = process.env.AZURE_SEARCH_INDEX || "vector-search-quickstart";
@@ -191,7 +195,7 @@ async function createIndex(): Promise<SearchIndexClient> {
     return indexClient;
 }
 async function deleteIndex(searchIndexClient: SearchIndexClient): Promise<void> {
-    const indexClient = new SearchIndexClient(searchEndpoint, credential);
+
 
     try {
         console.log("Deleting index...");
@@ -203,6 +207,10 @@ async function deleteIndex(searchIndexClient: SearchIndexClient): Promise<void> 
 }
 async function uploadDocuments(): Promise<void> {
     const searchClient = new SearchClient(searchEndpoint, indexName, credential);
+
+    if (process.env.INDEX_DATA_LOADED_ === "true") {
+        return;
+    }
 
     try {
         console.log("Uploading documents...");
@@ -218,13 +226,13 @@ async function uploadDocuments(): Promise<void> {
 async function main(): Promise<void> {
     try {
         const searchIndexClient = await createIndex();
-        //await uploadDocuments();
-        //await VectorSearch.singleVectorSearch(QUERY_VECTOR);
-        //await VectorSearch.singleVectorSearchWithFilter(QUERY_VECTOR);
-        //await VectorSearch.vectorQueryWithGeoFilter(QUERY_VECTOR);
-        //await VectorSearch.hybridSearch(QUERY_VECTOR);
-        //await VectorSearch.semanticHybridSearch(QUERY_VECTOR);
-        await deleteIndex(searchIndexClient);
+        await uploadDocuments();
+        await VectorSearch.singleVectorSearch(QUERY_VECTOR);
+        await VectorSearch.singleVectorSearchWithFilter(QUERY_VECTOR);
+        await VectorSearch.vectorQueryWithGeoFilter(QUERY_VECTOR);
+        await VectorSearch.hybridSearch(QUERY_VECTOR);
+        await VectorSearch.semanticHybridSearch(QUERY_VECTOR);
+        //await deleteIndex(searchIndexClient);
     } catch (error) {
         console.error("Error:", error);
     }

@@ -1,5 +1,5 @@
 import { DefaultAzureCredential } from "@azure/identity";
-import { SearchClient, SearchDocumentsResult } from "@azure/search-documents";
+import { SearchClient, SearchDocumentsResult, VectorQuery } from "@azure/search-documents";
 import * as dotenv from "dotenv";
 
 // Load environment variables from .env file
@@ -14,6 +14,7 @@ interface HotelDocument {
     HotelId: string;
     HotelName: string;
     Description: string;
+    DescriptionVector?: number[];
     Category?: string;
     Tags?: string[] | string;
     Address?: {
@@ -32,7 +33,7 @@ export async function singleVectorSearch(vector: number[]): Promise<void> {
     if (vector && vector.length > 0) {
         try {
             const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-            
+
             // Create a vector search options with the vector query
             const searchOptions = {
                 vectorQueries: [
@@ -51,6 +52,7 @@ export async function singleVectorSearch(vector: number[]): Promise<void> {
             const results = await searchClient.search("*", searchOptions);
 
             // Iterate through results
+            console.log(`\nSingle Vector search - Total results: ${results.count !== undefined ? results.count : 0}`);
             for await (const result of results.results) {
                 const doc = result.document;
                 console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Category: ${doc.Category || 'N/A'}`);
@@ -67,7 +69,7 @@ export async function singleVectorSearchWithFilter(vector: number[]): Promise<vo
     if (vector && vector.length > 0) {
         try {
             const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-            
+
             // Create a vector search options with the vector query and filter
             const searchOptions = {
                 vectorQueries: [
@@ -87,8 +89,9 @@ export async function singleVectorSearchWithFilter(vector: number[]): Promise<vo
             const results = await searchClient.search("*", searchOptions);            // Get the count - using count property instead of getCount() method
             const count = results.count;
             console.log(`Total filtered results: ${count !== undefined ? count : 0}`);
-            
+
             // Iterate through results
+            console.log(`\nSingle Vector search with filter - Total results: ${results.count !== undefined ? results.count : 0}`);
             for await (const result of results.results) {
                 const doc = result.document;
                 console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Tags: ${doc.Tags ? JSON.stringify(doc.Tags) : 'N/A'}`);
@@ -105,17 +108,17 @@ export async function vectorQueryWithGeoFilter(vector: number[]): Promise<void> 
     if (vector && vector.length > 0) {
         try {
             const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-            
-            // Create search options with vector query and geo filter
+
+            const vectorQueries: VectorQuery<HotelDocument>[] = [{
+                vector: vector,
+                kNearestNeighborsCount: 5,
+                fields: ["DescriptionVector"],
+                exhaustive: true,
+                kind: "vector"
+            }];
+
             const searchOptions = {
-                vectorQueries: [
-                    {
-                        vector: vector,
-                        kNearestNeighbors: 5,
-                        fields: ["DescriptionVector"],
-                        exhaustive: true
-                    }
-                ],
+                vectorQueries: vectorQueries,
                 includeTotalCount: true,
                 top: 5,
                 select: [
@@ -126,24 +129,27 @@ export async function vectorQueryWithGeoFilter(vector: number[]): Promise<void> 
                 vectorFilterMode: "postFilter" // Apply filter after vector similarity is calculated
             };
 
-            const results = await searchClient.search("*", searchOptions);                // Get the count
+            const results = await searchClient.search("*", searchOptions);
+
+            // Get the count
             const count = results.count;
-            console.log(`Total geo-filtered vector results: ${count !== undefined ? count : 0}`);
-            
+
+            console.log(`\nVector search with geo filter - Total results: ${results.count !== undefined ? results.count : 0}`);
+
             // Iterate through results
             for await (const result of results.results) {
                 const doc = result.document;
                 // Access score from the result object which includes @search.score
                 const score = result.score !== undefined ? result.score : "N/A";
-                
+
                 console.log(`- HotelId: ${doc.HotelId}`);
                 console.log(`  HotelName: ${doc.HotelName}`);
                 console.log(`  Score: ${score}`);
-                
+
                 if (doc.Address) {
                     console.log(`  City/State: ${doc.Address.City}, ${doc.Address.StateProvince}`);
                 }
-                
+
                 console.log(`  Description: ${doc.Description || 'N/A'}\n`);
             }
         } catch (ex) {
@@ -158,7 +164,7 @@ export async function hybridSearch(vector: number[]): Promise<void> {
     if (vector && vector.length > 0) {
         try {
             const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-            
+
             // Create hybrid search options with both vector query and search text
             const searchOptions = {
                 vectorQueries: [
@@ -166,7 +172,7 @@ export async function hybridSearch(vector: number[]): Promise<void> {
                         vector: vector,
                         kNearestNeighbors: 5,
                         fields: ["DescriptionVector"],
-                        exhaustive: true
+                        exhaustive: true,
                     }
                 ],
                 includeTotalCount: true,
@@ -177,16 +183,17 @@ export async function hybridSearch(vector: number[]): Promise<void> {
             // Use search_text for keyword search (hybrid search = vector + keyword)
             const searchText = "historic hotel walk to restaurants and shopping";
             const results = await searchClient.search(searchText, searchOptions);
-            
+
             // Get the count
             const count = results.count;
-            console.log(`Total hybrid results: ${count !== undefined ? count : 0}`);
-            
+
+            console.log(`\nHybrid search - Total results: ${results.count !== undefined ? results.count : 0}`);
+
             // Iterate through results
             for await (const result of results.results) {
                 const doc = result.document;
                 const score = result.score !== undefined ? result.score : "N/A";
-                
+
                 console.log(`- Score: ${score}`);
                 console.log(`  HotelId: ${doc.HotelId}`);
                 console.log(`  HotelName: ${doc.HotelName}`);
@@ -205,7 +212,7 @@ export async function semanticHybridSearch(vector: number[]): Promise<void> {
     if (vector && vector.length > 0) {
         try {
             const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-              // Create semantic hybrid search options with vector query and semantic configuration
+            // Create semantic hybrid search options with vector query and semantic configuration
             const searchOptions = {
                 vectorQueries: [
                     {
@@ -227,16 +234,16 @@ export async function semanticHybridSearch(vector: number[]): Promise<void> {
             // Use search_text for semantic search
             const searchText = "historic hotel walk to restaurants and shopping";
             const results = await searchClient.search(searchText, searchOptions);
-            
+
             // Get the count
             const count = results.count;
-            console.log(`Total semantic hybrid results: ${count !== undefined ? count : 0}`);
-            
+            console.log(`\nSemantic hybrid search with a filter - Total results: ${results.count !== undefined ? results.count : 0}`);
+
             // Iterate through results
             for await (const result of results.results) {
                 const doc = result.document;
                 const score = result.score !== undefined ? result.score : "N/A";
-                  // Access reranker score from the document's special properties
+                // Access reranker score from the document's special properties
                 let rerankerScore = "N/A";
                 // In TypeScript SDK, the reranker score is typically in captions or document metadata
                 // Using any here to access potential dynamically added properties
@@ -244,7 +251,7 @@ export async function semanticHybridSearch(vector: number[]): Promise<void> {
                 if (docWithMetadata && docWithMetadata["@search.reranker_score"] !== undefined) {
                     rerankerScore = docWithMetadata["@search.reranker_score"];
                 }
-                
+
                 console.log(`- Score: ${score}`);
                 console.log(`  Re-ranker Score: ${rerankerScore}`);
                 console.log(`  HotelId: ${doc.HotelId}`);
