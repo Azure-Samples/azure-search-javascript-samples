@@ -39,13 +39,11 @@ async function createIndex(): Promise<SearchIndexClient> {
         {
             name: "HotelName",
             type: "Edm.String" as const,
-            searchable: true,
             sortable: true
         },
         {
             name: "Description",
-            type: "Edm.String" as const,
-            searchable: true
+            type: "Edm.String" as const
         },
         {
             name: "DescriptionVector",
@@ -57,7 +55,6 @@ async function createIndex(): Promise<SearchIndexClient> {
         {
             name: "Category",
             type: "Edm.String" as const,
-            searchable: true,
             sortable: true,
             filterable: true,
             facetable: true
@@ -96,13 +93,11 @@ async function createIndex(): Promise<SearchIndexClient> {
             fields: [
                 {
                     name: "StreetAddress",
-                    type: "Edm.String" as const,
-                    searchable: true
+                    type: "Edm.String" as const
                 },
                 {
                     name: "City",
                     type: "Edm.String" as const,
-                    searchable: true,
                     filterable: true,
                     sortable: true,
                     facetable: true
@@ -110,7 +105,6 @@ async function createIndex(): Promise<SearchIndexClient> {
                 {
                     name: "StateProvince",
                     type: "Edm.String" as const,
-                    searchable: true,
                     filterable: true,
                     sortable: true,
                     facetable: true
@@ -118,7 +112,6 @@ async function createIndex(): Promise<SearchIndexClient> {
                 {
                     name: "PostalCode",
                     type: "Edm.String" as const,
-                    searchable: true,
                     filterable: true,
                     sortable: true,
                     facetable: true
@@ -126,7 +119,6 @@ async function createIndex(): Promise<SearchIndexClient> {
                 {
                     name: "Country",
                     type: "Edm.String" as const,
-                    searchable: true,
                     filterable: true,
                     sortable: true,
                     facetable: true
