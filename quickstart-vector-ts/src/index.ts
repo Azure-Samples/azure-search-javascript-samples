@@ -39,11 +39,13 @@ async function createIndex(): Promise<SearchIndexClient> {
         {
             name: "HotelName",
             type: "Edm.String" as const,
-            sortable: true
+            sortable: true,
+            searchable: true,
         },
         {
             name: "Description",
-            type: "Edm.String" as const
+            type: "Edm.String" as const,
+            searchable: true,
         },
         {
             name: "DescriptionVector",
@@ -57,7 +59,8 @@ async function createIndex(): Promise<SearchIndexClient> {
             type: "Edm.String" as const,
             sortable: true,
             filterable: true,
-            facetable: true
+            facetable: true,
+            searchable: true
         },
         {
             name: "Tags",
@@ -232,14 +235,14 @@ async function uploadDocuments(): Promise<void> {
 
 async function main(): Promise<void> {
     try {
-        const searchIndexClient = await createIndex();
-        await uploadDocuments();
+        //const searchIndexClient = await createIndex();
+        //await uploadDocuments();
         await MyVectorSearch.singleVectorSearch(QUERY_VECTOR);
         await MyVectorSearch.singleVectorSearchWithFilter(QUERY_VECTOR);
         await MyVectorSearch.vectorQueryWithGeoFilter(QUERY_VECTOR);
         await MyVectorSearch.hybridSearch(QUERY_VECTOR);
         await MyVectorSearch.semanticHybridSearch(QUERY_VECTOR);
-        await deleteIndex(searchIndexClient);
+        //await deleteIndex(searchIndexClient);
     } catch (error) {
         console.error("Error:", error);
     }
