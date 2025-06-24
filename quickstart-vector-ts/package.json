@@ -1,7 +1,7 @@
 {
   "name": "quickstart-vectror-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node -r dotenv/config dist/index.js"
