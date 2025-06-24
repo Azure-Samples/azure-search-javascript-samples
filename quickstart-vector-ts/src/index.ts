@@ -14,7 +14,7 @@ import * as MyVectorSearch from './search.js';
 
 const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT!;
 const credential = new DefaultAzureCredential();
-const indexName = process.env.AZURE_SEARCH_INDEX || "vector-search-quickstart";
+const indexName = "vector-search-quickstart";
 
 async function createIndex(): Promise<SearchIndexClient> {
 
@@ -26,7 +26,7 @@ async function createIndex(): Promise<SearchIndexClient> {
 
     console.log('Creating index...');
 
-    const indexName = process.env.AZURE_SEARCH_INDEX || "vector-search-quickstart";
+    const indexName = "vector-search-quickstart";
  
     // Define fields
     const fields: SearchField[] = [
