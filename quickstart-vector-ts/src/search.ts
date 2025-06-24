@@ -1,9 +1,5 @@
 import { DefaultAzureCredential } from "@azure/identity";
 import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult } from "@azure/search-documents";
-import * as dotenv from "dotenv";
-
-// Load environment variables from .env file
-dotenv.config();
 
 const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT;
 const indexName = "vector-search-quickstart";

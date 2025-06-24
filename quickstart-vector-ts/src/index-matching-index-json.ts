@@ -41,18 +41,21 @@ async function createIndex(): Promise<SearchIndexClient> {
             type: "Edm.String" as const,
             sortable: true,
             searchable: true,
+            hidden: false,
         },
         {
             name: "Description",
             type: "Edm.String" as const,
             searchable: true,
+            hidden: false
         },
         {
             name: "DescriptionVector",
             type: "Collection(Edm.Single)" as const,
             searchable: true,
             vectorSearchDimensions: 1536,
-            vectorSearchProfileName: "my-vector-profile"
+            vectorSearchProfileName: "my-vector-profile",
+            hidden: false
         },
         {
             name: "Category",
@@ -60,14 +63,16 @@ async function createIndex(): Promise<SearchIndexClient> {
             sortable: true,
             filterable: true,
             facetable: true,
-            searchable: true
+            searchable: true,
+            hidden: false
         },
         {
             name: "Tags",
             type: "Collection(Edm.String)" as const,
             searchable: true,
             filterable: true,
-            facetable: true
+            facetable: true,
+            hidden: false
         },
         {
             name: "ParkingIncluded",
@@ -96,35 +101,42 @@ async function createIndex(): Promise<SearchIndexClient> {
             fields: [
                 {
                     name: "StreetAddress",
-                    type: "Edm.String" as const
+                    type: "Edm.String" as const,
+                    searchable: true,
                 },
                 {
                     name: "City",
                     type: "Edm.String" as const,
                     filterable: true,
                     sortable: true,
-                    facetable: true
+                    facetable: true,
+                    hidden: false,
+                    searchable: true
                 },
                 {
                     name: "StateProvince",
                     type: "Edm.String" as const,
                     filterable: true,
                     sortable: true,
-                    facetable: true
+                    facetable: true,
+                    hidden: false,
+                    searchable: true
                 },
                 {
                     name: "PostalCode",
                     type: "Edm.String" as const,
                     filterable: true,
                     sortable: true,
-                    facetable: true
+                    facetable: true,
+                    searchable: true
                 },
                 {
                     name: "Country",
                     type: "Edm.String" as const,
                     filterable: true,
                     sortable: true,
-                    facetable: true
+                    facetable: true,
+                    searchable: true,
                 }
             ]
         },
@@ -182,13 +194,7 @@ async function createIndex(): Promise<SearchIndexClient> {
     };
 
     // Define suggesters
-    const suggesters: SearchSuggester[] = [
-        {
-            name: "sg",
-            sourceFields: ["Tags", "Address/City", "Address/Country"],
-            searchMode: "analyzingInfixMatching" as const
-        }
-    ];
+    const suggesters: SearchSuggester[] = [];
 
     // Create the search index with the semantic settings
     const indexDefinition: SearchIndex = {
@@ -235,14 +241,16 @@ async function uploadDocuments(): Promise<void> {
 
 async function main(): Promise<void> {
     try {
-        //const searchIndexClient = await createIndex();
-        //await uploadDocuments();
+        const searchIndexClient = await createIndex();
+        await uploadDocuments();
+
         await MyVectorSearch.singleVectorSearch(QUERY_VECTOR);
         await MyVectorSearch.singleVectorSearchWithFilter(QUERY_VECTOR);
         await MyVectorSearch.vectorQueryWithGeoFilter(QUERY_VECTOR);
         await MyVectorSearch.hybridSearch(QUERY_VECTOR);
         await MyVectorSearch.semanticHybridSearch(QUERY_VECTOR);
-        //await deleteIndex(searchIndexClient);
+
+        await deleteIndex(searchIndexClient);
     } catch (error) {
         console.error("Error:", error);
     }
