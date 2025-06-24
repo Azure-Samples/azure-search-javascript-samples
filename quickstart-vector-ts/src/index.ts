@@ -232,7 +232,7 @@ async function main(): Promise<void> {
         await VectorSearch.vectorQueryWithGeoFilter(QUERY_VECTOR);
         await VectorSearch.hybridSearch(QUERY_VECTOR);
         await VectorSearch.semanticHybridSearch(QUERY_VECTOR);
-        //await deleteIndex(searchIndexClient);
+        await deleteIndex(searchIndexClient);
     } catch (error) {
         console.error("Error:", error);
     }
