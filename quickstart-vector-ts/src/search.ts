@@ -1,32 +1,11 @@
 import { DefaultAzureCredential } from "@azure/identity";
 import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult } from "@azure/search-documents";
+import { vector } from "./queryVector.js";
+import { HotelDocument, indexName, searchEndpoint } from "./manageIndex.js"; // Assuming you have a HotelDocument interface defined in documents.js
 
-const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT;
-const indexName = "vector-search-quickstart";
 const credential = new DefaultAzureCredential();
 
-// Define an interface for the hotel document
-interface HotelDocument {
-    HotelId: string;
-    HotelName: string;
-    Description: string;
-    DescriptionVector?: number[];
-    Category?: string;
-    Tags?: string[] | string;
-    Address?: {
-        City: string;
-        StateProvince: string;
-    };
-    Location?: {
-        type: string;
-        coordinates: [number, number]; // [longitude, latitude]
-    };
-    "@search.score"?: number;
-    "@search.reranker_score"?: number;
-}
-
-
-export async function singleVectorSearch(vector: number[]): Promise<void> {
+export async function singleVectorSearch(): Promise<void> {
     try {
         const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
 
@@ -64,7 +43,7 @@ export async function singleVectorSearch(vector: number[]): Promise<void> {
     }
 }
 
-export async function singleVectorSearchWithFilter(vector: number[]): Promise<void> {
+export async function singleVectorSearchWithFilter(): Promise<void> {
     try {
         const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
 
@@ -101,7 +80,7 @@ export async function singleVectorSearchWithFilter(vector: number[]): Promise<vo
     }
 }
 
-export async function vectorQueryWithGeoFilter(vector: number[]): Promise<void> {
+export async function vectorQueryWithGeoFilter(): Promise<void> {
 
     try {
         const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
@@ -157,11 +136,10 @@ export async function vectorQueryWithGeoFilter(vector: number[]): Promise<void> 
 }
 
 
-export async function hybridSearch(vector: number[], indexName: string="vector-search-quickstart"): Promise<void> {
+export async function hybridSearch(): Promise<void> {
 
     try {
         const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
-
 
         const vectorQuery: VectorQuery<HotelDocument> = {
             vector: vector,
@@ -205,7 +183,7 @@ export async function hybridSearch(vector: number[], indexName: string="vector-s
     }
 
 }
-export async function semanticHybridSearch(vector: number[]): Promise<void> {
+export async function semanticHybridSearch(): Promise<void> {
 
     try {
         const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);

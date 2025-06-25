@@ -1,0 +1,29 @@
+
+Total results: 5
+- HotelId: 48, HotelName: Nordick's Valley Motel, Category: Boutique
+- HotelId: 13, HotelName: Luxury Lion Resort, Category: Luxury
+- HotelId: 4, HotelName: Sublime Palace Hotel, Category: Boutique
+- HotelId: 49, HotelName: Swirling Currents Hotel, Category: Suite
+- HotelId: 2, HotelName: Old Century Hotel, Category: Boutique
+
+Total filtered results: 2
+-48
+-2
+
+Total geofilter results: 2
+- HotelId: 48
+- HotelId: 49
+
+Total hybrid results: 7
+- HotelId: 4
+- HotelId: 13
+- HotelId: 48
+- HotelId: 49
+- HotelId: 2
+
+Total semantic hybrid results: 7
+- HotelId: 49
+- HotelId: 4
+- HotelId: 2
+- HotelId: 1
+- HotelId: 3

@@ -1,0 +1,29 @@
+Single Vector search found 7
+- HotelId: 3, HotelName: Gastronomic Landscape Hotel, Category: Suite, Score: 1
+- HotelId: 2, HotelName: Old Century Hotel, Category: Boutique, Score: 1
+- HotelId: 4, HotelName: Sublime Palace Hotel, Category: Boutique, Score: 1
+- HotelId: 49, HotelName: Swirling Currents Hotel, Category: Suite, Score: 1
+- HotelId: 48, HotelName: Nordick's Valley Motel, Category: Boutique, Score: 1
+
+
+Single Vector search with filter found 2 then limited to top 7
+- HotelId: 2, 
+- HotelId: 48, 
+
+Vector search with geo filter found 2 then limited to top 5
+- HotelId: 49
+- HotelId: 48
+
+Hybrid search found 7 then limited to top 5
+- HotelId: 4
+- HotelId: 1
+- HotelId: 13
+- HotelId: 49
+- HotelId: 2
+
+Semantic hybrid search found 7 then limited to top 5
+- HotelId: 49
+- HotelId: 4
+- HotelId: 2
+- HotelId: 1
+- HotelId: 3

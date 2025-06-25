@@ -1,5 +1,6 @@
-@baseUrl = https://ai-search-dib-2.search.windows.net
-@apiKey = {{$dotenv AZURE_SEARCH_ADMIN_KEY}}
+@baseUrl = {{$dotenv AZURE_SEARCH_ENDPOINT}}
+@apiKey = {{$dotenv AZURE_SEARCH_KEY}}
+@indexName = {{$dotenv AZURE_SEARCH_INDEX_NAME}}
 
 ### Create a new index
 POST  {{baseUrl}}/indexes?api-version=2024-07-01  HTTP/1.1
@@ -7,7 +8,7 @@ Content-Type: application/json
 api-key: {{apiKey}}
 
 {
-    "name": "hotels-vector-quickstart-rest",
+    "name": {{indexName}},
     "fields": [
         {
             "name": "HotelId", 
