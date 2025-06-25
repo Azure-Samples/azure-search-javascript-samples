@@ -238,8 +238,8 @@ async function uploadDocuments(): Promise<void> {
 async function main(): Promise<void> {
     try {
 
-        const searchIndexClient = await createIndex();
-        await uploadDocuments();
+        //const searchIndexClient = await createIndex();
+        //await uploadDocuments();
 
         await MyVectorSearch.singleVectorSearch(QUERY_VECTOR);
         await MyVectorSearch.singleVectorSearchWithFilter(QUERY_VECTOR);

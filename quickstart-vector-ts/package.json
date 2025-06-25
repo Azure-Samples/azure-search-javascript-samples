@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "@azure/identity": "^4.10.0",
-    "@azure/search-documents": "^12.1.0",
+    "@azure/search-documents": "next",
     "openai": "^5.3.0"
   },
   "devDependencies": {

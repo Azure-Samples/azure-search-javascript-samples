@@ -6,6 +6,13 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
 	"features": {
 		"ghcr.io/devcontainers/features/azure-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"humao.rest-client"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
