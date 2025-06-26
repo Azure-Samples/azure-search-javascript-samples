@@ -1,0 +1,241 @@
+import { SearchClient, AzureKeyCredential } from "@azure/search-documents";
+import { vector } from "./queryVector.js";
+import { indexName, searchEndpoint } from "./manageIndex.js";
+import { DefaultAzureCredential } from "@azure/identity";
+
+const searchClient = new SearchClient(
+    searchEndpoint,
+    indexName,
+    new DefaultAzureCredential()
+);
+
+export async function singleVectorSearch() {
+    try {
+
+        const vectorQuery = {
+            vector: vector,
+            kNearestNeighborsCount: 5,
+            fields: ["DescriptionVector"],
+            kind: "vector",
+            exhaustive: true
+        };
+
+        // Create a vector search options with the vector query
+        const searchOptions= {
+            top: 5,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
+            includeTotalCount: true, 
+            vectorSearchOptions: {
+                queries: [vectorQuery],
+                filterMode: "postFilter"
+            }
+        };
+        const results = await searchClient.search("*", searchOptions);
+
+        console.log(`\n\nSingle Vector search found ${results.count}`);
+
+        for await (const result of results.results) {
+            // Log each result
+            const doc = result.document;
+            console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Category: ${doc.Category || 'N/A'}, Score ${result.score}`);
+        }
+
+    } catch (ex) {
+        console.error("Vector search failed:", ex);
+        throw ex;
+    }
+}
+
+export async function singleVectorSearchWithFilter() {
+    try {
+
+        const vectorQuery = {
+            vector: vector,
+            kNearestNeighborsCount: 5,
+            fields: ["DescriptionVector"],
+            kind: "vector",
+            exhaustive: true
+        };
+
+        // Create a vector search options with the vector query and filter
+        const searchOptions = {
+            top: 7,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
+            includeTotalCount: true,
+            filter: "Tags/any(tag: tag eq 'free wifi')",
+            vectorSearchOptions: {
+                queries: [vectorQuery],
+                filterMode: "postFilter"
+            }
+        };
+        const results = await searchClient.search("*", searchOptions);
+
+        console.log(`\n\nSingle Vector search with filter found ${results.count} then limited to top ${searchOptions.top}`);
+
+        for await (const result of results.results) {
+            // Log each result
+            const doc = result.document;
+            console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Tags: ${doc.Tags ? JSON.stringify(doc.Tags) : 'N/A'}, Score ${result.score}`);
+        }
+
+    } catch (ex) {
+        console.error("Vector search with filter failed:", ex);
+        throw ex;
+    }
+}
+
+export async function vectorQueryWithGeoFilter() {
+    try {
+
+        const vectorQuery = {
+            vector: vector,
+            kNearestNeighborsCount: 5,
+            fields: ["DescriptionVector"],
+            kind: "vector",
+            exhaustive: true
+        };
+
+        const searchOptions = {
+            top: 5,
+            includeTotalCount: true,
+            select: [
+                "HotelId", "HotelName", "Category", "Description", "Address/City", "Address/StateProvince"
+            ],
+            facets: ["Address/StateProvince"],
+            vectorSearchOptions: {
+                queries: [vectorQuery],
+                filterMode: "postFilter"
+            },
+            filter: "geo.distance(Location, geography'POINT(-77.03241 38.90166)') le 300", 
+        };
+        const results = await searchClient.search("*", searchOptions);
+
+        console.log(`\n\nVector search with geo filter found ${results.count} then limited to top ${searchOptions.top}`);
+
+        for await (const result of results.results) {
+
+            // Log each result
+            const doc = result.document;
+
+            console.log(`- HotelId: ${doc.HotelId}`);
+            console.log(`  HotelName: ${doc.HotelName}`);
+            console.log(`  Score: ${result.score}`);
+
+            if (doc.Address) {
+                console.log(`  City/State: ${doc.Address.City}, ${doc.Address.StateProvince}`);
+            }
+
+            console.log(`  Description: ${doc.Description || 'N/A'}`);
+            console.log(`  Score: ${result.score}\n`);
+        }
+
+
+    } catch (ex) {
+        console.error("Vector search with geo filter failed:", ex);
+        throw ex;
+    }
+}
+
+
+export async function hybridSearch() {
+
+    try {
+
+        const vectorQuery = {
+            vector: vector,
+            kNearestNeighborsCount: 5,
+            fields: ["DescriptionVector"],
+            kind: "vector",
+            exhaustive: true
+        };
+
+        // Create hybrid search options with both vector query and search text
+        const searchOptions = {
+            top: 5,
+            includeTotalCount: true,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
+            vectorSearchOptions: {
+                queries: [vectorQuery],
+                filterMode: "postFilter"
+            }
+        };
+
+        // Use search_text for keyword search (hybrid search = vector + keyword)
+        const searchText = "historic hotel walk to restaurants and shopping";
+        const results = await searchClient.search(searchText, searchOptions);            
+
+        console.log(`\n\nHybrid search found ${results.count} then limited to top ${searchOptions.top}`);
+
+        for await (const result of results.results) {
+
+            // Log each result
+            const doc = result.document;
+
+            console.log(`- Score: ${result.score}`);
+            console.log(`  HotelId: ${doc.HotelId}`);
+            console.log(`  HotelName: ${doc.HotelName}`);
+            console.log(`  Description: ${doc.Description || 'N/A'}`);
+            console.log(`  Category: ${doc.Category || 'N/A'}`);
+            console.log(`  Tags: ${doc.Tags ? JSON.stringify(doc.Tags) : 'N/A'}\n`);
+        }
+
+    } catch (ex) {
+        console.error("Hybrid search failed:", ex);
+        throw ex;
+    }
+
+}
+export async function semanticHybridSearch() {
+
+    try {
+
+        const vectorQuery = {
+            vector: vector,
+            kNearestNeighborsCount: 5,
+            fields: ["DescriptionVector"],
+            kind: "vector",
+            exhaustive: true
+        };
+
+        // Create semantic hybrid search options with vector query and semantic configuration
+        const searchOptions = {
+            top: 5,
+            includeTotalCount: true,
+            select: ["HotelId", "HotelName", "Category", "Description"],
+            queryType: "semantic",
+            semanticSearchOptions: {
+                configurationName: "semantic-config"
+            },
+            vectorSearchOptions: {
+                queries: [vectorQuery],
+                filterMode: "postFilter"
+            },
+        };
+
+        // Use search_text for semantic search
+        const searchText = "historic hotel walk to restaurants and shopping";
+        const results = await searchClient.search(searchText, searchOptions);
+
+        console.log(`\n\nSemantic hybrid search found ${results.count} then limited to top ${searchOptions.top}`);
+
+        for await (const result of results.results) {
+
+            // Log each result
+            const doc = result.document;
+            const score = result.score;
+            const rerankerScoreDisplay = result.rerankerScore;
+
+            console.log(`- Score: ${score}`);
+            console.log(`  Re-ranker Score: ${rerankerScoreDisplay}`);
+            console.log(`  HotelId: ${doc.HotelId}`);
+            console.log(`  HotelName: ${doc.HotelName}`);
+            console.log(`  Description: ${doc.Description || 'N/A'}`);
+            console.log(`  Category: ${doc.Category || 'N/A'}`);
+            console.log('');
+        }
+
+    } catch (ex) {
+        console.error("Semantic hybrid search failed:", ex);
+        throw ex;
+    }
+}
