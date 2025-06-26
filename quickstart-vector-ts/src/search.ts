@@ -1,13 +1,17 @@
-import { DefaultAzureCredential } from "@azure/identity";
-import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult } from "@azure/search-documents";
+// @ts-nocheck
+import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult, AzureKeyCredential } from "@azure/search-documents";
 import { vector } from "./queryVector.js";
-import { HotelDocument, indexName, searchEndpoint } from "./manageIndex.js"; // Assuming you have a HotelDocument interface defined in documents.js
+import { HotelDocument, indexName, searchEndpoint } from "./manageIndex.js";
 
-const credential = new DefaultAzureCredential();
+const key = process.env.AZURE_SEARCH_KEY || "";
 
 export async function singleVectorSearch(): Promise<void> {
     try {
-        const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
+        const searchClient = new SearchClient<HotelDocument>(
+            searchEndpoint!,
+            indexName,
+            new AzureKeyCredential(key)
+        );
 
         const vectorQuery: VectorQuery<HotelDocument> = {
             vector: vector,
@@ -23,18 +27,16 @@ export async function singleVectorSearch(): Promise<void> {
             select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
             includeTotalCount: true
         };
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
+        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search(undefined, searchOptions);
 
         // Convert results to typed format and log for debugging
         console.log(`\n\nSingle Vector search found ${results.count}`);
 
         for await (const result of results.results) {
-
             // Log each result
             const doc = result.document;
-            console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Category: ${doc.Category || 'N/A'}, Score: ${result.score || 'N/A'}`);
+            console.log(`- Score ${result.score} - HotelId: - ${doc.HotelId}, HotelName: ${doc.HotelName}, Category: ${doc.Category || 'N/A'}, Score: ${result.score || 'N/A'}`);
         }
-
 
     } catch (ex) {
         console.error("Vector search failed:", ex);
@@ -44,7 +46,11 @@ export async function singleVectorSearch(): Promise<void> {
 
 export async function singleVectorSearchWithFilter(): Promise<void> {
     try {
-        const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
+        const searchClient = new SearchClient<HotelDocument>(
+            searchEndpoint!,
+            indexName,
+            new AzureKeyCredential(key)
+        );
 
         const vectorQuery: VectorQuery<HotelDocument> = {
             vector: vector,
@@ -66,7 +72,6 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
         console.log(`\n\nSingle Vector search with filter found ${results.count} then limited to top ${searchOptions.top}`);
 
         for await (const result of results.results) {
-
             // Log each result
             const doc = result.document;
             console.log(`- HotelId: ${doc.HotelId}, HotelName: ${doc.HotelName}, Tags: ${doc.Tags ? JSON.stringify(doc.Tags) : 'N/A'}`);
@@ -79,9 +84,12 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
 }
 
 export async function vectorQueryWithGeoFilter(): Promise<void> {
-
     try {
-        const searchClient = new SearchClient<HotelDocument>(searchEndpoint!, indexName, credential);
+        const searchClient = new SearchClient<HotelDocument>(
+            searchEndpoint!,
+            indexName,
+            new AzureKeyCredential(key)
+        );
 
         const vectorQuery: VectorQuery<HotelDocument> = {
             vector: vector,
