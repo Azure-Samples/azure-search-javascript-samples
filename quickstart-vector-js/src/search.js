@@ -1,25 +1,18 @@
-import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult, AzureKeyCredential } from "@azure/search-documents";
+import { SearchClient, AzureKeyCredential } from "@azure/search-documents";
 import { vector } from "./queryVector.js";
-import { HotelDocument, indexName, searchEndpoint } from "./manageIndex.js";
+import { indexName, searchEndpoint } from "./manageIndex.js";
 import { DefaultAzureCredential } from "@azure/identity";
 
-// const key = process.env.AZURE_SEARCH_KEY || "";
-// const searchClient = new SearchClient<HotelDocument>(
-//     searchEndpoint!,
-//     indexName,
-//     new AzureKeyCredential(key)
-// );
-
-const searchClient = new SearchClient<HotelDocument>(
+const searchClient = new SearchClient(
     searchEndpoint,
     indexName,
     new DefaultAzureCredential()
 );
 
-export async function singleVectorSearch(): Promise<void> {
+export async function singleVectorSearch() {
     try {
 
-        const vectorQuery: VectorQuery<HotelDocument> = {
+        const vectorQuery = {
             vector: vector,
             kNearestNeighborsCount: 5,
             fields: ["DescriptionVector"],
@@ -28,16 +21,16 @@ export async function singleVectorSearch(): Promise<void> {
         };
 
         // Create a vector search options with the vector query
-        const searchOptions: SearchOptions<HotelDocument>= {
-            top: 5, // Limit to top 5 results
-            select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
+        const searchOptions= {
+            top: 5,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
             includeTotalCount: true, 
             vectorSearchOptions: {
                 queries: [vectorQuery],
-                filterMode: "postFilter" // Apply filter after vector similarity is calculated
+                filterMode: "postFilter"
             }
         };
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
+        const results = await searchClient.search("*", searchOptions);
 
         console.log(`\n\nSingle Vector search found ${results.count}`);
 
@@ -53,10 +46,10 @@ export async function singleVectorSearch(): Promise<void> {
     }
 }
 
-export async function singleVectorSearchWithFilter(): Promise<void> {
+export async function singleVectorSearchWithFilter() {
     try {
 
-        const vectorQuery: VectorQuery<HotelDocument> = {
+        const vectorQuery = {
             vector: vector,
             kNearestNeighborsCount: 5,
             fields: ["DescriptionVector"],
@@ -65,17 +58,17 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
         };
 
         // Create a vector search options with the vector query and filter
-        const searchOptions: SearchOptions<HotelDocument> = {
+        const searchOptions = {
             top: 7,
-            select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
             includeTotalCount: true,
-            filter: "Tags/any(tag: tag eq 'free wifi')", // Adding filter for "free wifi" tag
+            filter: "Tags/any(tag: tag eq 'free wifi')",
             vectorSearchOptions: {
                 queries: [vectorQuery],
-                filterMode: "postFilter" // Apply filter after vector similarity is calculated
+                filterMode: "postFilter"
             }
         };
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
+        const results = await searchClient.search("*", searchOptions);
 
         console.log(`\n\nSingle Vector search with filter found ${results.count} then limited to top ${searchOptions.top}`);
 
@@ -91,10 +84,10 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
     }
 }
 
-export async function vectorQueryWithGeoFilter(): Promise<void> {
+export async function vectorQueryWithGeoFilter() {
     try {
 
-        const vectorQuery: VectorQuery<HotelDocument> = {
+        const vectorQuery = {
             vector: vector,
             kNearestNeighborsCount: 5,
             fields: ["DescriptionVector"],
@@ -102,20 +95,20 @@ export async function vectorQueryWithGeoFilter(): Promise<void> {
             exhaustive: true
         };
 
-        const searchOptions: SearchOptions<HotelDocument> = {
+        const searchOptions = {
             top: 5,
             includeTotalCount: true,
             select: [
                 "HotelId", "HotelName", "Category", "Description", "Address/City", "Address/StateProvince"
-            ] as const,
+            ],
             facets: ["Address/StateProvince"],
             vectorSearchOptions: {
                 queries: [vectorQuery],
-                filterMode: "postFilter" // Apply filter after vector similarity is calculated
+                filterMode: "postFilter"
             },
             filter: "geo.distance(Location, geography'POINT(-77.03241 38.90166)') le 300", 
         };
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
+        const results = await searchClient.search("*", searchOptions);
 
         console.log(`\n\nVector search with geo filter found ${results.count} then limited to top ${searchOptions.top}`);
 
@@ -144,33 +137,32 @@ export async function vectorQueryWithGeoFilter(): Promise<void> {
 }
 
 
-export async function hybridSearch(): Promise<void> {
+export async function hybridSearch() {
 
     try {
 
-        const vectorQuery: VectorQuery<HotelDocument> = {
+        const vectorQuery = {
             vector: vector,
             kNearestNeighborsCount: 5,
             fields: ["DescriptionVector"],
             kind: "vector",
             exhaustive: true
-
         };
 
         // Create hybrid search options with both vector query and search text
-        const searchOptions: SearchOptions<HotelDocument> = {
+        const searchOptions = {
             top: 5,
             includeTotalCount: true,
-            select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"],
             vectorSearchOptions: {
                 queries: [vectorQuery],
-                filterMode: "postFilter" // Apply filter after vector similarity is calculated
+                filterMode: "postFilter"
             }
         };
 
         // Use search_text for keyword search (hybrid search = vector + keyword)
         const searchText = "historic hotel walk to restaurants and shopping";
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search(searchText, searchOptions);            // Convert results to typed format and log for debugging
+        const results = await searchClient.search(searchText, searchOptions);            
 
         console.log(`\n\nHybrid search found ${results.count} then limited to top ${searchOptions.top}`);
 
@@ -193,37 +185,36 @@ export async function hybridSearch(): Promise<void> {
     }
 
 }
-export async function semanticHybridSearch(): Promise<void> {
+export async function semanticHybridSearch() {
 
     try {
 
-        const vectorQuery: VectorQuery<HotelDocument> = {
+        const vectorQuery = {
             vector: vector,
             kNearestNeighborsCount: 5,
             fields: ["DescriptionVector"],
             kind: "vector",
             exhaustive: true
-
         };
 
         // Create semantic hybrid search options with vector query and semantic configuration
-        const searchOptions: SearchOptions<HotelDocument> = {
+        const searchOptions = {
             top: 5,
             includeTotalCount: true,
-            select: ["HotelId", "HotelName", "Category", "Description"] as const,
-            queryType: "semantic" as const,
+            select: ["HotelId", "HotelName", "Category", "Description"],
+            queryType: "semantic",
             semanticSearchOptions: {
                 configurationName: "semantic-config"
             },
             vectorSearchOptions: {
                 queries: [vectorQuery],
-                filterMode: "postFilter" // Apply filter after vector similarity is calculated
+                filterMode: "postFilter"
             },
         };
 
         // Use search_text for semantic search
         const searchText = "historic hotel walk to restaurants and shopping";
-        const results: SearchDocumentsResult<HotelDocument> = await searchClient.search(searchText, searchOptions);
+        const results = await searchClient.search(searchText, searchOptions);
 
         console.log(`\n\nSemantic hybrid search found ${results.count} then limited to top ${searchOptions.top}`);
 

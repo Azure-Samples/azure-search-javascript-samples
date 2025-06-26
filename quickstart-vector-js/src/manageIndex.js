@@ -1,73 +1,48 @@
 import { DefaultAzureCredential } from "@azure/identity";
 import {
     SearchIndexClient,
-    SearchIndex,
-    SearchClient,
-    SearchField,
-    VectorSearch,
-    SemanticSearch,
-    SearchSuggester 
+    SearchClient
 } from "@azure/search-documents";
 
 import { DOCUMENTS } from "./documents.js";
 
 const credential = new DefaultAzureCredential();
-export const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT!;
-export const indexName = process.env.AZURE_SEARCH_INDEX_NAME!;
+export const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT;
+export const indexName = process.env.AZURE_SEARCH_INDEX_NAME;
 
 console.log(`Using Azure Search endpoint: ${searchEndpoint}`);
 console.log(`Using index name: ${indexName}`);
 
-// Define an interface for the hotel document
-export interface HotelDocument {
-    HotelId: string;
-    HotelName: string;
-    Description: string;
-    DescriptionVector?: number[];
-    Category?: string;
-    Tags?: string[] | string;
-    Address?: {
-        City: string;
-        StateProvince: string;
-    };
-    Location?: {
-        type: string;
-        coordinates: [number, number]; // [longitude, latitude]
-    };
-    "@search.score"?: number;
-    "@search.reranker_score"?: number;
-}
-
-export async function createIndex(): Promise<SearchIndexClient> {
+export async function createIndex() {
 
     const indexClient = new SearchIndexClient(searchEndpoint, credential);
 
     console.log('Creating index...');
  
     // Define fields
-    const fields: SearchField[] = [
+    const fields = [
         {
             name: "HotelId",
-            type: "Edm.String" as const,
+            type: "Edm.String",
             key: true,
             filterable: true
         },
         {
             name: "HotelName",
-            type: "Edm.String" as const,
+            type: "Edm.String",
             sortable: true,
             searchable: true,
             hidden: false,
         },
         {
             name: "Description",
-            type: "Edm.String" as const,
+            type: "Edm.String",
             searchable: true,
             hidden: false
         },
         {
             name: "DescriptionVector",
-            type: "Collection(Edm.Single)" as const,
+            type: "Collection(Edm.Single)",
             searchable: true,
             vectorSearchDimensions: 1536,
             vectorSearchProfileName: "my-vector-profile",
@@ -75,7 +50,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
         },
         {
             name: "Category",
-            type: "Edm.String" as const,
+            type: "Edm.String",
             sortable: true,
             filterable: true,
             facetable: true,
@@ -84,7 +59,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
         },
         {
             name: "Tags",
-            type: "Collection(Edm.String)" as const,
+            type: "Collection(Edm.String)",
             searchable: true,
             filterable: true,
             facetable: true,
@@ -92,37 +67,37 @@ export async function createIndex(): Promise<SearchIndexClient> {
         },
         {
             name: "ParkingIncluded",
-            type: "Edm.Boolean" as const,
+            type: "Edm.Boolean",
             filterable: true,
             sortable: true,
             facetable: true
         },
         {
             name: "LastRenovationDate",
-            type: "Edm.DateTimeOffset" as const,
+            type: "Edm.DateTimeOffset",
             filterable: true,
             sortable: true,
             facetable: true
         },
         {
             name: "Rating",
-            type: "Edm.Double" as const,
+            type: "Edm.Double",
             filterable: true,
             sortable: true,
             facetable: true
         },
         {
             name: "Address",
-            type: "Edm.ComplexType" as const,
+            type: "Edm.ComplexType",
             fields: [
                 {
                     name: "StreetAddress",
-                    type: "Edm.String" as const,
+                    type: "Edm.String",
                     searchable: true,
                 },
                 {
                     name: "City",
-                    type: "Edm.String" as const,
+                    type: "Edm.String",
                     filterable: true,
                     sortable: true,
                     facetable: true,
@@ -131,7 +106,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
                 },
                 {
                     name: "StateProvince",
-                    type: "Edm.String" as const,
+                    type: "Edm.String",
                     filterable: true,
                     sortable: true,
                     facetable: true,
@@ -140,7 +115,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
                 },
                 {
                     name: "PostalCode",
-                    type: "Edm.String" as const,
+                    type: "Edm.String",
                     filterable: true,
                     sortable: true,
                     facetable: true,
@@ -148,7 +123,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
                 },
                 {
                     name: "Country",
-                    type: "Edm.String" as const,
+                    type: "Edm.String",
                     filterable: true,
                     sortable: true,
                     facetable: true,
@@ -158,22 +133,22 @@ export async function createIndex(): Promise<SearchIndexClient> {
         },
         {
             name: "Location",
-            type: "Edm.GeographyPoint" as const,
+            type: "Edm.GeographyPoint",
             filterable: true,
             sortable: true
         }
     ];
 
     // Define vector search configuration
-    const vectorSearch: VectorSearch = {
+    const vectorSearch = {
         algorithms: [
             {
                 name: "hnsw-vector-config",
-                kind: "hnsw" as const
+                kind: "hnsw"
             },
             {
                 name: "eknn-vector-config",
-                kind: "exhaustiveKnn" as const
+                kind: "exhaustiveKnn"
             }
         ],
         profiles: [
@@ -205,15 +180,15 @@ export async function createIndex(): Promise<SearchIndexClient> {
     };
 
     // Create the semantic settings with the configuration
-    const semanticSearch: SemanticSearch = {
+    const semanticSearch = {
         configurations: [semanticConfig]
     };
 
     // Define suggesters
-    const suggesters: SearchSuggester[] = [];
+    const suggesters = [];
 
     // Create the search index with the semantic settings
-    const indexDefinition: SearchIndex = {
+    const indexDefinition = {
         name: indexName,
         fields: fields,
         vectorSearch: vectorSearch,
@@ -226,7 +201,7 @@ export async function createIndex(): Promise<SearchIndexClient> {
 
     return indexClient;
 }
-export async function deleteIndex(searchIndexClient: SearchIndexClient): Promise<void> {
+export async function deleteIndex(searchIndexClient) {
 
 
     try {
@@ -237,7 +212,7 @@ export async function deleteIndex(searchIndexClient: SearchIndexClient): Promise
         console.error("Failed to delete index:", ex);
     }
 }
-export async function uploadDocuments(): Promise<void> {
+export async function uploadDocuments() {
     const searchClient = new SearchClient(searchEndpoint, indexName, credential);
 
     if (process.env.INDEX_DATA_LOADED_ === "true") {

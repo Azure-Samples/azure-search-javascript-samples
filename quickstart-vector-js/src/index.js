@@ -14,8 +14,8 @@ import {
 async function main() {
     try {
 
-        //const searchIndexClient = await createIndex();
-        //await uploadDocuments();
+        const searchIndexClient = await createIndex();
+        await uploadDocuments();
 
         await singleVectorSearch();
         await singleVectorSearchWithFilter();
@@ -23,7 +23,7 @@ async function main() {
         await hybridSearch();
         await semanticHybridSearch();
 
-        //await deleteIndex(searchIndexClient);
+        await deleteIndex(searchIndexClient);
     } catch (error) {
         console.error("Error:", error);
     }
