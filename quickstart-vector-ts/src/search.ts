@@ -1,3 +1,4 @@
+// <Search_dependencies>
 import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult, AzureKeyCredential } from "@azure/search-documents";
 import { vector } from "./queryVector.js";
 import { HotelDocument, indexName, searchEndpoint } from "./manageIndex.js";
@@ -15,7 +16,9 @@ const searchClient = new SearchClient<HotelDocument>(
     indexName,
     new DefaultAzureCredential()
 );
+// </Search_dependencies>
 
+// <Search_singleVectorSearch>
 export async function singleVectorSearch(): Promise<void> {
     try {
 
@@ -52,7 +55,8 @@ export async function singleVectorSearch(): Promise<void> {
         throw ex;
     }
 }
-
+// </Search_singleVectorSearch>
+// <Search_singleVectorSearchWithFilter>
 export async function singleVectorSearchWithFilter(): Promise<void> {
     try {
 
@@ -77,7 +81,7 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
         };
         const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
 
-        console.log(`\n\nSingle Vector search with filter found ${results.count} then limited to top ${searchOptions.top}`);
+        console.log(`\n\nSingle Vector search with filter found ${results.count}`);
 
         for await (const result of results.results) {
             // Log each result
@@ -90,7 +94,8 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
         throw ex;
     }
 }
-
+// </Search_singleVectorSearchWithFilter>
+// <Search_vectorQueryWithGeoFilter>
 export async function vectorQueryWithGeoFilter(): Promise<void> {
     try {
 
@@ -117,7 +122,7 @@ export async function vectorQueryWithGeoFilter(): Promise<void> {
         };
         const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
 
-        console.log(`\n\nVector search with geo filter found ${results.count} then limited to top ${searchOptions.top}`);
+        console.log(`\n\nVector search with geo filter found ${results.count}`);
 
         for await (const result of results.results) {
 
@@ -142,8 +147,8 @@ export async function vectorQueryWithGeoFilter(): Promise<void> {
         throw ex;
     }
 }
-
-
+// </Search_vectorQueryWithGeoFilter>
+// <Search_hybridSearch>
 export async function hybridSearch(): Promise<void> {
 
     try {
@@ -193,6 +198,8 @@ export async function hybridSearch(): Promise<void> {
     }
 
 }
+// </Search_hybridSearch>
+// <Search_semanticHybridSearch>
 export async function semanticHybridSearch(): Promise<void> {
 
     try {
@@ -248,3 +255,4 @@ export async function semanticHybridSearch(): Promise<void> {
         throw ex;
     }
 }
+// </Search_semanticHybridSearch>

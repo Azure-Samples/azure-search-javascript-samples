@@ -1,3 +1,4 @@
+// <Search_dependencies>
 import { SearchClient, AzureKeyCredential } from "@azure/search-documents";
 import { vector } from "./queryVector.js";
 import { indexName, searchEndpoint } from "./manageIndex.js";
@@ -8,7 +9,9 @@ const searchClient = new SearchClient(
     indexName,
     new DefaultAzureCredential()
 );
+// </Search_dependencies>
 
+// <Search_singleVectorSearch>
 export async function singleVectorSearch() {
     try {
 
@@ -45,7 +48,8 @@ export async function singleVectorSearch() {
         throw ex;
     }
 }
-
+// </Search_singleVectorSearch>
+// <Search_singleVectorSearchWithFilter>
 export async function singleVectorSearchWithFilter() {
     try {
 
@@ -70,7 +74,7 @@ export async function singleVectorSearchWithFilter() {
         };
         const results = await searchClient.search("*", searchOptions);
 
-        console.log(`\n\nSingle Vector search with filter found ${results.count} then limited to top ${searchOptions.top}`);
+        console.log(`\n\nSingle Vector search with filter found ${results.count}`);
 
         for await (const result of results.results) {
             // Log each result
@@ -83,7 +87,8 @@ export async function singleVectorSearchWithFilter() {
         throw ex;
     }
 }
-
+// </Search_singleVectorSearchWithFilter>
+// <Search_vectorQueryWithGeoFilter>
 export async function vectorQueryWithGeoFilter() {
     try {
 
@@ -110,7 +115,7 @@ export async function vectorQueryWithGeoFilter() {
         };
         const results = await searchClient.search("*", searchOptions);
 
-        console.log(`\n\nVector search with geo filter found ${results.count} then limited to top ${searchOptions.top}`);
+        console.log(`\n\nVector search with geo filter found ${results.count}`);
 
         for await (const result of results.results) {
 
@@ -135,8 +140,8 @@ export async function vectorQueryWithGeoFilter() {
         throw ex;
     }
 }
-
-
+// </Search_vectorQueryWithGeoFilter>
+// <Search_hybridSearch>
 export async function hybridSearch() {
 
     try {
@@ -185,6 +190,8 @@ export async function hybridSearch() {
     }
 
 }
+// </Search_hybridSearch>
+// <Search_semanticHybridSearch>
 export async function semanticHybridSearch() {
 
     try {
@@ -239,3 +246,4 @@ export async function semanticHybridSearch() {
         throw ex;
     }
 }
+// </Search_semanticHybridSearch>
