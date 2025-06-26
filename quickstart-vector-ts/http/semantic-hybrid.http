@@ -11,9 +11,9 @@ api-key: {{apiKey}}
 {
     "count": true,
     "search": "historic hotel walk to restaurants and shopping",
-    "select": "HotelName, Description",
+    "select": "HotelId, HotelName, Description",
     "queryType": "semantic",
-    "semanticConfiguration": "my-semantic-config",
+    "semanticConfiguration": "semantic-config",
     "top": 5,
     "vectorQueries": [
         {

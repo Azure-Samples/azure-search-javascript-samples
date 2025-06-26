@@ -13,7 +13,10 @@ import { DOCUMENTS } from "./documents.js";
 
 const credential = new DefaultAzureCredential();
 export const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT!;
-export const indexName = "vector-search-quickstart";
+export const indexName = process.env.AZURE_SEARCH_INDEX_NAME!;
+
+console.log(`Using Azure Search endpoint: ${searchEndpoint}`);
+console.log(`Using index name: ${indexName}`);
 
 // Define an interface for the hotel document
 export interface HotelDocument {

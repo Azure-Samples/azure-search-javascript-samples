@@ -1,0 +1,38 @@
+{
+  "@odata.context": "https://ai-search-dib-2.search.windows.net/indexes('js0626')/$metadata#docs(*)",
+  "@odata.count": 2,
+  "@search.facets": {
+    "Address/StateProvince": [
+      {
+        "value": "VA",
+        "count": 1
+      },
+      {
+        "value": "null",
+        "count": 1
+      }
+    ]
+  },
+  "value": [
+    {
+      "@search.score": 0.6605852246284485,
+      "HotelId": "48",
+      "HotelName": "Nordick's Valley Motel",
+      "Description": "Only 90 miles (about 2 hours) from the nation's capital and nearby most everything the historic valley has to offer. Hiking? Wine Tasting? Exploring the caverns? It's all nearby and we have specially priced packages to help make our B&B your home base for fun while visiting the valley.",
+      "Address": {
+        "City": "Washington D.C.",
+        "StateProvince": "null"
+      }
+    },
+    {
+      "@search.score": 0.602634072303772,
+      "HotelId": "49",
+      "HotelName": "Swirling Currents Hotel",
+      "Description": "Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center. Each room comes equipped with a microwave, a coffee maker and a minifridge. In-room entertainment includes complimentary W-Fi and flat-screen TVs.",
+      "Address": {
+        "City": "Arlington",
+        "StateProvince": "VA"
+      }
+    }
+  ]
+}

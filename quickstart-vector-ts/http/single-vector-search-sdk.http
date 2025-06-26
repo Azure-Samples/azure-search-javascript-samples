@@ -3,7 +3,7 @@
 @apiKey = {{$dotenv AZURE_SEARCH_KEY}}
 @indexName = {{$dotenv AZURE_SEARCH_INDEX_NAME}}
 
-POST {{baseUrl}}/indexes/{{indexName}}/docs/search?api-version=2024-07-01  HTTP/1.1
+POST {{baseUrl}}/indexes/{{indexName}}/docs/search.post.search?api-version=2024-09-01-Preview  HTTP/1.1
 Content-Type: application/json
 api-key: {{apiKey}}
 

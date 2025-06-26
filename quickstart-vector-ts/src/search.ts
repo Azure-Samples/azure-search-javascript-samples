@@ -21,7 +21,6 @@ export async function singleVectorSearch(): Promise<void> {
         const searchOptions: SearchOptions<HotelDocument> & { vectorQueries: any[] } = {
             vectorQueries: [vectorQuery],
             select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
-            top: 5,
             includeTotalCount: true
         };
         const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
@@ -60,7 +59,6 @@ export async function singleVectorSearchWithFilter(): Promise<void> {
             vectorQueries: [vectorQuery],
             filter: "Tags/any(tag: tag eq 'free wifi')", // Adding filter for "free wifi" tag
             select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
-            top: 7, // Increased to 7 as in the Python example
             includeTotalCount: true
         };
         const results: SearchDocumentsResult<HotelDocument> = await searchClient.search("*", searchOptions);
@@ -100,7 +98,6 @@ export async function vectorQueryWithGeoFilter(): Promise<void> {
         } = {
             vectorQueries: [vectorQuery],
             includeTotalCount: true,
-            top: 5,
             select: [
                 "HotelId", "HotelName", "Category", "Description", "Address/City", "Address/StateProvince"
             ] as const,
@@ -154,8 +151,7 @@ export async function hybridSearch(): Promise<void> {
         const searchOptions: SearchOptions<HotelDocument> & { vectorQueries: any[] } = {
             vectorQueries: [vectorQuery],
             includeTotalCount: true,
-            select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const,
-            top: 5
+            select: ["HotelId", "HotelName", "Description", "Category", "Tags"] as const
         };
 
         // Use search_text for keyword search (hybrid search = vector + keyword)
@@ -210,8 +206,7 @@ export async function semanticHybridSearch(): Promise<void> {
             queryType: "semantic" as const,
             semanticSearchOptions: {
                 configurationName: "semantic-config"
-            },
-            top: 5
+            }
         };
 
         // Use search_text for semantic search

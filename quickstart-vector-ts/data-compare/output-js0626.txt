@@ -1,0 +1,114 @@
+Using index name: js0626
+Creating index...
+js0626 created
+Uploading documents...
+Key: 1, Succeeded: true, ErrorMessage: none
+Key: 2, Succeeded: true, ErrorMessage: none
+Key: 3, Succeeded: true, ErrorMessage: none
+Key: 4, Succeeded: true, ErrorMessage: none
+Key: 48, Succeeded: true, ErrorMessage: none
+Key: 49, Succeeded: true, ErrorMessage: none
+Key: 13, Succeeded: true, ErrorMessage: none
+
+
+Single Vector search found 7
+- HotelId: 3, HotelName: Gastronomic Landscape Hotel, Category: Suite, Score: 1
+- HotelId: 2, HotelName: Old Century Hotel, Category: Boutique, Score: 1
+- HotelId: 4, HotelName: Sublime Palace Hotel, Category: Boutique, Score: 1
+- HotelId: 49, HotelName: Swirling Currents Hotel, Category: Suite, Score: 1
+- HotelId: 48, HotelName: Nordick's Valley Motel, Category: Boutique, Score: 1
+
+
+Single Vector search with filter found 2 then limited to top 7
+- HotelId: 2, HotelName: Old Century Hotel, Tags: ["pool","free wifi","air conditioning","concierge"]
+- HotelId: 48, HotelName: Nordick's Valley Motel, Tags: ["continental breakfast","air conditioning","free wifi"]
+
+
+Vector search with geo filter found 2 then limited to top 5
+- HotelId: 49
+  HotelName: Swirling Currents Hotel
+  Score: 1
+  City/State: Arlington, VA
+  Description: Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center. Each room comes equipped with a microwave, a coffee maker and a minifridge. In-room entertainment includes complimentary W-Fi and flat-screen TVs.
+
+- HotelId: 48
+  HotelName: Nordick's Valley Motel
+  Score: 1
+  City/State: Washington D.C., null
+  Description: Only 90 miles (about 2 hours) from the nation's capital and nearby most everything the historic valley has to offer. Hiking? Wine Tasting? Exploring the caverns? It's all nearby and we have specially priced packages to help make our B&B your home base for fun while visiting the valley.
+
+
+
+Hybrid search found 7 then limited to top 5
+- Score: 1.4868739
+  HotelId: 4
+  HotelName: Sublime Palace Hotel
+  Description: Sublime Palace Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 19th century resort, updated for every modern convenience.
+  Category: Boutique
+  Tags: ["concierge","view","air conditioning"]
+
+- Score: 1.2699215
+  HotelId: 1
+  HotelName: Stay-Kay City Hotel
+  Description: This classic hotel is fully-refurbished and ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
+  Category: Boutique
+  Tags: ["view","air conditioning","concierge"]
+
+- Score: 1.2456272
+  HotelId: 13
+  HotelName: Luxury Lion Resort
+  Description: Unmatched Luxury. Visit our downtown hotel to indulge in luxury accommodations. Moments from the stadium and transportation hubs, we feature the best in convenience and comfort.
+  Category: Luxury
+  Tags: ["bar","concierge","restaurant"]
+
+- Score: 1.1733677
+  HotelId: 49
+  HotelName: Swirling Currents Hotel
+  Description: Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center. Each room comes equipped with a microwave, a coffee maker and a minifridge. In-room entertainment includes complimentary W-Fi and flat-screen TVs.
+  Category: Suite
+  Tags: ["air conditioning","laundry service","24-hour front desk service"]
+
+- Score: 0.9907783
+  HotelId: 2
+  HotelName: Old Century Hotel
+  Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts. The hotel also regularly hosts events like wine tastings, beer dinners, and live music.
+  Category: Boutique
+  Tags: ["pool","free wifi","air conditioning","concierge"]
+
+
+
+Semantic hybrid search found 7 then limited to top 5
+- Score: 1.1733677
+  Re-ranker Score: 2.6550590991973877
+  HotelId: 49
+  HotelName: Swirling Currents Hotel
+  Description: Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center. Each room comes equipped with a microwave, a coffee maker and a minifridge. In-room entertainment includes complimentary W-Fi and flat-screen TVs.
+  Category: Suite
+
+- Score: 1.4868739
+  Re-ranker Score: 2.599761724472046
+  HotelId: 4
+  HotelName: Sublime Palace Hotel
+  Description: Sublime Palace Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 19th century resort, updated for every modern convenience.
+  Category: Boutique
+
+- Score: 0.9907783
+  Re-ranker Score: 2.3480887413024902
+  HotelId: 2
+  HotelName: Old Century Hotel
+  Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts. The hotel also regularly hosts events like wine tastings, beer dinners, and live music.
+  Category: Boutique
+
+- Score: 1.2699215
+  Re-ranker Score: 2.2718777656555176
+  HotelId: 1
+  HotelName: Stay-Kay City Hotel
+  Description: This classic hotel is fully-refurbished and ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
+  Category: Boutique
+
+- Score: 0.8072146
+  Re-ranker Score: 2.0582215785980225
+  HotelId: 3
+  HotelName: Gastronomic Landscape Hotel
+  Description: The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.
+  Category: Suite
