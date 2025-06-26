@@ -1,3 +1,4 @@
+// <Index_dependencies>
 import { DefaultAzureCredential } from "@azure/identity";
 import {
     SearchIndexClient,
@@ -12,7 +13,8 @@ export const indexName = process.env.AZURE_SEARCH_INDEX_NAME;
 
 console.log(`Using Azure Search endpoint: ${searchEndpoint}`);
 console.log(`Using index name: ${indexName}`);
-
+// </Index_dependencies>
+// <Index_createIndex>
 export async function createIndex() {
 
     const indexClient = new SearchIndexClient(searchEndpoint, credential);
@@ -212,6 +214,8 @@ export async function deleteIndex(searchIndexClient) {
         console.error("Failed to delete index:", ex);
     }
 }
+// </Index_createIndex>
+// <Index_uploadDocuments>
 export async function uploadDocuments() {
     const searchClient = new SearchClient(searchEndpoint, indexName, credential);
 
@@ -225,7 +229,27 @@ export async function uploadDocuments() {
         for (const r of result.results) {
             console.log(`Key: ${r.key}, Succeeded: ${r.succeeded}, ErrorMessage: ${r.errorMessage || 'none'}`);
         }
+        await waitUntilIndexed();
     } catch (ex) {
         console.error("Failed to upload documents:", ex);
     }
 }
+// </Index_uploadDocuments>
+// <Index_waitTillIndexed>
+export async function waitUntilIndexed() {
+    try {
+        const searchClient = new SearchClient(searchEndpoint, indexName, credential);
+        do {
+            const count = await searchClient.getDocumentsCount();
+            if (count == DOCUMENTS.length) {
+                console.log("All documents indexed successfully.");
+                break;
+            }
+            console.log(`Waiting for indexing... Current count: ${count}`);
+            await new Promise((resolve) => setTimeout(resolve, 10000)); // Wait for 10 seconds
+        } while (true);
+    } catch (ex) {
+        console.error("Failed to wait until indexed:", ex);
+    }
+}
+// </Index_waitTillIndexed>
