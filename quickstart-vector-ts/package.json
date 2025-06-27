@@ -1,11 +1,10 @@
 {
   "name": "quickstart-vector-ts",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/createIndex.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && node -r dotenv/config dist/index.js"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

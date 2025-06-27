@@ -17,5 +17,5 @@
   },
   "include": [
     "src/**/*.ts"
-  ]
+, "../ts/searchSingle.ts", "../ts/searchSingleWithFilter.ts", "../ts/searchSingleWithFilterGeo.ts", "../ts/uploadDocuments.ts", "../ts/createIndex.ts", "../ts/deleteIndex.ts", "../ts/searchHybrid.ts", "../ts/searchSemanticHybrid.ts"  ]
 }
