@@ -1,5 +1,5 @@
 import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult, AzureKeyCredential } from "@azure/search-documents";
-import { vector } from "../quickstart-vector-ts/src/queryVector.js";
+import { vector } from "./queryVector.js";
 import { DefaultAzureCredential } from "@azure/identity";
 
 // const key = process.env.AZURE_SEARCH_KEY || "";
