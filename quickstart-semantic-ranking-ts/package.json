@@ -1,0 +1,31 @@
+{
+  "name": "quickstart-semantic-ranking-ts",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node -r dotenv/config dist/main.js",
+    "dev": "npm run build && npm run start",
+    "create-index": "npm run build && node -r dotenv/config dist/createIndex.js",
+    "upload-docs": "npm run build && node -r dotenv/config dist/uploadDocuments.js",
+    "search-simple": "npm run build && node -r dotenv/config dist/searchSimple.js",
+    "search-bm25": "npm run build && node -r dotenv/config dist/searchBM25.js",
+    "search-semantic": "npm run build && node -r dotenv/config dist/searchSemantic.js",
+    "search-answers": "npm run build && node -r dotenv/config dist/searchSemanticAnswer.js",
+    "delete-index": "npm run build && node -r dotenv/config dist/deleteIndex.js"
+  },
+  "keywords": ["azure", "search", "semantic", "typescript"],
+  "author": "",
+  "license": "ISC",
+  "description": "Azure AI Search semantic ranking quickstart in TypeScript",
+  "dependencies": {
+    "@azure/identity": "^4.10.0",
+    "@azure/search-documents": "^12.2.0-beta.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
