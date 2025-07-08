@@ -5,15 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node -r dotenv/config dist/main.js",
-    "dev": "npm run build && npm run start",
-    "create-index": "npm run build && node -r dotenv/config dist/createIndex.js",
-    "upload-docs": "npm run build && node -r dotenv/config dist/uploadDocuments.js",
-    "search-simple": "npm run build && node -r dotenv/config dist/searchSimple.js",
-    "search-bm25": "npm run build && node -r dotenv/config dist/searchBM25.js",
-    "search-semantic": "npm run build && node -r dotenv/config dist/searchSemantic.js",
-    "search-answers": "npm run build && node -r dotenv/config dist/searchSemanticAnswer.js",
-    "delete-index": "npm run build && node -r dotenv/config dist/deleteIndex.js"
+    "get-index-settings": "npm run build && node -r dotenv/config dist/getIndexSettings.js",
+    "update-index-settings": "npm run build && node -r dotenv/config dist/updateIndexSettings.js",
+    "semantic-query": "npm run build && node -r dotenv/config dist/semanticQuery.js",
+    "get-captions": "npm run build && node -r dotenv/config dist/semanticQueryReturnCaptions.js"
   },
   "keywords": ["azure", "search", "semantic", "typescript"],
   "author": "",
