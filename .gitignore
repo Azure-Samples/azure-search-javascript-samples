@@ -53,3 +53,4 @@ yarn-error.log*
 .next
 **/.vscode/*
 .DS_Store
+**/.env**
