@@ -1,9 +1,5 @@
-import { SearchClient, SearchDocumentsResult, VectorQuery, SearchOptions, SearchResult, AzureKeyCredential } from "@azure/search-documents";
-import { DefaultAzureCredential } from "@azure/identity";
-import { HotelDocument, credential } from "./config.js";
-
-export const searchEndpoint = process.env.AZURE_SEARCH_ENDPOINT!;
-export const indexName = process.env.AZURE_SEARCH_INDEX_NAME!;
+import { SearchClient } from "@azure/search-documents";
+import { HotelDocument, credential, searchEndpoint, indexName } from "./config.js";
 
 const searchClient = new SearchClient<HotelDocument>(
     searchEndpoint,
@@ -11,14 +7,17 @@ const searchClient = new SearchClient<HotelDocument>(
     credential
 );
 
+const configurationName = process.env.SEMANTIC_CONFIGURATION_NAME || "semantic-config";
+
 const results = await searchClient.search("walking distance to live music", {
     queryType: "semantic",
     semanticSearchOptions: {
-        configurationName: "semantic-config"
+        configurationName: configurationName
     },
     select: ["HotelId", "HotelName", "Description"]
 });
 
+let rowNumber = 1;
 for await (const result of results.results) {
 
     // Log each result
@@ -26,6 +25,7 @@ for await (const result of results.results) {
     const score = result.score;
     const rerankerScoreDisplay = result.rerankerScore;
 
+    console.log(`Search result #${rowNumber++}:`);
     console.log(`  Re-ranker Score: ${rerankerScoreDisplay}`);
     console.log(`  HotelId: ${doc.HotelId}`);
     console.log(`  HotelName: ${doc.HotelName}`);

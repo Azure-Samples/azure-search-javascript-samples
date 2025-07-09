@@ -7,7 +7,7 @@
     "build": "tsc",
     "get-index-settings": "npm run build && node -r dotenv/config dist/getIndexSettings.js",
     "update-index-settings": "npm run build && node -r dotenv/config dist/updateIndexSettings.js",
-    "semantic-query": "npm run build && node -r dotenv/config dist/semanticQuery.js",
+    "get-semantic-query": "npm run build && node -r dotenv/config dist/semanticQuery.js",
     "get-captions": "npm run build && node -r dotenv/config dist/semanticQueryReturnCaptions.js",
     "get-answers": "npm run build && node -r dotenv/config dist/semanticAnswer.js"
   },

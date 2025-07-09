@@ -1,4 +1,6 @@
-import { AzureKeyCredential } from "@azure/search-documents";
+//import { AzureKeyCredential } from "@azure/search-documents";
+//export const credential = new AzureKeyCredential(searchApiKey);
+
 import { DefaultAzureCredential } from "@azure/identity";
 
 // Configuration - use environment variables
@@ -7,7 +9,7 @@ export const searchApiKey: string = process.env.AZURE_SEARCH_API_KEY || "PUT-YOU
 export const indexName: string = process.env.AZURE_SEARCH_INDEX_NAME || "hotels-quickstart-50-docs";
 
 // Create credential
-//export const credential = new AzureKeyCredential(searchApiKey);
+
 export const credential = new DefaultAzureCredential();
 
 console.log(`Using Azure Search endpoint: ${searchEndpoint}`);

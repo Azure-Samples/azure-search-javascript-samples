@@ -8,7 +8,7 @@ import { searchEndpoint, indexName, credential } from "./config.js";
 
 try {
 
-    const configurationName = "semantic-config";
+    const configurationName = process.env.SEMANTIC_CONFIGURATION_NAME || "semantic-config";
 
     const indexClient = new SearchIndexClient(searchEndpoint, credential);
 

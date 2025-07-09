@@ -21,6 +21,8 @@ When asked to convert a TypeScript project to JavaScript, follow these comprehen
   - Replace `tsc` commands with appropriate JavaScript build tools
   - Change `ts-node` to `node`
   - Update test scripts if they reference TypeScript files
+  - **Ensure all scripts from the original TypeScript package.json are preserved and updated for JavaScript compatibility.**
+- **Copy all dependencies from the TypeScript version to the JavaScript version, excluding TypeScript-specific ones.**
 - Add JavaScript linting/formatting tools if needed:
   - Consider adding `eslint` with JavaScript configuration
   - Add `prettier` for code formatting
@@ -33,8 +35,10 @@ When asked to convert a TypeScript project to JavaScript, follow these comprehen
 
 #### Convert TypeScript files to JavaScript
 For each `.ts` file:
-- Rename `.ts` files to `.js`
-- Rename `.tsx` files to `.jsx` (if using React)
+- Rename `.ts` files to `.js` and `.tsx` files to `.jsx` (if using React).
+- **Ensure all source files in the `./src` directory are converted and retain the same functionality as the TypeScript files.**
+- **Ensure authentication mechanisms are preserved and adapted for JavaScript.**
+- **Compare each converted file with its TypeScript counterpart to ensure all functionality is preserved.**
 - Remove all TypeScript-specific syntax:
   - **Type annotations**: Remove `: string`, `: number`, `: boolean`, etc.
   - **Interface definitions**: Remove `interface` declarations
