@@ -1,0 +1,24 @@
+{
+  "name": "quickstart-semantic-ranking-js",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "get-index-settings": "node -r dotenv/config src/getIndexSettings.js",
+    "update-index-settings": "node -r dotenv/config src/updateIndexSettings.js",
+    "get-semantic-query": "node -r dotenv/config src/semanticQuery.js",
+    "get-captions": "node -r dotenv/config src/semanticQueryReturnCaptions.js",
+    "get-answers": "node -r dotenv/config src/semanticAnswer.js"
+  },
+  "keywords": ["azure", "search", "semantic", "javascript"],
+  "author": "",
+  "license": "ISC",
+  "description": "Azure AI Search semantic ranking quickstart in JavaScript",
+  "dependencies": {
+    "@azure/identity": "^4.10.0",
+    "@azure/search-documents": "^12.2.0-beta.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0"
+  }
+}

@@ -6,7 +6,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 // Configuration - use environment variables
 export const searchEndpoint: string = process.env.AZURE_SEARCH_ENDPOINT || "PUT-YOUR-SEARCH-SERVICE-ENDPOINT-HERE";
 export const searchApiKey: string = process.env.AZURE_SEARCH_API_KEY || "PUT-YOUR-SEARCH-SERVICE-ADMIN-API-KEY-HERE";
-export const indexName: string = process.env.AZURE_SEARCH_INDEX_NAME || "hotels-quickstart-50-docs";
+export const indexName = process.env.AZURE_SEARCH_INDEX_NAME || "hotels-sample-index";
 
 // Create credential
 

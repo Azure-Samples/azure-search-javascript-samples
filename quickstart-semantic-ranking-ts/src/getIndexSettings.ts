@@ -1,6 +1,5 @@
 import {
-    SearchIndexClient,
-    SearchIndex
+    SearchIndexClient
 } from "@azure/search-documents";
 import { searchEndpoint, indexName, credential } from "./config.js";
 
