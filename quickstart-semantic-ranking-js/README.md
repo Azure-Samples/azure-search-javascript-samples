@@ -1,8 +1,8 @@
 # Azure AI Search Semantic Ranking Quickstart - JavaScript
 
-This JavaScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a JavaScript version of the [official Python quickstart](https://learn.microsoft.com/en-us/azure/search/search-get-started-semantic).
+This JavaScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a JavaScript version of the [quickstart](https://learn.microsoft.com/azure/search/search-get-started-semantic).
 
-The sample has been refactored into a modular structure, with separate files for different operations.
+The sample has been factored into a modular structure, with separate files for different operations.
 
 ## What is Semantic Ranking?
 
@@ -28,8 +28,7 @@ Semantic ranking uses machine reading comprehension from Microsoft to rescore se
    - Update the values with your Azure AI Search service details:
      ```
      SEARCH_ENDPOINT=https://your-service-name.search.windows.net
-     SEARCH_API_KEY=your-admin-api-key
-     INDEX_NAME=hotels-quickstart
+     INDEX_NAME=hotels-sample-index
      ```
 
 4. **Get your search service endpoint and API key**
