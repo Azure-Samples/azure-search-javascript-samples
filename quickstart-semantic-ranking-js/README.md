@@ -27,8 +27,9 @@ Semantic ranking uses machine reading comprehension from Microsoft to rescore se
    - Copy `sample.env` to `.env`
    - Update the values with your Azure AI Search service details:
      ```
-     SEARCH_ENDPOINT=https://your-service-name.search.windows.net
+     AZURE_SEARCH_ENDPOINT=https://your-service-name.search.windows.net
      INDEX_NAME=hotels-sample-index
+     AZURE_SEARCH_API_KEY=your-api-key
      ```
 
 4. **Get your search service endpoint and API key**

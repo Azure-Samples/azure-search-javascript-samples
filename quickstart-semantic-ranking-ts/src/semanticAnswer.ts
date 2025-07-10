@@ -1,5 +1,5 @@
 import { SearchClient } from "@azure/search-documents";
-import { HotelDocument, credential, searchEndpoint, indexName } from "./config.js";
+import { HotelDocument, credential, searchEndpoint, indexName, semanticConfigurationName } from "./config.js";
 
 const searchClient = new SearchClient<HotelDocument>(
     searchEndpoint,
@@ -7,12 +7,10 @@ const searchClient = new SearchClient<HotelDocument>(
     credential
 );
 
-const configurationName = process.env.SEMANTIC_CONFIGURATION_NAME || "semantic-config";
-
 const results = await searchClient.search("walking distance to live music", {
     queryType: "semantic",
     semanticSearchOptions: {
-        configurationName: configurationName,
+        configurationName: semanticConfigurationName,
         captions: {
             captionType: "extractive"
         },
