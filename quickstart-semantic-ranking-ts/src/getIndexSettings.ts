@@ -25,4 +25,6 @@ if(index.semanticSearch && index.semanticSearch.configurations) {
         console.log(`Configuration name: ${config.name}`);
         console.log(`Title field: ${config.prioritizedFields.titleField?.name}`);
     }
+} else {
+    console.log("No semantic configuration exists for this index.");
 }
