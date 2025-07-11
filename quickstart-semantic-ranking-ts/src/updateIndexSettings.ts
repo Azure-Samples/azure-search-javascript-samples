@@ -4,11 +4,9 @@ import {
     SemanticPrioritizedFields,
     SemanticField
 } from "@azure/search-documents";
-import { searchEndpoint, indexName, credential } from "./config.js";
+import { searchEndpoint, indexName, credential, semanticConfigurationName } from "./config.js";
 
 try {
-
-    const configurationName = process.env.SEMANTIC_CONFIGURATION_NAME || "semantic-config";
 
     const indexClient = new SearchIndexClient(searchEndpoint, credential);
 
@@ -27,7 +25,7 @@ try {
     }
 
     const newSemanticConfiguration: SemanticConfiguration = {
-        name: configurationName,
+        name: semanticConfigurationName,
         prioritizedFields: fields
     };
 
@@ -36,7 +34,7 @@ try {
         existingIndex.semanticSearch.configurations.push(newSemanticConfiguration);
     } else {
         const configExists = existingIndex.semanticSearch?.configurations?.some(
-            config => config.name === configurationName
+            config => config.name === semanticConfigurationName
         );
         if (!configExists) {
             existingIndex.semanticSearch = {
