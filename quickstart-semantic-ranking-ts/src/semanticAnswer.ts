@@ -7,7 +7,8 @@ const searchClient = new SearchClient<HotelDocument>(
     credential
 );
 
-const results = await searchClient.search("walking distance to live music", {
+const results = await searchClient.search("What's a good hotel for people who like to read", {
+
     queryType: "semantic",
     semanticSearchOptions: {
         configurationName: semanticConfigurationName,
