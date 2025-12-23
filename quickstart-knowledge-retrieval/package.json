@@ -1,0 +1,27 @@
+{
+  "name": "quickstart-knowledge-retrieval",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js",
+    "create-index": "npm run build && node dist/createIndex.js",
+    "upload-docs": "npm run build && node dist/uploadDocuments.js",
+    "chat": "npm run build && node dist/knowledgeRetrieval.js"
+  },
+  "keywords": ["azure", "search", "knowledge-retrieval", "openai", "rag"],
+  "author": "",
+  "license": "ISC",
+  "description": "Azure AI Search Knowledge Retrieval sample using search index as knowledge source",
+  "dependencies": {
+    "@azure/identity": "^4.10.0",
+    "@azure/search-documents": "^12.3.0-beta.1",
+    "@azure/openai": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "dotenv": "^16.5.0",
+    "typescript": "^5.8.3"
+  }
+}
