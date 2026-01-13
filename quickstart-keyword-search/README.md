@@ -4,16 +4,16 @@ languages:
   - javascript
   - typescript
   - nodejs
-name: JavaScript quickstart for Azure AI Search
+name: JavaScript keyword search quickstart for Azure AI Search
 description: |
   Learn how to create, load, and query an Azure AI Search index using the Azure SDK for Javascript/Typescript.
 products:
   - azure
   - azure-cognitive-search
-urlFragment: javascript-quickstart
+urlFragment: javascript-quickstart-keyword
 ---
 
-# JavaScript quickstart for Azure AI Search
+# JavaScript keyword search quickstart for Azure AI Search
 
 ![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
