@@ -1,4 +1,4 @@
-# Azure AI Search Semantic Ranking Quickstart - JavaScript
+# Quickstart: Semantic ranking in Azure AI Search using JavaScript
 
 This JavaScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a JavaScript version of the [quickstart](https://learn.microsoft.com/azure/search/search-get-started-semantic).
 
