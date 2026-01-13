@@ -1,6 +1,6 @@
-# Azure AI Search - Knowledge Retrieval Quickstart
+# Quickstart: Agentic rtrieval in Azure AI Search using TypeScript
 
-This sample demonstrates how to use Azure AI Search's Knowledge Retrieval capabilities to build a RAG (Retrieval Augmented Generation) solution using TypeScript. It shows how to create a search index, configure it as a knowledge source, and integrate with Azure OpenAI for intelligent question answering.
+This sample demonstrates how to use Azure AI Search's agentic retrieval capabilities to build a retrieval-augmented generation (RAG) solution using TypeScript. It shows how to create a search index, configure it as a knowledge source, and integrate with Azure OpenAI for intelligent question answering.
 
 ## Features
 

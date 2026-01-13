@@ -1,4 +1,4 @@
-# Azure AI Search Semantic Ranking Quickstart - TypeScript
+# Quickstart: Semantic ranking in Azure AI Search using TypeScript
 
 This TypeScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a TypeScript version of the [quickstart](https://learn.microsoft.com/azure/search/search-get-started-semantic).
 
