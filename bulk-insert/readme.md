@@ -1,6 +1,6 @@
 # JavaScript bulk-insert: Create Azure AI Search Index from CSV file
 
-This folder contains source code for a bulk-insert program that creates and loads an index using the good-books sample data in a CSV folder. It's the JavaScript version of the `bulk-insert` content used in the [C# sample Add search to websites](https://learn.microsoft.com/azure/search/tutorial-csharp-overview). If you're a JavaScript developer, you can subtitute this code to create a JS version of the sample app.
+This folder contains source code for a bulk-insert program that creates and loads an index using the good-books sample data in a CSV folder. It's the JavaScript version of the `bulk-insert` content used in the [C# sample Add search to websites](https://learn.microsoft.com/azure/search/tutorial-csharp-overview). If you're a JavaScript developer, you can substitute this code to create a JS version of the sample app.
 
 You can also run this code standalone to create a good-books index on your search service.
 

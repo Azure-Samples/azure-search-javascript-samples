@@ -23,7 +23,7 @@ const results = await searchClient.search("walking distance to live music", {
     select: ["HotelId", "HotelName", "Description"],
 });
 
-console.log(`Found ${results.count} results with semantic search\n`);
+console.log(`Found ${results.count} results with semantic ranking\n`);
 let rowNumber = 1;
 
 for await (const result of results.results) {

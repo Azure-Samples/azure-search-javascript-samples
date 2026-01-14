@@ -5,7 +5,7 @@ import { searchEndpoint, indexName, credential } from "./config.js";
 
 const indexClient = new SearchIndexClient(searchEndpoint, credential);
 
-console.log('Updating semantic search index...');
+console.log('Updating semantic ranking index...');
 
 // Get the existing schema
 const index = await indexClient.getIndex(indexName);
@@ -20,7 +20,7 @@ for(const field of index.fields) {
 }
 
 if(index.semanticSearch && index.semanticSearch.configurations) {
-    console.log(`Semantic search configurations: ${index.semanticSearch.configurations.length}`);
+    console.log(`Semantic ranking configurations: ${index.semanticSearch.configurations.length}`);
     for(const config of index.semanticSearch.configurations) {
         console.log(`Configuration name: ${config.name}`);
         console.log(`Title field: ${config.prioritizedFields.titleField?.name}`);
