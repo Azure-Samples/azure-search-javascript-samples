@@ -1,14 +1,14 @@
-# Quickstart: Agentic rtrieval in Azure AI Search using TypeScript
+# Quickstart: Agentic retrieval in Azure AI Search using TypeScript
 
 This sample demonstrates how to use Azure AI Search's agentic retrieval capabilities to build a retrieval-augmented generation (RAG) solution using TypeScript. It shows how to create a search index, configure it as a knowledge source, and integrate with Azure OpenAI for intelligent question answering.
 
 ## Features
 
 - Creates a search index with vector embeddings
-- Configures semantic search capabilities
+- Configures semantic ranking capabilities
 - Sets up a knowledge source from the search index
 - Integrates with Azure OpenAI for answer synthesis
-- Demonstrates knowledge retrieval with chat interface
+- Demonstrates agentic retrieval with chat interface
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ This sample demonstrates how to use Azure AI Search's agentic retrieval capabili
    az login
    ```
 
-## Run the Sample
+## Run the sample
 
 Build and run the complete workflow:
 ```bash
@@ -58,16 +58,10 @@ This will:
 2. Upload sample documents with vector embeddings
 3. Configure a knowledge source pointing to the index
 4. Create a knowledge base with Azure OpenAI integration
-5. Perform a sample knowledge retrieval query
+5. Perform a sample agentic retrieval query
 
-## Project Structure
+## Project structure
 
 - `src/createIndex.ts` - Defines the search index schema with vector fields and semantic configuration
 - `src/uploadDocuments.ts` - Contains sample hotel documents with pre-computed vector embeddings
 - `src/main.ts` - Main orchestration script that demonstrates the complete workflow
-
-## Learn More
-
-- [Azure AI Search Documentation](https://learn.microsoft.com/azure/search/)
-- [Knowledge Retrieval in Azure AI Search](https://learn.microsoft.com/azure/search/knowledge-retrieval-overview)
-- [Azure OpenAI Service](https://learn.microsoft.com/azure/ai-services/openai/)

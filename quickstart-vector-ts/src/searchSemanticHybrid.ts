@@ -67,7 +67,7 @@ try {
         },
     };
 
-    // Use search_text for semantic search
+    // Use search_text for semantic ranking
     const searchText = "historic hotel walk to restaurants and shopping";
     const results: SearchDocumentsResult<HotelDocument> = await searchClient.search(searchText, searchOptions);
 

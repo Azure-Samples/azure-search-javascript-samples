@@ -13,7 +13,7 @@
   "keywords": ["azure", "search", "knowledge-retrieval", "openai", "rag"],
   "author": "",
   "license": "ISC",
-  "description": "Azure AI Search Knowledge Retrieval sample using search index as knowledge source",
+  "description": "Azure AI Search agentic retrieval sample using search index as knowledge source",
   "dependencies": {
     "@azure/identity": "^4.10.0",
     "@azure/search-documents": "^12.3.0-beta.1",

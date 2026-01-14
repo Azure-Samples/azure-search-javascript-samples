@@ -4,7 +4,7 @@ This JavaScript sample demonstrates how to use semantic ranking in Azure AI Sear
 
 The sample has been factored into a modular structure, with separate files for different operations.
 
-## What is Semantic Ranking?
+## What is semantic ranking?
 
 Semantic ranking uses machine reading comprehension from Microsoft to rescore search results, promoting the most semantically relevant matches to the top of the list. Unlike traditional keyword-based BM25 scoring, semantic ranking understands context and meaning.
 
@@ -38,29 +38,29 @@ Semantic ranking uses machine reading comprehension from Microsoft to rescore se
    - Copy the URL from the Overview page
    - Copy an admin key from the Keys page
 
-## Run the Sample
+## Run the sample
 
-### Getting Index Settings
+### Getting index settings
 ```bash
 npm run get-index-settings
 ```
 
-### Updating Index Settings for Semantic Search
+### Updating index settings for semantic ranking
 ```bash
 npm run update-index-settings
 ```
 
-### Run Semantic Queries
+### Run semantic queries
 ```bash
 npm run get-semantic-query
 ```
 
-### Get Captions with Results
+### Get captions with results
 ```bash
 npm run get-captions
 ```
 
-### Get Semantic Answers
+### Get semantic answers
 ```bash
 npm run get-answers
 ```
