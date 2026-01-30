@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@azure/identity": "^4.2.0",
     "@azure/search-documents": "^11.2.0",
     "dotenv": "^8.2.0"
   }

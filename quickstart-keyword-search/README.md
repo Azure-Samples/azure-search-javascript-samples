@@ -44,10 +44,9 @@ This Node.js console application is featured in [Quickstart: Create an Azure AI 
     npm install
     ```
 
-1. Edit the file `sample.env`, adding the connection information that's valid for your Azure AI Search service. See 
+1. Edit the file `sample.env` with an endpoint that's valid for your Azure AI Search service.
 
    ```nodejs
-   SEARCH_API_KEY=<search-admin-key>
    SEARCH_API_ENDPOINT=https://<search-service-name>.search.windows.net
    ```
 
@@ -63,13 +62,11 @@ This Node.js console application is featured in [Quickstart: Create an Azure AI 
 
 You should see a series of messages relating to the creation of the search index, adding documents to it, and, finally, results of a series of queries.
 
-If you get a 401 error, make sure the API key is correct (you need an admin API key to create objects), and make sure the search service is configured for [key-based authentication](https://learn.microsoft.com/azure/search/search-security-api-keys).
-
 ## Key concepts
 
 The file **hotels_quickstart_index.json** holds the definition of an index for the data in the file **hotels.json**. Review those files to see the fields, which ones are searchable, etc.
 
-The file **index.js** automatically reads the **.env** file which contains the  `SEARCH_API_KEY` and `SEARCH_API_ENDPOINT` needed to create the `SearchIndexClient`. The `sleep` function is used to pause execution in between major steps such as creating the index, submitting data for indexing, etc. Such pauses are generally only needed in test, demo, and sample code.
+The file **index.js** automatically reads the **.env** file which contains the `SEARCH_API_ENDPOINT` needed to create the `SearchIndexClient`. The `sleep` function is used to pause execution in between major steps such as creating the index, submitting data for indexing, etc. Such pauses are generally only needed in test, demo, and sample code.
 
 The `run` function :
 

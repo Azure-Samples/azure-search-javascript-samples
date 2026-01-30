@@ -1,8 +1,8 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT license.
-
 // Importing the @azure/search-documents library
-const { SearchIndexClient, SearchClient, AzureKeyCredential, odata } = require("@azure/search-documents");
+const { SearchIndexClient, SearchClient, odata } = require("@azure/search-documents");
+
+// Importing the Azure Identity library for keyless authentication
+const { DefaultAzureCredential } = require("@azure/identity");
 
 // Importing the index definition and sample data
 const hotelData = require('./hotels.json');
@@ -11,19 +11,19 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 // Load the .env file if it exists
 require("dotenv").config();
 
-// Getting endpoint and apiKey from .env file
+// Getting endpoint from .env file
 const endpoint = process.env.SEARCH_API_ENDPOINT || "";
-const apiKey = process.env.SEARCH_API_KEY || "";
 
 async function main() {
     console.log(`Running Azure AI Search Javascript quickstart...`);
-    if (!endpoint || !apiKey) {
-        console.log("Make sure to set valid values for endpoint and apiKey with proper authorization.");
+    if (!endpoint) {
+        console.log("Make sure to set valid values for endpoint with proper authorization.");
         return;
     }
 
-    // Creating an index client to create the search index
-    const indexClient = new SearchIndexClient(endpoint, new AzureKeyCredential(apiKey));
+    // Creating an index client to create the search index using keyless authentication
+    const credential = new DefaultAzureCredential();
+    const indexClient = new SearchIndexClient(endpoint, credential);
 
     // Getting the name of the index from the index definition
     const indexName = indexDefinition["name"];
