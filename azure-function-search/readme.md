@@ -2,7 +2,7 @@
 page_type: sample
 languages:
   - javascript
-name: "Tutorial: Create an Azure function that specifies queries using JavaScript"
+name: "Create an Azure function that specifies queries using JavaScript"
 description: |
   Creates an Azure function that formulates queries, document lookup, and suggestions for typeahead queries.
 products:
@@ -12,9 +12,9 @@ products:
 urlFragment: javascript-azure-function-search
 ---
 
-# Tutorial: Create an Azure function that specifies queries using JavaScript
+# Create an Azure function that specifies queries using JavaScript
 
-![Tutorial sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
+![Flask sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
 This sample provides an Azure function that formulates queries, document lookup, and suggestions for typeahead queries against an Azure AI Search index.
 

@@ -2,7 +2,7 @@
 page_type: sample
 languages:
   - javascript
-name: "Tutorial: Bulk insert documents in Azure AI Search using JavaScript"
+name: "Bulk insert documents in Azure AI Search using JavaScript"
 description: |
   Creates and loads an Azure AI Search index using bulk insert operations with the good-books sample dataset.
 products:
@@ -11,9 +11,9 @@ products:
 urlFragment: javascript-bulk-insert
 ---
 
-# Tutorial: Bulk insert documents in Azure AI Search using JavaScript
+# Bulk insert documents in Azure AI Search using JavaScript
 
-![Tutorial sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
+![Flask sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
 This sample creates and loads a search index using bulk insert operations with the good-books sample dataset. It demonstrates efficient document indexing patterns for large datasets.
 
