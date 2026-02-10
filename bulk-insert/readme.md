@@ -1,71 +1,34 @@
-# JavaScript bulk-insert: Create Azure AI Search Index from CSV file
+---
+page_type: sample
+languages:
+  - javascript
+name: "Tutorial: Bulk insert documents in Azure AI Search using JavaScript"
+description: |
+  Creates and loads an Azure AI Search index using bulk insert operations with the good-books sample dataset.
+products:
+  - azure
+  - azure-cognitive-search
+urlFragment: javascript-bulk-insert
+---
 
-This folder contains source code for a bulk-insert program that creates and loads an index using the good-books sample data in a CSV folder. It's the JavaScript version of the `bulk-insert` content used in the [C# sample Add search to websites](https://learn.microsoft.com/azure/search/tutorial-csharp-overview). If you're a JavaScript developer, you can substitute this code to create a JS version of the sample app.
+# Tutorial: Bulk insert documents in Azure AI Search using JavaScript
 
-You can also run this code standalone to create a good-books index on your search service.
+![Tutorial sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-1. Check your search service to make sure you have room for an extra index. The Usage tab in the Azure portal's search service page provides this information. The maximum limit on the free tier is 3 indexes. The maximum limit on the basic tier is 15 indexes.
+This sample creates and loads a search index using bulk insert operations with the good-books sample dataset. It demonstrates efficient document indexing patterns for large datasets.
 
-1. Change the following values in the `bulk_insert_books.js` file:
+## What's in this sample
 
-    * YOUR-SEARCH-RESOURCE-NAME (not the full URL)
-    * YOUR-SEARCH-ADMIN-KEY
+| File | Description |
+|------|-------------|
+| `package.json` | Project file that defines dependencies |
+| `bulk_insert_books.js` | Main script that creates index and bulk inserts documents |
+| `good-books-index.json` | Index schema definition for the books dataset |
 
-1. Open an integrated terminal in Visual Studio Code.
+## Documentation
 
-1. Make sure the path is "azure-search-static-web-app/javascript/bulk-insert".
+This sample is the JavaScript version of the `bulk-insert` content used in [Tutorial: Add search to web apps](https://learn.microsoft.com/azure/search/tutorial-csharp-overview). You can substitute this code to create a JavaScript version of the sample app. You can also run this code on its own to create a good-books index on your search service.
 
-1. Install the dependencies:
+## Next step
 
-    ```bash
-    npm install 
-    ```
-
-1. Run the program:
-
-    ```bash
-    npm start
-    ```
-
-1. You should see the following output:
-
-    ```bash
-    1000
-    ...
-    1999
-    BATCH SENT
-    2000
-    ...
-    2999
-    BATCH SENT
-    3000
-    ...
-    3999
-    BATCH SENT
-    4000
-    ...
-    4999
-    BATCH SENT
-    5000
-    ...
-    5999
-    BATCH SENT
-    6000
-    ...
-    6999
-    BATCH SENT
-    7000
-    ...
-    7999
-    BATCH SENT
-    8000
-    ...
-    8999
-    BATCH SENT
-    9000
-    ...
-    9999
-    BATCH SENT
-    book list data inserted
-    data inserted into index
-    ```
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search).
