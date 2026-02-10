@@ -1,67 +1,37 @@
+---
+page_type: sample
+languages:
+  - typescript
+name: "Quickstart: Agentic retrieval in Azure AI Search using TypeScript"
+description: |
+  Learn how to set up an agentic retrieval pipeline in Azure AI Search using TypeScript.
+products:
+  - azure
+  - azure-cognitive-search
+urlFragment: typescript-quickstart-agentic-retrieval
+---
+
 # Quickstart: Agentic retrieval in Azure AI Search using TypeScript
 
-This sample demonstrates how to use Azure AI Search's agentic retrieval capabilities to build a retrieval-augmented generation (RAG) solution using TypeScript. It shows how to create a search index, configure it as a knowledge source, and integrate with Azure OpenAI for intelligent question answering.
+![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-## Features
+This sample demonstrates the fundamentals of agentic retrieval using Azure AI Search. You create a search index, a knowledge source that targets the index, and a knowledge base that integrates an LLM for query planning and answer synthesis.
 
-- Creates a search index with vector embeddings
-- Configures semantic ranking capabilities
-- Sets up a knowledge source from the search index
-- Integrates with Azure OpenAI for answer synthesis
-- Demonstrates agentic retrieval with chat interface
+## What's in this sample
 
-## Prerequisites
+| File | Description |
+|------|-------------|
+| `package.json` | Project file that defines dependencies |
+| `tsconfig.json` | TypeScript compiler configuration |
+| `sample.env` | Environment variable template for configuration |
+| `src/createIndex.ts` | Defines the search index schema with vector fields and semantic configuration |
+| `src/uploadDocuments.ts` | Contains sample hotel documents with precomputed vector embeddings |
+| `src/main.ts` | Main orchestration script that demonstrates the complete workflow |
 
-- Node.js 18 or later
-- Azure subscription
-- Azure AI Search service
-- Azure OpenAI service with:
-  - An embedding model deployment (e.g., `text-embedding-3-large`)
-  - A GPT model deployment (e.g., `gpt-4.1-mini`)
-- Azure CLI (for authentication)
+## Documentation
 
-## Setup
+This sample is an alternative to the approach used in [Quickstart: Agentic retrieval using TypeScript](https://learn.microsoft.com/azure/search/search-get-started-agentic-retrieval?pivots=typescript). Follow the documentation for prerequisites, setup instructions, and detailed explanations.
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Next step
 
-2. Copy `sample.env` to `.env` and update with your values:
-   ```bash
-   cp sample.env .env
-   ```
-
-3. Configure the following environment variables:
-   - `AZURE_SEARCH_ENDPOINT` - Your Azure AI Search endpoint
-   - `AZURE_SEARCH_INDEX_NAME` - Name for the search index
-   - `AOAI_ENDPOINT` - Your Azure OpenAI endpoint
-   - `AOAI_EMBEDDING_MODEL` - OpenAI embedding model name
-   - `AOAI_EMBEDDING_DEPLOYMENT` - Deployment name for embeddings
-   - `AOAI_GPT_MODEL` - GPT model name
-   - `AOAI_GPT_DEPLOYMENT` - Deployment name for GPT
-
-4. Sign in to Azure CLI:
-   ```bash
-   az login
-   ```
-
-## Run the sample
-
-Build and run the complete workflow:
-```bash
-npm start
-```
-
-This will:
-1. Create a search index with hotel data
-2. Upload sample documents with vector embeddings
-3. Configure a knowledge source pointing to the index
-4. Create a knowledge base with Azure OpenAI integration
-5. Perform a sample agentic retrieval query
-
-## Project structure
-
-- `src/createIndex.ts` - Defines the search index schema with vector fields and semantic configuration
-- `src/uploadDocuments.ts` - Contains sample hotel documents with pre-computed vector embeddings
-- `src/main.ts` - Main orchestration script that demonstrates the complete workflow
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search).
