@@ -1,67 +1,40 @@
+---
+page_type: sample
+languages:
+  - typescript
+name: "Quickstart: Semantic ranking in Azure AI Search using TypeScript"
+description: |
+  Demonstrates semantic ranking capabilities to improve search relevance using Azure AI Search.
+products:
+  - azure
+  - azure-cognitive-search
+urlFragment: typescript-semantic-ranking-quickstart
+---
+
 # Quickstart: Semantic ranking in Azure AI Search using TypeScript
 
-This TypeScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a TypeScript version of the [quickstart](https://learn.microsoft.com/azure/search/search-get-started-semantic).
+![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-The sample has been factored into a modular structure, with separate files for different operations.
+This sample demonstrates how to set up semantic ranking. You add a semantic configuration to a search index, and then you add semantic parameters to a query.
 
-## What is semantic ranking?
+## What's in this sample
 
-Semantic ranking uses machine reading comprehension from Microsoft to rescore search results, promoting the most semantically relevant matches to the top of the list. Unlike traditional keyword-based BM25 scoring, semantic ranking understands context and meaning.
+| File | Description |
+|------|-------------|
+| `package.json` | Project file that defines dependencies and npm scripts |
+| `tsconfig.json` | TypeScript compiler configuration |
+| `sample.env` | Environment variable template for configuration |
+| `src/config.ts` | Configuration class for search service connection |
+| `src/getIndexSettings.ts` | Retrieves index schema and semantic configuration |
+| `src/updateIndexSettings.ts` | Adds semantic configuration to an index |
+| `src/semanticQuery.ts` | Runs basic semantic ranking queries |
+| `src/semanticQueryReturnCaptions.ts` | Runs semantic queries with captions and highlights |
+| `src/semanticAnswer.ts` | Returns semantic answers from query results |
 
-## Prerequisites
+## Documentation
 
-- An Azure account with an active subscription
-- An Azure AI Search service (Basic tier or higher) with semantic ranker enabled
-- Node.js 18+ and npm
-- TypeScript
+This sample accompanies [Quickstart: Semantic ranking using TypeScript](https://learn.microsoft.com/azure/search/search-get-started-semantic?pivots=typescript). Follow the documentation for prerequisites, setup instructions, and detailed explanations.
 
-## Setup
+## Next step
 
-1. **Clone or navigate to this directory**
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure your search service**
-   - Copy `sample.env` to `.env`
-   - Update the values with your Azure AI Search service details:
-     ```
-     SEARCH_ENDPOINT=https://your-service-name.search.windows.net
-     INDEX_NAME=hotels-sample-index
-     AZURE_SEARCH_API_KEY=your-api-key
-     ```
-
-4. **Get your search service endpoint and API key**
-   - Sign in to the [Azure portal](https://portal.azure.com/)
-   - Find your search service
-   - Copy the URL from the Overview page
-   - Copy an admin key from the Keys page
-
-## Run the sample
-
-### Getting index settings
-```bash
-npm run get-index-settings
-```
-
-### Updating index settings for semantic ranking
-```bash
-npm run update-index-settings
-```
-
-### Run semantic queries
-```bash
-npm run get-semantic-query
-```
-
-### Get captions with results
-```bash
-npm run get-captions
-```
-
-### Get semantic answers
-```bash
-npm run get-answers
-```
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search).

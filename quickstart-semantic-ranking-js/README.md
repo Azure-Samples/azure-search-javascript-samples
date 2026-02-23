@@ -1,66 +1,39 @@
+---
+page_type: sample
+languages:
+  - javascript
+name: "Quickstart: Semantic ranking in Azure AI Search using JavaScript"
+description: |
+  Demonstrates semantic ranking capabilities to improve search relevance using Azure AI Search.
+products:
+  - azure
+  - azure-cognitive-search
+urlFragment: javascript-semantic-ranking-quickstart
+---
+
 # Quickstart: Semantic ranking in Azure AI Search using JavaScript
 
-This JavaScript sample demonstrates how to use semantic ranking in Azure AI Search to improve search relevance using machine reading comprehension. This is a JavaScript version of the [quickstart](https://learn.microsoft.com/azure/search/search-get-started-semantic).
+![Quickstart sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-The sample has been factored into a modular structure, with separate files for different operations.
+This sample demonstrates how to set up semantic ranking. You add a semantic configuration to a search index, and then you add semantic parameters to a query.
 
-## What is semantic ranking?
+## What's in this sample
 
-Semantic ranking uses machine reading comprehension from Microsoft to rescore search results, promoting the most semantically relevant matches to the top of the list. Unlike traditional keyword-based BM25 scoring, semantic ranking understands context and meaning.
+| File | Description |
+|------|-------------|
+| `package.json` | Project file that defines dependencies and npm scripts |
+| `sample.env` | Environment variable template for configuration |
+| `src/config.js` | Configuration class for search service connection |
+| `src/getIndexSettings.js` | Retrieves index schema and semantic configuration |
+| `src/updateIndexSettings.js` | Adds semantic configuration to an index |
+| `src/semanticQuery.js` | Runs basic semantic ranking queries |
+| `src/semanticQueryReturnCaptions.js` | Runs semantic queries with captions and highlights |
+| `src/semanticAnswer.js` | Returns semantic answers from query results |
 
-## Prerequisites
+## Documentation
 
-- An Azure account with an active subscription
-- An Azure AI Search service (Basic tier or higher) with semantic ranker enabled
-- Node.js 18+ and npm
+This sample accompanies [Quickstart: Semantic ranking using JavaScript](https://learn.microsoft.com/azure/search/search-get-started-semantic?pivots=javascript). Follow the documentation for prerequisites, setup instructions, and detailed explanations.
 
-## Setup
+## Next step
 
-1. **Clone or navigate to this directory**
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure your search service**
-   - Copy `sample.env` to `.env`
-   - Update the values with your Azure AI Search service details:
-     ```
-     AZURE_SEARCH_ENDPOINT=https://your-service-name.search.windows.net
-     INDEX_NAME=hotels-sample-index
-     AZURE_SEARCH_API_KEY=your-api-key
-     ```
-
-4. **Get your search service endpoint and API key**
-   - Sign in to the [Azure portal](https://portal.azure.com/)
-   - Find your search service
-   - Copy the URL from the Overview page
-   - Copy an admin key from the Keys page
-
-## Run the sample
-
-### Getting index settings
-```bash
-npm run get-index-settings
-```
-
-### Updating index settings for semantic ranking
-```bash
-npm run update-index-settings
-```
-
-### Run semantic queries
-```bash
-npm run get-semantic-query
-```
-
-### Get captions with results
-```bash
-npm run get-captions
-```
-
-### Get semantic answers
-```bash
-npm run get-answers
-```
+You can learn more about Azure AI Search on the [official documentation site](https://learn.microsoft.com/azure/search).
