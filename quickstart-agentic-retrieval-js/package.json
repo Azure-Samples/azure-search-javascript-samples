@@ -1,0 +1,20 @@
+{
+  "name": "quickstart-agentic-retrieval-js",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node -r dotenv/config src/index.js"
+  },
+  "keywords": ["azure", "search", "knowledge-retrieval", "agentic-retrieval", "javascript"],
+  "author": "",
+  "license": "ISC",
+  "description": "Azure AI Search agentic retrieval quickstart in JavaScript",
+  "dependencies": {
+    "@azure/identity": "^4.10.0",
+    "@azure/search-documents": "^12.3.0-beta.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
