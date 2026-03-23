@@ -13,11 +13,11 @@ urlFragment: typescript-agentic-retrieval-archived
 
 # [ARCHIVED] Agentic retrieval in Azure AI Search using TypeScript
 
-> **This sample is archived.** For the official quickstart sample, see the [main branch](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/main/quickstart-agentic-retrieval-ts).
-
 ![Archived sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-This archived sample provides an alternative multi-file approach to agentic retrieval using Azure AI Search. It demonstrates the same functionality as the quickstart but organizes the code into separate files for index creation, document upload, and knowledge retrieval.
+> **This sample is archived.** For the official quickstart sample, see the [main branch](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/main/quickstart-agentic-retrieval-ts).
+
+This archived sample demonstrates the fundamentals of agentic retrieval using Azure AI Search. You create a search index, a knowledge source that targets the index, and a knowledge base that integrates an LLM for query planning and answer synthesis.
 
 ## What's in this sample
 
@@ -30,16 +30,9 @@ This archived sample provides an alternative multi-file approach to agentic retr
 | `src/uploadDocuments.ts` | Contains sample hotel documents with precomputed vector embeddings |
 | `src/main.ts` | Main orchestration script that demonstrates the complete workflow |
 
-## Why this sample is archived
-
-This multi-file sample was replaced by a single-file version that better aligns with the [quickstart tutorial format](https://learn.microsoft.com/azure/search/search-get-started-agentic-retrieval?pivots=typescript). This archived version may be useful for:
-
-- How-to articles requiring modular code examples
-- Developers who prefer a multi-file project structure
-
 ## Documentation
 
-For the official quickstart, see [Quickstart: Agentic retrieval using TypeScript](https://learn.microsoft.com/azure/search/search-get-started-agentic-retrieval?pivots=typescript).
+This sample is an alternative to the approach used in [Quickstart: Agentic retrieval using TypeScript](https://learn.microsoft.com/azure/search/search-get-started-agentic-retrieval?pivots=typescript). Follow the documentation for prerequisites, setup instructions, and detailed explanations.
 
 ## Next step
 
