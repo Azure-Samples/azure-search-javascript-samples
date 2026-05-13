@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.0.0-alpha.7",
-    "@azure/search-documents": "^11.3.1",
+    "@azure/search-documents": "^13.0.0",
     "api3": "file:"
   },
   "devDependencies": {
