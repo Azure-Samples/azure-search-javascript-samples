@@ -17,7 +17,6 @@ export function delay(timeInMs) {
   return new Promise((resolve) => setTimeout(resolve, timeInMs));
 }
 
-// Use REST for knowledge base creation until the JS SDK preserves model resourceUri.
 async function createKnowledgeBaseWithResourceUri(
   endpoint,
   knowledgeBaseName,
