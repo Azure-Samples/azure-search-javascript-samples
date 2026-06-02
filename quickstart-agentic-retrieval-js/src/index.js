@@ -215,7 +215,7 @@ const retrievalRequest = {
   retrievalReasoningEffort: { kind: "low" },
 };
 
-const result = await knowledgeRetrievalClient.retrieveKnowledge(retrievalRequest);
+const result = await knowledgeRetrievalClient.retrieve(retrievalRequest);
 
 console.log("\n📝 ANSWER:");
 console.log("─".repeat(80));
@@ -278,7 +278,7 @@ const retrievalRequest2 = {
   retrievalReasoningEffort: { kind: "low" },
 };
 
-const result2 = await knowledgeRetrievalClient.retrieveKnowledge(retrievalRequest2);
+const result2 = await knowledgeRetrievalClient.retrieve(retrievalRequest2);
 
 console.log("\n📝 ANSWER:");
 console.log("─".repeat(80));

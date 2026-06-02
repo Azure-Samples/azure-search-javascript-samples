@@ -17,6 +17,7 @@ import {
   SemanticField,
   SearchIndexingBufferedSender,
   KnowledgeRetrievalOutputMode,
+  KnowledgeBaseRetrievalRequest,
 } from "@azure/search-documents";
 
 interface EarthAtNightDocument {
@@ -210,7 +211,7 @@ const knowledgeRetrievalClient = new KnowledgeRetrievalClient(
 
 const query1 = `Why do suburban belts display larger December brightening than urban cores even though absolute light levels are higher downtown? Why is the Phoenix nighttime street grid is so sharply visible from space, whereas large stretches of the interstate between midwestern cities remain comparatively dim?`;
 
-const retrievalRequest = {
+const retrievalRequest: KnowledgeBaseRetrievalRequest = {
   messages: [
     {
       role: "user",
@@ -236,7 +237,7 @@ const retrievalRequest = {
   retrievalReasoningEffort: { kind: "low" as const },
 };
 
-const result = await knowledgeRetrievalClient.retrieveKnowledge(retrievalRequest);
+const result = await knowledgeRetrievalClient.retrieve(retrievalRequest);
 
 console.log("\n📝 ANSWER:");
 console.log("─".repeat(80));
@@ -273,7 +274,7 @@ if (result.references) {
 const query2 = "How do I find lava at night?";
 console.log(`\n❓ Follow-up question: ${query2}`);
 
-const retrievalRequest2 = {
+const retrievalRequest2: KnowledgeBaseRetrievalRequest = {
   messages: [
     {
       role: "user",
@@ -299,7 +300,7 @@ const retrievalRequest2 = {
   retrievalReasoningEffort: { kind: "low" as const },
 };
 
-const result2 = await knowledgeRetrievalClient.retrieveKnowledge(retrievalRequest2);
+const result2 = await knowledgeRetrievalClient.retrieve(retrievalRequest2);
 
 console.log("\n📝 ANSWER:");
 console.log("─".repeat(80));

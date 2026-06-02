@@ -7,13 +7,19 @@
     "build": "tsc",
     "start": "npm run build && node dist/index.js"
   },
-  "keywords": ["azure", "search", "knowledge-retrieval", "agentic-retrieval", "typescript"],
+  "keywords": [
+    "azure",
+    "search",
+    "knowledge-retrieval",
+    "agentic-retrieval",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "description": "Azure AI Search agentic retrieval quickstart in TypeScript",
   "dependencies": {
-    "@azure/identity": "^4.10.0",
-    "@azure/search-documents": "^12.3.0-beta.1"
+    "@azure/identity": "^4.13.1",
+    "@azure/search-documents": "13.1.0-beta.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
