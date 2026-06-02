@@ -12,8 +12,39 @@ export const documentKeyRetriever = (document) => {
 };
 
 export const WAIT_TIME = 4000;
+export const API_VERSION = "2026-05-01-preview";
 export function delay(timeInMs) {
   return new Promise((resolve) => setTimeout(resolve, timeInMs));
+}
+
+// Use REST for knowledge base creation until the JS SDK preserves model resourceUri.
+async function createKnowledgeBaseWithResourceUri(
+  endpoint,
+  knowledgeBaseName,
+  credential,
+  knowledgeBase
+) {
+  const token = await credential.getToken("https://search.azure.com/.default");
+  if (!token) {
+    throw new Error("Failed to acquire a search service access token.");
+  }
+  const response = await fetch(
+    `${endpoint}/knowledgebases/${knowledgeBaseName}?api-version=${API_VERSION}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token.token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(knowledgeBase),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to create knowledge base: ${response.status} ${await response.text()}`
+    );
+  }
 }
 
 const index = {
@@ -151,13 +182,21 @@ await searchIndexClient.createKnowledgeSource({
   kind: "searchIndex",
   searchIndexParameters: {
     searchIndexName: "earth_at_night",
-    sourceDataFields: [{ name: "id" }, { name: "page_number" }],
+    sourceDataFields: [
+      { name: "id" },
+      { name: "page_chunk" },
+      { name: "page_number" },
+    ],
   },
 });
 
 console.log(`✅ Knowledge source 'earth-knowledge-source' created successfully.`);
 
-await searchIndexClient.createKnowledgeBase({
+await createKnowledgeBaseWithResourceUri(
+  process.env.AZURE_SEARCH_ENDPOINT,
+  "earth-knowledge-base",
+  credential,
+  {
   name: "earth-knowledge-base",
   knowledgeSources: [
     {
@@ -168,16 +207,18 @@ await searchIndexClient.createKnowledgeBase({
     {
       kind: "azureOpenAI",
       azureOpenAIParameters: {
-        resourceUrl: process.env.AZURE_OPENAI_ENDPOINT,
+        resourceUri: process.env.AZURE_OPENAI_ENDPOINT,
         deploymentId: process.env.AZURE_OPENAI_GPT_DEPLOYMENT,
         modelName: process.env.AZURE_OPENAI_GPT_DEPLOYMENT,
       },
     },
   ],
   outputMode: "answerSynthesis",
+  retrievalReasoningEffort: { kind: "low" },
   answerInstructions:
     "Provide a two sentence concise and informative answer based on the retrieved documents.",
-});
+  }
+);
 
 console.log(`✅ Knowledge base 'earth-knowledge-base' created successfully.`);
 
@@ -208,11 +249,9 @@ const retrievalRequest = {
       includeReferences: true,
       includeReferenceSourceData: true,
       alwaysQuerySource: true,
-      rerankerThreshold: 2.5,
     },
   ],
   includeActivity: true,
-  retrievalReasoningEffort: { kind: "low" },
 };
 
 const result = await knowledgeRetrievalClient.retrieve(retrievalRequest);
@@ -271,11 +310,9 @@ const retrievalRequest2 = {
       includeReferences: true,
       includeReferenceSourceData: true,
       alwaysQuerySource: true,
-      rerankerThreshold: 2.5,
     },
   ],
   includeActivity: true,
-  retrievalReasoningEffort: { kind: "low" },
 };
 
 const result2 = await knowledgeRetrievalClient.retrieve(retrievalRequest2);
