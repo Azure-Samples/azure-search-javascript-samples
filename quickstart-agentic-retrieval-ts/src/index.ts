@@ -19,16 +19,13 @@ import {
   KnowledgeRetrievalOutputMode,
   KnowledgeBaseRetrievalRequest,
 } from "@azure/search-documents";
+import type { TokenCredential } from "@azure/core-auth";
 
 interface EarthAtNightDocument {
   id: string;
   page_chunk: string;
   page_embedding_text_3_large: number[];
   page_number: number;
-}
-
-interface SearchTokenCredential {
-  getToken(scopes: string | string[]): Promise<{ token: string } | null>;
 }
 
 export const documentKeyRetriever: (
@@ -62,7 +59,7 @@ interface KnowledgeBasePayload {
 async function createKnowledgeBaseWithResourceUri(
   endpoint: string,
   knowledgeBaseName: string,
-  credential: SearchTokenCredential,
+  credential: TokenCredential,
   knowledgeBase: KnowledgeBasePayload
 ): Promise<void> {
   const token = await credential.getToken("https://search.azure.com/.default");
