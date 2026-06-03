@@ -19,7 +19,6 @@ import {
   KnowledgeRetrievalOutputMode,
   KnowledgeBaseRetrievalRequest,
 } from "@azure/search-documents";
-import type { TokenCredential } from "@azure/core-auth";
 
 interface EarthAtNightDocument {
   id: string;
@@ -35,54 +34,12 @@ export const documentKeyRetriever: (
 };
 
 export const WAIT_TIME = 4000;
-export const API_VERSION = "2026-05-01-preview";
 export function delay(timeInMs: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, timeInMs));
 }
 
-interface KnowledgeBasePayload {
-  name: string;
-  knowledgeSources: { name: string }[];
-  models: {
-    kind: "azureOpenAI";
-    azureOpenAIParameters: {
-      resourceUri: string;
-      deploymentId: string;
-      modelName: string;
-    };
-  }[];
-  outputMode: KnowledgeRetrievalOutputMode;
-  retrievalReasoningEffort: { kind: "low" };
-  answerInstructions: string;
-}
-
-async function createKnowledgeBaseWithResourceUri(
-  endpoint: string,
-  knowledgeBaseName: string,
-  credential: TokenCredential,
-  knowledgeBase: KnowledgeBasePayload
-): Promise<void> {
-  const token = await credential.getToken("https://search.azure.com/.default");
-  if (!token) {
-    throw new Error("Failed to acquire a search service access token.");
-  }
-  const response = await fetch(
-    `${endpoint}/knowledgebases/${knowledgeBaseName}?api-version=${API_VERSION}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token.token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(knowledgeBase),
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to create knowledge base: ${response.status} ${await response.text()}`
-    );
-  }
+function getAzureOpenAIResourceUri(): string {
+  return process.env.AZURE_OPENAI_ENDPOINT!.replace(/\/openai\/v1\/?$/, "");
 }
 
 const index: SearchIndex = {
@@ -141,7 +98,7 @@ const index: SearchIndex = {
         vectorizerName: "azure_openai_text_3_large",
         kind: "azureOpenAI",
         parameters: {
-          resourceUrl: process.env.AZURE_OPENAI_ENDPOINT!,
+          resourceUrl: getAzureOpenAIResourceUri(),
           deploymentId: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT!,
           modelName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT!,
         } as AzureOpenAIParameters,
@@ -230,11 +187,7 @@ await searchIndexClient.createKnowledgeSource({
 
 console.log(`✅ Knowledge source 'earth-knowledge-source' created successfully.`);
 
-await createKnowledgeBaseWithResourceUri(
-  process.env.AZURE_SEARCH_ENDPOINT!,
-  "earth-knowledge-base",
-  credential,
-  {
+await searchIndexClient.createKnowledgeBase({
   name: "earth-knowledge-base",
   knowledgeSources: [
     {
@@ -245,7 +198,7 @@ await createKnowledgeBaseWithResourceUri(
     {
       kind: "azureOpenAI",
       azureOpenAIParameters: {
-        resourceUri: process.env.AZURE_OPENAI_ENDPOINT!,
+        resourceUrl: getAzureOpenAIResourceUri(),
         deploymentId: process.env.AZURE_OPENAI_GPT_DEPLOYMENT!,
         modelName: process.env.AZURE_OPENAI_GPT_DEPLOYMENT!,
       },
@@ -255,8 +208,7 @@ await createKnowledgeBaseWithResourceUri(
   retrievalReasoningEffort: { kind: "low" },
   answerInstructions:
     "Provide a two sentence concise and informative answer based on the retrieved documents.",
-  }
-);
+});
 
 console.log(`✅ Knowledge base 'earth-knowledge-base' created successfully.`);
 
