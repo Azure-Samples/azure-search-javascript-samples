@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "@azure/identity": "^4.10.0",
-    "@azure/search-documents": "^12.2.0-beta.2"
+    "@azure/search-documents": "^13.1.0-beta.1"
   },
   "devDependencies": {
     "@types/node": "^24.0.1",
